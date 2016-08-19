@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :home, only: [:index]
     resources :orders
+    resources :products
   end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
