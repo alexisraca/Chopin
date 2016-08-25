@@ -3,15 +3,13 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root "admin/home#index"
-
   namespace :admin do
-    resources :home, only: [:index]
     resources :orders
     resources :products
     resources :reports
     resources :users
     resources :statements
+    resources :payments
   end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
