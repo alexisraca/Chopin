@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :products
     resources :reports
     resources :users
+    resources :statements
   end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
