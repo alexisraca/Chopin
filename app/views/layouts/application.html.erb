@@ -7,14 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div>
-  <% if user_signed_in? %>
-    <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Iniciar Sesión", new_user_session_path %>
-  <% end %>
-<div>
-<%= yield %>
+  <!-- Boton de sesión -->
+  <%= render "/shared/menu" %>
+  <!-- /Boton de sesión -->
+
+  <%= yield %>
 
 </body>
 </html>
