@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :rememberable, :trackable, :lockable, authentication_keys: [:username]
 
-  validates :username, presence: true
+  validates :username, presence: { message: "No puede estar en blanco" }
 end
