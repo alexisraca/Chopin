@@ -1,3 +1,4 @@
+<%= link_to "Nueva Orden", new_admin_order_path, class: "btn btn-primary" %>
 <table class="table table-bordered">
   <thead>
     <tr> 
@@ -6,6 +7,7 @@
       <th>completed_at</th>
       <th>total</th>
       <th>state</th>
+      <th>accciones</th>
     </tr>
   </thead>
     <tbody>
@@ -25,6 +27,10 @@
       </td>
       <td>
         <%= order.state %>
+      </td>
+      <td>
+        <%= link_to "Editar", edit_admin_order_path(order), class: "btn btn-primary" %>
+        <%= link_to "Borrar", admin_order_path(order), method: :delete, class: "btn btn-danger"%>
       </td>
     </tr>
     <% end %>
