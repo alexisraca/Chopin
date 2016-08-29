@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: { message: "No puede estar en blanco" }
   validates_confirmation_of :password
+  has_many :orders
+
 end
+
