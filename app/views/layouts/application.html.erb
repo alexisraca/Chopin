@@ -11,7 +11,9 @@
   <%= render "/shared/menu" %>
   <!-- /Boton de sesión -->
 
-  <%= yield %>
-
+  <div class="container-fluid">
+    <%= yield %>
+  </div>
+  <%= render partial: "/shared/global_modal" %>
 </body>
 </html>

@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all.order(:created_at)
   end
 
   def edit
@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+    @user.destroy unless @user == current_user
     redirect_to admin_users_path
   end
 
