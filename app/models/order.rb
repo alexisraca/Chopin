@@ -4,5 +4,4 @@ class Order < ActiveRecord::Base
 
    validates :user_id, :state, presence: { message: "No puede estar en blanco" }
 
-
 end
