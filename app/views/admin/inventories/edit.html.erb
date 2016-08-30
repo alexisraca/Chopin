@@ -1,0 +1,17 @@
+<%= form_for @iventory, url: admin_inventories_path, method: :put do |f| %>
+
+  <%= render partial: "/shared/form_errors", locals: { instance: @inventory } %>
+ 
+  <%= f.label :product_id %>
+  <%= f.text_field :product_id %><br />
+
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %><br />
+
+  <%= f.label :expiration_date %>
+  <%= f.text_field :expiration_date %><br />
+
+  <%= f.submit %>
+
+  <%= f.submit %>
+<% end %>
