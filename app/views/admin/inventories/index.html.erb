@@ -1,0 +1,31 @@
+<%= link_to "Nuevo iventario", new_admin_inventory_path, class: "btn btn-primary" %>
+<table class="table table-bordered">
+  <thead>
+    <tr> 
+      <th>ID de producto</th>
+      <th>Cantidad</th>
+      <th>Fecha de expiración</th>
+      <th>Editar</th>
+    </tr>
+     </thead>
+    <tbody>
+    <% @inventories.each do |inventory| %>
+    <tr>
+      <td>
+        <%= inventory.product_id %>
+      </td>
+      <td>
+        <%= inventory.quantity %>
+      </td>
+      <td>
+        <%= inventory.expiration_date %>
+      </td>
+      <td>
+        <%= link_to "Editar", edit_admin_inventory_path(inventory), class: "btn btn-primary" %>
+        <%= link_to "Borrar", admin_inventory_path(inventory), method: :delete, class: "btn btn-danger"%>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>
