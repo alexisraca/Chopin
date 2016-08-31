@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   root "admin/orders#index"
 
   namespace :admin do
-    resources :orders
+    resources :orders do
+      resources :statements
+    end
     resources :products
     resources :reports
     resources :users
-    resources :statements
     resources :payments
     resources :inventories
   end
