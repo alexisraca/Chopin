@@ -1,6 +1,7 @@
 products
 
 <% @products.each do |product| %>
+    <%= link_to product.id, admin_product_path(product.id)%>
 	<%= product.name %>
 	<%= product.description %>
 	
