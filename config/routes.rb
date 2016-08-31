@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :statements
     resources :payments
     resources :inventories
+    resources :variants
   end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

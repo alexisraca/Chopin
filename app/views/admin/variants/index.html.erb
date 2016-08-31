@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+    <div class="panel" >
+      
+      <%= link_to new_admin_variant_path, class: "btn btn-primary pull-right", remote: true do %>
+        Nueva Variante
+        <%= fa_icon "plus" %>
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr> 
+          <th>variant</th>
+          <th>variable de menu</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @variants.each do |variant| %>
+          <tr>
+            <td><%= variant.name %></td>
+            <td><%= variant.main_variant %></td>
+            <td><%= variant.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
