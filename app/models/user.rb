@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   has_many :orders
   validates :first_name, :last_name, presence: { message: "No puede estar en blanco" }
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
 end
 
