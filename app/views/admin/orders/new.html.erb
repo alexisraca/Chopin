@@ -1,4 +1,30 @@
 <%= form_for @order, url: admin_orders_path do |f| %>
+<div class="row">
+  <div class="col-md-12">
+    <H1 class="no-margin-top">Nueva Orden</H1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 block1">
+    <%= f.label "Usuario" %>
+    <%= f.collection_select :user_id, User.all, :id, :username, {}, { class: "user-select" } %><br />
+    Buscar por SKU
+  </div>
+  <div class="col-md-6">
+    Busqueda autoacompletar - 
+    <%= link_to new_admin_user_path, class: "btn btn-primary", remote: true do %>
+      <%= fa_icon "search-plus" %>
+      Avanzada
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Lista de articulos
+  </div>
+</div>
+
+
 
   <%= render partial: "/shared/form_errors", locals: { instance: @order } %>
 
