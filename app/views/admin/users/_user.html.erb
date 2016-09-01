@@ -1,0 +1,7 @@
+<tr>
+  <td><%= user.username %></td>
+  <td><%= user.created_at.strftime("%d-%m-%Y") %></td>
+  <td>
+    <%= render partial: "actions", locals: { user: user } %>
+  </td>
+</tr>
