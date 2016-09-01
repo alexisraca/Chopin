@@ -1,5 +1,5 @@
 <div class="row">
-  <%= form_for @user, url: admin_users_path, remote: :true do |f| %>
+  <%= form_for [:admin, @user], remote: :true do |f| %>
 
     <%= render partial: "/shared/form_errors", locals: { instance: @user } %>
 
@@ -21,7 +21,7 @@
 
        <div class="form-group">
          <%= f.label :password_confirmation %>
-         <%= f.password_field :password_confirmation, class: "form-control"  %><br />
+         <%= f.password_field :password_confirmation, class: "form-control" %><br />
        </div>
     </div>
     <div class="col-md-12">
