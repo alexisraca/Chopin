@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders do
-      resources :statements
+      resources :statements do 
+        resources :line_items
+        end
     end
     resources :products
     resources :reports
