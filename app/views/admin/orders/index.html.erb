@@ -1,4 +1,13 @@
-<%= link_to "Nueva Orden", new_admin_order_path, class: "btn btn-primary" %>
+<div class="row">
+  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 button-bar">  
+    <%= link_to new_admin_order_path, class: "btn btn-primary pull-right", remote: true do %>
+      Nueva Orden
+      <%= fa_icon "plus" %>
+    <% end %>
+  <div class="clearfix"></div>
+  </div>
+</div>
+
 <table class="table table-bordered">
   <thead>
     <tr> 
