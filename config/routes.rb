@@ -11,11 +11,12 @@ Rails.application.routes.draw do
     resources :statements do 
       resources :line_items
     end
-    resources :products
+    resources :products do
+      resources :inventories
+    end
     resources :reports
     resources :users
     resources :payments
-    resources :inventories
     resources :variants
     resources :retired_users, only: [:index]
     resources :promotions 
