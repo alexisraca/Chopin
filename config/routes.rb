@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       resources :statements
     end
     resources :statements do 
-        resources :line_items
-        end
+      resources :line_items
+    end
     resources :products
     resources :reports
     resources :users
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :inventories
     resources :variants
     resources :retired_users, only: [:index]
+    resources :promotions 
   end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
