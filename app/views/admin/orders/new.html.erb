@@ -1,4 +1,4 @@
-<%= simple_form_for @order, url: admin_orders_path do |f| %>
+<%= simple_form_for [:admin, @order] do |f| %>
 <div class="row">
   <div class="col-md-12">
     <H1 class="no-margin-top">Nueva Orden</H1>
@@ -23,12 +23,10 @@
     Lista de articulos
   </div>
 </div>
-
-
-
-  <%= render partial: "/shared/form_errors", locals: { instance: @order } %>
-
-  
-
-  <%= f.submit %>
+  <%= f.simple_fields_for :statements do |s| %>
+    <%= s.simple_fields_for :line_items do |l| %>
+      <%= l.input :variant_id, as: :select, collection: Variant.all %>
+    <% end %>
+  <% end %>
+  <%= f.button :submit %>
 <% end %> 
