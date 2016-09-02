@@ -1,0 +1,2 @@
+class VariantsSearchController < ApplicationController
+end

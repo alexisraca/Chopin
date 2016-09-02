@@ -1,0 +1,2 @@
+module VariantsSearchHelper
+end
