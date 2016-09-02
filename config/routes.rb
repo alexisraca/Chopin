@@ -15,12 +15,13 @@ Rails.application.routes.draw do
     resources :products do
       resources :inventories
     end
+    resources :variants do
+      resources :promotions
+    end
     resources :reports
     resources :users
     resources :payments
-    resources :variants
     resources :retired_users, only: [:index]
-    resources :promotions 
   end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
