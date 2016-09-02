@@ -1,0 +1,2 @@
+module Admin::RetiredUsersHelper
+end
