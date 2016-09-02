@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     resources :statements do 
       resources :line_items
+      resources :payments
     end
     resources :products do
       resources :inventories
