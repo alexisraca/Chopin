@@ -4,6 +4,10 @@
 
 #global-modal {
   .form-group {
-    font-weight: normal;
-    height: 84px; }
+    height: 94px;
+    margin: 0;
+    label { font-weight:  normal; display: block; }
+    input { width: 70%; }
+    span.help-block { }
+  }
 }
