@@ -1,0 +1,22 @@
+<ul class="list-inline pull-right">
+  <li>
+    <%= search_form_for @q, url: admin_users_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+      <div class="form-group">
+        <div class="input-group">
+          <%= s.text_field :username_or_email_cont, class: "form-control keyup-autosearch" %>
+          <span class="input-group-btn">
+            <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+              <%= fa_icon("search", text: " ") %>
+            </button>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to new_admin_user_path, class: "btn btn-primary", remote: true do %>
+      Nuevo Usuario
+      <%= fa_icon "plus" %>
+    <% end %>
+  </li>
+</ul>

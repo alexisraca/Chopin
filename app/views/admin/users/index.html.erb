@@ -1,9 +1,6 @@
 <div class="row">
   <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 button-bar">
-      <%= link_to new_admin_user_path, class: "btn btn-primary pull-right", remote: true do %>
-        Nuevo Usuario
-        <%= fa_icon "plus" %>
-      <% end %>
+    <%= render partial: "button_bar" %>
   </div>
 </div>
 
