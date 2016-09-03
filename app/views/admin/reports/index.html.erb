@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 button-bar">  
+    <%= link_to new_admin_order_path, class: "btn btn-primary pull-right" do %>
+      Nueva Orden
+      <%= fa_icon "plus" %>
+    <% end %>
+  <div class="clearfix"></div>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr> 
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>producto</th>
+      <th>cantidad</th>
+      <th>total</th>
+    </tr>
+  </thead>
+    <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td>
+        <%= order.ID %>
+      </td>
+      <td>
+        <%= order.Fecha %>
+      </td>
+      <td>
+        <%= order.producto %>
+      </td>
+      <td>
+        <%= order.cantidad %>
+      </td>
+      <td>
+        <%= order.total %>
+      </td>
+      <td>
+        <%= link_to "Editar", edit_admin_order_path(order), class: "btn btn-primary" %>
+        <%= link_to "Borrar", admin_order_path(order), method: :delete, class: "btn btn-danger"%>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>
