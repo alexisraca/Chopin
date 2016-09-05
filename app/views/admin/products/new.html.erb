@@ -1,0 +1,21 @@
+<%= form_for @product, url: admin_products_path do |f| %>
+
+  <%= render partial: "/shared/form_errors", locals: { instance: @product } %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br />
+
+  <%= f.label :description %>
+  <%= f.text_field :description %><br />
+
+  <%= f.label :cost %>
+  <%= f.number_field :cost %><br />
+
+  <%= f.label :price %>
+  <%= f.number_field :price %><br />
+
+  <%= f.label :sku %>
+  <%= f.number_field :sku %><br />
+
+  <%= f.submit %>
+<% end %> 

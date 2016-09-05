@@ -1,5 +1,5 @@
-products
-
+<%= link_to "Nuevo Producto", new_admin_order_path, class: "btn btn-primary pull-right" %>
+productos
 <% @products.each do |product| %>
     <%= link_to product.id, admin_product_path(product.id)%>
 	<%= product.name %>
