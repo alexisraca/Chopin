@@ -4,7 +4,8 @@ class Admin::OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+    @order = Order.create(user: current_user, state: "summary")
+    @statement = @order.statements.create(total: 0.0)
   end
   
   def destroy

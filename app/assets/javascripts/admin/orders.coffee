@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $( ".user-select" ).select2({
+  $( ".variant-select" ).select2({
       theme: "bootstrap"
   });
