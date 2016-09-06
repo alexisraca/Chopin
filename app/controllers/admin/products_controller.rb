@@ -6,9 +6,11 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    params.merge!(main_variant: true)
     if @product.save
-      flash[:notice] = "Creacion Existosa"
-      redirect_to admin_products_path
+       @product.variants.create(name: params[:product][:name] , description: params[:product][:description] ,price: params[:variants][:price])
+       flash[:notice] = "Creacion Existosa"
+       redirect_to admin_products_path
     end
   end
 

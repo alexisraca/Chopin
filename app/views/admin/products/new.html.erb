@@ -8,14 +8,16 @@
   <%= f.label :description %>
   <%= f.text_field :description %><br />
 
-  <%= f.label :cost %>
-  <%= f.number_field :cost %><br />
+  <%= fields_for :variants do |v| %>
+    <%= v.label :cost %>
+    <%= v.number_field :cost %><br />
 
-  <%= f.label :price %>
-  <%= f.number_field :price %><br />
+    <%= v.label :price %>
+    <%= v.number_field :price %><br />
 
-  <%= f.label :sku %>
-  <%= f.number_field :sku %><br />
+    <%= v.label :sku %>
+    <%= v.number_field :sku %><br />
+  <% end %>
 
   <%= f.submit %>
 <% end %> 
