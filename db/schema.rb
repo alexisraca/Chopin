@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824191200) do
+ActiveRecord::Schema.define(version: 20160906060817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "inventories", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.date     "expiration_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "statement_id"
@@ -23,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160824191200) do
     t.float    "total"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "variant_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -47,11 +56,25 @@ ActiveRecord::Schema.define(version: 20160824191200) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.float    "cost"
-    t.float    "price"
-    t.string   "sku"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "product_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.integer  "priority"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "statements", force: :cascade do |t|
@@ -76,8 +99,24 @@ ActiveRecord::Schema.define(version: 20160824191200) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "username"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "address"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  create_table "variants", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "main_variant"
+    t.float    "price"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.float    "cost"
+    t.string   "sku"
+    t.integer  "product_id"
+  end
 
 end
