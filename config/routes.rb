@@ -15,11 +15,12 @@ Rails.application.routes.draw do
     end
 
     resources :products do
-      resources :inventories
+      resources :variants
     end
 
     resources :variants do
       resources :promotions
+      resources :inventories
     end
 
     resources :reports

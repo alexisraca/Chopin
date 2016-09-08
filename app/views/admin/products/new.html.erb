@@ -1,22 +1,15 @@
-<%= form_for @product, url: admin_products_path do |f| %>
+<%= simple_form_for [:admin, @product, @product.variants.build] do |f| %>
 
   <%= render partial: "/shared/form_errors", locals: { instance: @product } %>
+    <%= f.input :product_id, class:'form-control', autofocus: true, placeholder: 'id producto'%>
+    <%= f.input :name, autofocus: true, placeholder: 'Nombre'%>
+    <%= f.input :description, autofocus: true, placeholder: 'Descripción'%>
+    <%= f.input :cost, autofocus: true, placeholder: 'Costo'%>
+    <%= f.input :price, autofocus: true, placeholder: 'Precio'%>
+    <%= f.input :sku, autofocus: true, placeholder: 'Sku'%>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %><br />
-
-  <%= f.label :description %>
-  <%= f.text_field :description %><br />
-
-  <%= fields_for :variants do |v| %>
-    <%= v.label :cost %>
-    <%= v.number_field :cost %><br />
-
-    <%= v.label :price %>
-    <%= v.number_field :price %><br />
-
-    <%= v.label :sku %>
-    <%= v.number_field :sku %><br />
+  <%= simple_fields_for :inventories do |i| %>
+    <%= i.input :quantity, autofocus: true, placeholder: 'Cantidad' %>
   <% end %>
 
   <%= f.submit %>
