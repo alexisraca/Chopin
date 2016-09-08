@@ -31,6 +31,7 @@ gem "twitter-bootstrap-rails"
 gem "font-awesome-rails"
 gem "select2-rails"
 gem 'simple_form'
+gem 'bootstrap-datepicker-rails'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 
 # Use ActiveModel has_secure_password

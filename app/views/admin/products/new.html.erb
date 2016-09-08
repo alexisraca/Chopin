@@ -1,16 +1,40 @@
-<%= simple_form_for [:admin, @product, @product.variants.build] do |f| %>
+<div class="well">
+  <%= simple_form_for [:admin, @product], remote: :true do |f| %>
+    <%= f.simple_fields_for @product.build_main_variant do |v| %>
 
-  <%= render partial: "/shared/form_errors", locals: { instance: @product } %>
-    <%= f.input :product_id, class:'form-control', autofocus: true, placeholder: 'id producto'%>
-    <%= f.input :name, autofocus: true, placeholder: 'Nombre'%>
-    <%= f.input :description, autofocus: true, placeholder: 'Descripción'%>
-    <%= f.input :cost, autofocus: true, placeholder: 'Costo'%>
-    <%= f.input :price, autofocus: true, placeholder: 'Precio'%>
-    <%= f.input :sku, autofocus: true, placeholder: 'Sku'%>
+      <div class="row">
+        <div class="col-md-12">
+          <%= v.input :name, placeholder: 'Nombre' %>
+        </div>
+      </div>
 
-  <%= simple_fields_for :inventories do |i| %>
-    <%= i.input :quantity, autofocus: true, placeholder: 'Cantidad' %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= v.input :description, as: :text, placeholder: 'Descripción' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= v.input :sku, as: :decimal, placeholder: 'Sku' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-inline">
+            <%= v.input :cost, as: :decimal, placeholder: 'Costo' %>
+            <%= v.input :price, as: :decimal, placeholder: 'Precio' %>
+            <%= v.simple_fields_for @product.main_variant.inventories.build do |i| %>
+              <%= i.input :quantity, as: :decimal, placeholder: 'Cantidad' %>
+              <%= i.input :expiration_date, as: :string, input_html: { "data-provide" => 'datepicker' } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= f.submit "Guardar", class: "btn btn-primary pull-right" %>
+    <div class="clearfix">
   <% end %>
-
-  <%= f.submit %>
-<% end %> 
+</div>

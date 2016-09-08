@@ -1,3 +1,7 @@
 class Inventory < ActiveRecord::Base
-	validates :product_id, :quantity, presence: { message: "No puede estar en blanco" }
+  belongs_to :variant
 end
+#
+# variant_id
+# quantity
+# expiration_date

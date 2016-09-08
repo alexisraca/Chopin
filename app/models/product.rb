@@ -1,8 +1,6 @@
 class Product < ActiveRecord::Base
   has_many :variants
-end
+  has_one :main_variant, -> { where(main_variant: true) }, class_name: "Variant"
 
-# Campos
-#
-# name - string
-# description - text
+  accepts_nested_attributes_for :main_variant, :variants
+end
