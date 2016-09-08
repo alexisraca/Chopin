@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
 
   def new
     @order = Order.create(user: current_user, state: "summary")
-    @statement = @order.statements.create(total: 0.0)
+    redirect_to edit_admin_order_path(@order)
   end
   
   def destroy

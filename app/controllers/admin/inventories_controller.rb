@@ -1,6 +1,6 @@
 class Admin::InventoriesController < ApplicationController
   def index
-    @inventories = ::Inventory.all.order(:created_at)
+    @inventories = Inventory.all.order(:created_at)
   end
 
   def new

@@ -1,9 +1,0 @@
-<%= simple_form_for [:admin, @statement], url: admin_statement_line_items_path(@statement) , html: { class: "inline-form"} do |f| %>
-  <%= f.input :user_id, collection: User.all, label_method: :username, value_method: :id, input_html: { class: "variant-select" } %>
-  <%= f.simple_fields_for :line_items do |l| %>
-    <%= l.input :variant_id, collection: Variant.all, input_html: { class: "variant-select" } %>
-    <%= l.input :quantity %>
-    <%= l.input :sku %>
-  <% end %>
-  <%= f.button :submit %>
-<% end %>
