@@ -1,11 +1,17 @@
-<div class="container">
-  <%= simple_form_for [:admin, statement, statement.line_items.build], remote: true, html: { class: "form-inline" } do |f| %>
-    <%= f.input :variant_id, collection: Variant.all, label: false, input_html: { class: "variant-select" } %>
-    <%= f.input :quantity, label: false, placeholder: "Cantidad" %>
-    <%= f.submit %>
-  <% end %>
-  <ul class="list-inline">
-    <li><span>Estado:</span><%= statement.state %></li>
-    <li><span>Total:</span><%= statement.total %></li>
-  </ul>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <%= simple_form_for [:admin, statement, statement.line_items.build], remote: true, html: { class: "form-inline" } do |f| %>
+        <%= f.input :variant_id, collection: Variant.all, label_method: :description, label: false, input_html: { class: "variant-select" } %>
+        <%= f.input :quantity, label: false, placeholder: "Cantidad" %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <div class="panel-body">
+      <ul class="list-inline">
+        <li><span>Estado:</span><%= statement.state %></li>
+        <li><span>Total:</span><%= statement.total %></li>
+      </ul>
+    </div>
+  </div>
 </div>

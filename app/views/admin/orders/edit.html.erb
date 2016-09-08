@@ -1,7 +1,20 @@
-<h1>Nueva orden</h1>
+<div class="row">
+  <div class="col-md-6">
+    <ul class="list-inline">
+      <li class="title-align">
+        <h2 class="no-margin">Nueva orden</h2>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <ul class="list-inline pull-right">
+      <li>
+        <%= link_to "Nueva Venta", admin_order_statements_path(@order), method: :post, remote: true, class: "btn btn-primary" %>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<%= link_to "Nueva Venta", admin_order_statements_path(@order), method: :post, remote: true %>
-
-<div id="statements">
+<div id="statements" class="row">
   <%= render @order.statements %>
 </div>
