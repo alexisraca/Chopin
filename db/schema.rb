@@ -112,8 +112,6 @@ ActiveRecord::Schema.define(version: 20160911011158) do
     t.string   "address"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-
   create_table "variants", force: :cascade do |t|
     t.string   "name"
     t.text     "description"

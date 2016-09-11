@@ -3,9 +3,9 @@
     <div class="panel-body">
       <%= i.input :quantity, as: :decimal, placeholder: 'Cantidad' %>
       <%= i.input :expiration_date, as: :string, input_html: { class: "datepicker" } %>
-      <%= if Branch.count > 0 %>
+      <% if Branch.count > 0 %>
         <%= i.input :branch_id, collection: Branch.all %>
-      <%= end %>
+      <% end %>
     </div>
     
     <div class="panel-footer">

@@ -18,9 +18,6 @@ class Admin::InventoriesController < ApplicationController
     @inventory = Inventory.new(inventory_params)
     if @inventory.save
       flash[:notice] = "Inventario Guardado"
-      redirect_to admin_inventories_path
-    else
-      render :new
     end
   end
 
@@ -30,8 +27,8 @@ class Admin::InventoriesController < ApplicationController
 
   def update
     @inventory = Inventory.find(params[:id])
-    if @inventory.update_attributes(inventory_params)
-      redirect_to admin_inventories_path
+    if @inventory.update(inventory_params)
+      flash[:notice] = "Inventario Actualizado"
     else
       render :edit
     end

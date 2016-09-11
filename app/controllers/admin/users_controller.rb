@@ -22,13 +22,12 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Creacion Existosa"
-      redirect_to admin_users_path
     end
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(password_or_not_params)
+    @user.update(password_or_not_params)
   end
   
 

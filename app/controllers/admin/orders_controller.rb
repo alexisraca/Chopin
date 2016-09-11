@@ -17,10 +17,7 @@ class Admin::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      flash[:notice] = "Creacion Existosa"
-      redirect_to admin_orders_path
-    else
-      render :new
+      flash[:notice] = "Orden Guardada"
     end
   end
 

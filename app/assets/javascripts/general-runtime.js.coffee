@@ -1,5 +1,6 @@
 bindCocoonDatePicker = ->
   $('body').on 'cocoon:after-insert', "form", (e, insertedItem) ->
+    console.log "fdsfds"
     window.bindDatePicker($(insertedItem).find(".datepicker"))
 
 @bindDatePicker = (tag)->

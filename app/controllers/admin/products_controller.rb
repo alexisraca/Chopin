@@ -6,8 +6,9 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    flash[:notice] = "Producto Guardado"
+    if @product.save
+      flash[:notice] = "Producto Guardado"
+    end
   end
 
   def new
