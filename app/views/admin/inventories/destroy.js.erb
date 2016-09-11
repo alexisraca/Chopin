@@ -1,0 +1,4 @@
+var inventory = $('.inventory-thumbnail[data-inventory-id=<%= @inventory.id.to_i %>]');
+inventory.fadeOut("fast", function() { 
+  inventory.remove();
+});

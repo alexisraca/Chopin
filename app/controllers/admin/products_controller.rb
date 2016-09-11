@@ -6,19 +6,17 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    params.merge!(main_variant: true)
-    if @product.save
-       @product.variants.create(name: params[:product][:name] , description: params[:product][:description] ,price: params[:variants][:price])
-       flash[:notice] = "Creacion Existosa"
-       redirect_to admin_products_path
-    end
+    @product.save
+    flash[:notice] = "Producto Guardado"
   end
 
   def new
     @product = Product.new
+    @product.build_main_variant
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def show
@@ -26,6 +24,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:notice] = "Producto Guardado"
+    end
   end
 
   def destroy
@@ -33,7 +35,21 @@ class Admin::ProductsController < ApplicationController
   
   def product_params
     params.require(:product).
-      permit(:name, :description, :cost, :price, :sku)
+      permit(
+        main_variant_attributes: [
+          :name,
+          :description,
+          :cost,
+          :price,
+          :sku,
+          :id,
+          inventories_attributes: [
+            :quantity,
+            :expiration_date,
+            :branch_id,
+            :id
+          ]
+        ]
+      )
   end
-
 end

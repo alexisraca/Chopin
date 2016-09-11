@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= @product.main_variant.new_record? ? "Nuevo Producto" : @product.main_variant.name %>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <span class="badge">14</span>
+      Promociones
+    </li>
+    <li class="list-group-item">
+      <span class="badge">4</span>
+      Categorías
+    </li>
+    <li class="list-group-item">
+      <span class="badge"><%= @product.variants.common_variants.count %></span>
+      <%= @product.new_record? ? "Variantes" : link_to("Variantes", admin_product_variants_path(@product)) %>
+    </li>
+    <li class="list-group-item">
+      <span class="badge">3</span>
+      Sucursales
+    </li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>

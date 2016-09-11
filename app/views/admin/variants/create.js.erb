@@ -1,0 +1,6 @@
+<% if !@variant.new_record? %>
+  window.history.pushState("", "", '<%= edit_admin_product_variant_path(@product, @variant) %>');
+<% end %>
+$(".form-container").html("<%= j render 'form' %>")
+$(".sidebar-container").html("<%= j render 'sidebar' %>")
+window.bindDatePicker($(".form-container .datepicker"))

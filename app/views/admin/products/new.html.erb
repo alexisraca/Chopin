@@ -1,40 +1,9 @@
-<div class="well">
-  <%= simple_form_for [:admin, @product], remote: :true do |f| %>
-    <%= f.simple_fields_for @product.build_main_variant do |v| %>
+<div class="row">
+  <div class="col-md-9 col-lg-9 form-container">
+    <%= render "form" %>
+  </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <%= v.input :name, placeholder: 'Nombre' %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <%= v.input :description, as: :text, placeholder: 'Descripción' %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <%= v.input :sku, as: :decimal, placeholder: 'Sku' %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-inline">
-            <%= v.input :cost, as: :decimal, placeholder: 'Costo' %>
-            <%= v.input :price, as: :decimal, placeholder: 'Precio' %>
-            <%= v.simple_fields_for @product.main_variant.inventories.build do |i| %>
-              <%= i.input :quantity, as: :decimal, placeholder: 'Cantidad' %>
-              <%= i.input :expiration_date, as: :string, input_html: { "data-provide" => 'datepicker' } %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
-    <%= f.submit "Guardar", class: "btn btn-primary pull-right" %>
-    <div class="clearfix">
-  <% end %>
+  <div class="col-md-3 col-lg-3 sidebar-container">
+    <%= render "sidebar" %>
+  </div>
 </div>

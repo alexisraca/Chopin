@@ -1,0 +1,8 @@
+<tr data-user="<%= branch.id %>">
+  <td><%= branch.name%></td>
+  <td><%= branch.manager ? branch.manager.username : "Sin encargado" %></td>
+  <td><%= branch.variants.count %>
+  <td>
+    <%= render partial: "actions", locals: { branch: branch } %>
+  </td>
+</tr>

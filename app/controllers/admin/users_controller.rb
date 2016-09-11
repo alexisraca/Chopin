@@ -23,8 +23,6 @@ class Admin::UsersController < ApplicationController
     if @user.save
       flash[:notice] = "Creacion Existosa"
       redirect_to admin_users_path
-    else
-      render :new
     end
   end
 

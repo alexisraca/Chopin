@@ -9,14 +9,15 @@ class Admin::InventoriesController < ApplicationController
   
   def destroy
     @inventory = Inventory.find(params[:id])
-    @inventory.destroy
-    redirect_to admin_inventories_path
+    if @inventory.destroy
+      flash[:notice] = "Inventario Borrado"
+    end
   end
 
   def create
     @inventory = Inventory.new(inventory_params)
     if @inventory.save
-      flash[:notice] = "Creacion Existosa"
+      flash[:notice] = "Inventario Guardado"
       redirect_to admin_inventories_path
     else
       render :new
@@ -38,6 +39,6 @@ class Admin::InventoriesController < ApplicationController
 
   def inventory_params
     params.require(:inventory).
-      permit(:product_id, :quantity, :expirate_date)
+      permit(:product_id, :quantity, :expiration_date)
   end
 end

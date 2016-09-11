@@ -1,0 +1,12 @@
+<div class="col-md-3 col-lg-3 nested-fields">
+  <div class="panel panel-success">
+    <div class="panel-body">
+      <%= f.input :quantity, as: :decimal, placeholder: 'Cantidad' %>
+      <%= f.input :expiration_date, as: :string, input_html: { class: "datepicker" } %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to_remove_association (fa_icon "trash-o"), f, class: 'btn btn-danger pull-right' %>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

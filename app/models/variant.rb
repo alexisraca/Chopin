@@ -1,8 +1,11 @@
 class Variant < ActiveRecord::Base
-  has_many :inventories
+  has_many :inventories, -> { order(created_at: :asc) }
   validates :name, :price, presence: { message: "No puede estar en blanco" }
 
   accepts_nested_attributes_for :inventories
+  validates_associated :inventories
+
+  scope :common_variants, -> { where(main_variant: false) }
 end
 #
 # Variants

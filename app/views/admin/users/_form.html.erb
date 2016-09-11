@@ -2,37 +2,20 @@
   <%= simple_form_for [:admin, @user], remote: :true do |f| %>
 
     <div class="col-md-6">
-      <div class="form-group">
         <%= f.input :first_name, input_html: { class: "form-control" } %>
-      </div>
-      <div class="form-group">
         <%= f.input :last_name, input_html: { class: "form-control" } %>
-      </div>
-      <div class="form-group">
         <%= f.input :username, input_html: { class: "form-control" } %>
-      </div>
-      <div class="form-group">
         <%= f.input :email, input_html: { class: "form-control" } %>
-      </div>
     </div>
     <div class="col-md-6">
-      <div class="form-group">
         <%= f.input :password, as: :password, input_html: { class: "form-control" } %>
-      </div>
-
-       <div class="form-group">
          <%= f.input :password_confirmation, as: :password, input_html: { class: "form-control" } %>
-       </div>
-
-       <div class="form-group">
          <%= f.input :phone, input_html: { class: "form-control" } %>
-       </div>
-
-       <div class="form-group">
          <%= f.input :address, input_html: { class: "form-control" } %>
-       </div>
     </div>
+
     <div class="col-md-12">
+      <hr>
       <%= f.button :submit, "Guardar", class: "btn btn-primary pull-right" %>
     </div>
   <% end %>

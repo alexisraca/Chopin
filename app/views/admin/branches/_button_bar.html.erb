@@ -1,9 +1,9 @@
 <ul class="list-inline pull-right">
   <li>
-    <%= search_form_for @q, url: admin_users_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+    <%= search_form_for @q, url: admin_branches_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
       <div class="form-group">
         <div class="input-group">
-          <%= s.text_field :username_or_email_cont, class: "form-control keyup-autosearch" %>
+          <%= s.text_field :name_or_description_or_manager_username_cont, class: "form-control keyup-autosearch" %>
           <span class="input-group-btn">
             <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
               <%= fa_icon("search", text: " ") %>
@@ -14,8 +14,8 @@
     <% end %>
   </li>
   <li>
-    <%= link_to new_admin_user_path, class: "btn btn-primary", remote: true do %>
-      Nuevo Usuario
+    <%= link_to new_admin_branch_path, class: "btn btn-primary", remote: true do %>
+      Nueva Sucursal
       <%= fa_icon "plus" %>
     <% end %>
   </li>

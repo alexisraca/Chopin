@@ -1,0 +1,7 @@
+<%= link_to edit_admin_branch_path(branch), class: "btn btn-primary", data: { toggle: "tooltip" }, title: "Editar", remote: :true do %>
+  <%= fa_icon "pencil-square-o" %>
+<% end %>
+
+<%= link_to admin_branch_path(branch), method: :delete, class: "btn btn-danger", data: { toggle: "tooltip", confirmation: "¿Esta seguro que desea borrar la sucursal? Todos los productos seran transferidos a la matriz si no los ha transferido manualmente" }, title: "Borrar", remote: :true do %>
+  <%= fa_icon "trash-o" %>
+<% end %>

@@ -1,0 +1,37 @@
+<%= simple_form_for [:admin, @product], remote: :true do |f| %>
+  <%= f.simple_fields_for :main_variant do |v| %>
+    <div class="row">
+      <div class="col-md-8 col-sd-8">
+        <%= v.input :name, placeholder: 'Nombre' %>
+        <%= v.input :sku, as: :decimal, placeholder: 'Sku' %>
+        <%= v.input :description, as: :text, placeholder: 'Descripción', input_html: { rows: "5", class: "max-width" } %>
+        <%= v.input :main_variant, as: :hidden %>
+      </div>
+      <div class="col-md-4 col-sd-4">
+        <%= v.input :cost, as: :decimal, placeholder: 'Costo' %>
+        <%= v.input :price, as: :decimal, placeholder: 'Precio' %>
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="lead">Inventarios globales del producto<p>
+
+    <div class="row">
+      <%= v.simple_fields_for :inventories do |i| %>
+        <%= render "inventory_form", i: i %>
+      <% end %>
+      <div class="col-md-4">
+        <%= link_to_add_association 'Agregar Inventario', v, :inventories, partial: "shared/inventory_fields"  %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.submit "Guardar", class: "btn btn-primary pull-right" %>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+  <% end %>
+<% end %>

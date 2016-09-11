@@ -23,9 +23,11 @@ Rails.application.routes.draw do
       resources :inventories
     end
 
+    resources :inventories, only: [:destroy, :edit]
+
+    resources :branches
     resources :reports
     resources :users
-    resources :payments
     resources :retired_users, only: [:index]
   end
   # You can have the root of your site routed with "root"

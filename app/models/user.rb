@@ -12,5 +12,7 @@ class User < ActiveRecord::Base
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   has_many :orders
+  has_many :branches
+  has_many :inventories, through: :branches
 end
 

@@ -1,15 +1,25 @@
-<div class="row">
-  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-    <div class="panel" >
-      
-      <%= link_to new_admin_variant_path, class: "btn btn-primary pull-right", remote: true do %>
-        Nueva Variante
-        <%= fa_icon "plus" %>
-      <% end %>
-      <div class="clearfix"></div>
-    </div>
+<div class="row actions-bar">
+  <div class="col-md-6">
+    <ul class="list-inline">
+      <li class="title-align">
+        <h2 class="no-margin">Variantes de <%= link_to @product.main_variant.name, edit_admin_product_path(@product) %></h2>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <ul class="list-inline pull-right">
+      <li>
+        <%= link_to new_admin_product_variant_path(@product), class: "btn btn-primary" do %>
+          Nueva Variante
+          <%= fa_icon "plus" %>
+        <% end %>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
   </div>
 </div>
+
+<hr>
 
 <div class="row">
   <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
