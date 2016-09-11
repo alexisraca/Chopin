@@ -4,7 +4,7 @@
     <%= simple_form_for [:admin, statement, statement.line_items.build], remote: true, html: { class: "form-inline" } do |f| %>
         <%= f.input :variant_id, collection: Variant.all, label_method: :description, label: false, input_html: { class: "variant-select" } %>
         <%= f.input :quantity, label: false, placeholder: "Cantidad" %>
-        <%= f.submit %>
+        <%= f.submit "Agregar", class: "btn btn-primary" %>
       <% end %>
     </div>
     <div class="panel-body">
