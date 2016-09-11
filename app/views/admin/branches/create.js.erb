@@ -1,4 +1,5 @@
 <% if @branch.persisted? %>
+  $("tbody").prepend("<%= j render partial: 'branch', locals: { branch: @branch } %>")
   $("#global-modal").modal("hide")
 <% else %>
   if($("#global-modal").hasClass('in')) {

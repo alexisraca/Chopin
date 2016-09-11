@@ -1,7 +1,8 @@
 class Admin::ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+   @q = Variant.ransack(params[:q])
+   @variants = @q.result(distinct: true).order(:created_at)
   end
 
   def create
@@ -32,6 +33,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    if @product.destroy
+      flash[:notice] = "Producto Borrado"
+    end
   end
   
   def product_params

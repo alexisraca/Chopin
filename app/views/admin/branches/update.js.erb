@@ -1,0 +1,11 @@
+<% if @branch.errors.full_messages.empty? %>
+  $("tr[data-user='<%= @branch.id %>']").replaceWith("<%= j render partial: 'branch', locals: { branch: @branch } %>");
+  $("#global-modal").modal("hide")
+<% else %>
+  if($("#global-modal").hasClass('in')) {
+    $("#global-modal .modal-body").html("<%= j render partial: 'form' %>")
+  } else {
+    $("#global-modal").modal("show")
+    $("#global-modal .modal-body").html("<%= j render partial: 'form' %>")
+  }
+<% end %>

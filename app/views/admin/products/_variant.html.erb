@@ -1,0 +1,9 @@
+<tr>
+  <th><%= variant.name %></th>
+  <th><%= variant.price %></th>
+  <th><%= variant.cost %></th>
+  <th><%= variant.inventories.sum(:quantity) %></th>
+  <th>
+    <%= render partial: "actions", locals: { variant: variant } %>
+  </th>
+</tr>

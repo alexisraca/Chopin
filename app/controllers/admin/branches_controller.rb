@@ -12,7 +12,17 @@ class Admin::BranchesController < ApplicationController
     @branch = Branch.new(branch_params)
     if @branch.save
       flash[:notice] = "Sucursal Guardada"
-      redirect_to admin_branches_path
+    end
+  end
+
+  def edit
+    @branch = Branch.find(params[:id])
+  end
+
+  def update
+    @branch = Branch.find(params[:id])
+    if @branch.update(branch_params)
+      flash[:notice] = "Sucursal Actualizada"
     end
   end
 

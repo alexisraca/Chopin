@@ -1,5 +1,5 @@
 <% if @user.persisted? %>
-  $("tbody").html("<%= j render @users %>");
+  $("tbody").prepend("<%= j render partial: 'user', locals: { user: @user } %>");
   $("#global-modal").modal("hide");
 <% else %>
   if($("#global-modal").hasClass('in')) {

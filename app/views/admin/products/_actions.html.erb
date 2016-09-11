@@ -1,0 +1,7 @@
+<%= link_to edit_admin_product_variant_path(variant.product, variant), class: "btn btn-primary", data: { toggle: "tooltip" }, title: "Editar" do %>
+  <%= fa_icon "pencil-square-o" %>
+<% end %>
+
+<%= link_to admin_product_variant_path(variant.product, variant), method: :delete, class: "btn btn-danger", data: { toggle: "tooltip", confirm: "¿Esta seguro que desea borrar este producto? todos los inventarios y variantes se borraran tambien"  }, title: "Borrar", remote: :true do %>
+  <%= fa_icon "trash-o" %>
+<% end %>
