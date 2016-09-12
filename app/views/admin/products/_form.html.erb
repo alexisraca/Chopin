@@ -10,24 +10,35 @@
       <div class="col-md-4 col-sd-4">
         <%= v.input :cost, as: :decimal, placeholder: 'Costo' %>
         <%= v.input :price, as: :decimal, placeholder: 'Precio' %>
+        <%= v.simple_fields_for :inventories do |i| %>
+          <%= i.input :quantity, as: :numeric %>
+        <% end %>
       </div>
     </div>
 
     <hr>
 
-    <p class="lead">Inventarios globales del producto<p>
+    <p class="lead">Variantes<p>
 
     <div class="row">
-      <%= v.simple_fields_for :inventories do |i| %>
-        <%= render "inventory_form", i: i %>
-      <% end %>
-      <div class="col-md-4">
-        <%= link_to_add_association 'Agregar Inventario', v, :inventories, partial: "shared/inventory_fields"  %>
+      <div class="col-md-12" id="variants-list">
+        <%= f.simple_fields_for :common_variants do |i| %>
+          <%= render "variant_form", i: i %>
+        <% end %>
+
+        <div class="panel nested-fields">
+          <%= link_to_add_association f, :common_variants, partial: "shared/variant_fields", data: { 'association-insertion-node' => ".nested-fields", 'association-insertion-traversal' => "closest", 'association-insertion-method' => 'before' }, class: "add-variant-btn bg-success" do %>
+            <h3 class="text-success text-center no-margin">Agregar Variante <%= fa_icon "plus" %></h3>
+            
+          <% end %>
+        </div>
+
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
+        <%= link_to "Regresar", admin_products_path, class: "btn btn-info pull-right" %>
         <%= f.submit "Guardar", class: "btn btn-primary pull-right" %>
         <div class="clearfix"></div>
       </div>

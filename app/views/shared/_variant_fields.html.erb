@@ -1,0 +1,25 @@
+<div class="panel panel-default variant-row nested-fields">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+      <%= f.input :name, label: false, placeholder: 'Nombre' %>
+      <%= f.input :price, label: false, placeholder: 'Precio', input_html: { size: "8"} %>
+      </div>
+      <div class="col-md-4">
+      <%= f.input :sku, label: false, placeholder: 'Sku', input_html: { size: "15"} %>
+      <%= f.input :cost, label: false, placeholder: 'Costo', input_html: { size: "8"} %>
+      </div>
+      <div class="col-md-4">
+      <% f.object.inventories.build if f.object.inventories.empty? %>
+
+      <%= f.simple_fields_for :inventories do |i| %>
+        <%= i.input :quantity, label: false, placeholder: "Cantidad" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer panel-custom-footer">
+    <%= link_to_remove_association (fa_icon "trash-o"), f, class: 'btn btn-danger pull-right' %>
+    <div class="clearfix"></div>
+  </div>
+</div>

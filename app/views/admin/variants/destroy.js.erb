@@ -1,0 +1,5 @@
+<% if @variant.errors.full_messages.empty? %>
+  $("tr[data-variant-id='<%= @variant.id %>']").fadeOut("slow", function(e){
+    $(e.currentTarget).remove()
+  })
+<% end %>

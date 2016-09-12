@@ -1,6 +1,8 @@
 bindCocoonDatePicker = ->
+  $('body').on 'cocoon:before-insert', "form", (e, insertedItem) ->
+    $(insertedItem).fadeIn('slow');
   $('body').on 'cocoon:after-insert', "form", (e, insertedItem) ->
-    console.log "fdsfds"
+    console.log insertedItem
     window.bindDatePicker($(insertedItem).find(".datepicker"))
 
 @bindDatePicker = (tag)->

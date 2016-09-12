@@ -1,0 +1,30 @@
+<div class="panel panel-default variant-row nested-fields" <%= variant_id_data_attr(i.object) %>>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <%= i.input :name, label: false, placeholder: 'Nombre' %>
+        <%= i.input :price, label: false, placeholder: 'Precio', input_html: { size: "8"} %>
+      </div>
+      <div class="col-md-4">
+        <%= i.input :sku, label: false, placeholder: 'Sku', input_html: { size: "15"} %>
+        <%= i.input :cost, label: false, placeholder: 'Costo', input_html: { size: "8"} %>
+      </div>
+      <div class="col-md-4">
+        <% i.object.inventories.build if i.object.inventories.empty? %>
+        <%= i.simple_fields_for :inventories do |s| %>
+          <%= s.input :quantity, label: false, placeholder: "Cantidad" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer panel-custom-footer">
+    <% if i.object.persisted? %>
+      <%= link_to admin_variant_path(i.object), method: :delete, class: "btn btn-danger pull-right", data: { confirm: "¿Esta seguro que desea borrar la variante de este producto?" }, remote: true do %>
+        <%= fa_icon "trash-o" %>
+      <% end %>
+    <% else %>
+      <%= link_to_remove_association (fa_icon "trash-o"), i, class: 'btn btn-danger pull-right' %>
+    <% end %>
+    <div class="clearfix"></div>
+  </div>
+</div>

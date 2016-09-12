@@ -1,9 +1,11 @@
 <% if @variants.empty? %>
-  <td  colspan="3" >
-    <h1 class="text-center">
-      No se encontraron productos
-    </h1>
-  </td>
+  <tr>
+    <td  colspan="5" >
+      <h1 class="text-center">
+        No hay productos
+      </h1>
+    </td>
+  </tr>
 <% else %>
   <%= render partial: "variant", collection: @variants %>
 <% end %>

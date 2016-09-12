@@ -1,3 +1,29 @@
 // Place all the styles related to the admin/products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.add-variant-btn {
+  display:block;
+  padding: 15px;
+  border: 1px solid #3c763d;
+  border-radius: 5px;
+  h2 { margin:0; }
+  &:hover, &:focus  { text-decoration:none; }
+}
+
+.variant-row {
+  span {
+    font-size: 1em;
+    margin-bottom: 0;
+  }
+}
+
+.panel-custom-footer {
+  background-color: #d9edf7 !important;
+}
+
+.products-table {
+  td {
+    vertical-align: middle !important;
+  }
+}

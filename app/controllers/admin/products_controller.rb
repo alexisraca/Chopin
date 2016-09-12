@@ -15,6 +15,7 @@ class Admin::ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.build_main_variant
+    @product.main_variant.inventories.build
   end
 
   def edit
@@ -42,20 +43,29 @@ class Admin::ProductsController < ApplicationController
   def product_params
     params.require(:product).
       permit(
-        main_variant_attributes: [
-          :name,
-          :description,
-          :cost,
-          :price,
-          :sku,
-          :id,
-          inventories_attributes: [
-            :quantity,
-            :expiration_date,
-            :branch_id,
-            :id
-          ]
-        ]
+        main_variant_attributes: variant_attrs,
+        common_variants_attributes: variant_attrs
       )
+  end
+
+  def variant_attrs
+    [
+      :name,
+      :description,
+      :cost,
+      :price,
+      :sku,
+      :id,
+      inventories_attributes: inventory_attrs
+    ]
+  end
+
+  def inventory_attrs
+    [
+      :quantity,
+      :expiration_date,
+      :branch_id,
+      :id
+    ]
   end
 end

@@ -7,6 +7,8 @@ class Variant < ActiveRecord::Base
   validates_associated :inventories
 
   scope :common_variants, -> { where(main_variant: false) }
+
+  acts_as_paranoid
 end
 #
 # Variants

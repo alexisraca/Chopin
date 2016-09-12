@@ -1,35 +1,25 @@
 class Admin::VariantsController < ApplicationController
   before_action :set_product
 
-  def index
-    @variants = @product.variants.where(main_variant: false)
-  end
-
-  def new
-    @variant = @product.variants.build
-  end
-
-  def create
-    @variant = Variant.new(variant_params)
-    if @variant.save
-      flash[:notice] = "Producto Guardado"
-    end
-  end
-
-  def edit
+  def destroy
     @variant = Variant.find(params[:id])
-  end
-
-  def update
-    @variant = Variant.find(params[:id])
-    if @variant.update(variant_params)
-      flash[:notice] = "Producto Guardado"
+    if destroy_variant
+      flash[:notice] = "Variante Borrada"
+    else
+      flash[:warning] = @destroyer.error
     end
   end
 
   private
 
+  def destroy_variant
+    @destroyer = VariantDestroyer.new(@variant)
+    @destroyer.destroy!
+    @destroyer.error.blank? ? true : false
+  end
+
   def set_product
+    return if params[:product_id].blank?
     @product = Product.find(params[:product_id])
   end
 

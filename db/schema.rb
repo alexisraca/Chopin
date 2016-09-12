@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911011158) do
+ActiveRecord::Schema.define(version: 20160912063852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,9 @@ ActiveRecord::Schema.define(version: 20160911011158) do
     t.float    "cost"
     t.string   "sku"
     t.integer  "product_id"
+    t.datetime "deleted_at"
   end
+
+  add_index "variants", ["deleted_at"], name: "index_variants_on_deleted_at", using: :btree
 
 end

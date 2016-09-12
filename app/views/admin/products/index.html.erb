@@ -1,29 +1,37 @@
-<div class="row actions-bar">
-  <div class="col-md-6">
-
-  </div>
-  <div class="col-md-6">
-    <%= render partial: "button_bar" %>
-  </div>
-</div>
-
-<hr>
-
 <div class="row">
-  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-    <table class="table table-bordered">
-      <thead>
-        <tr> 
-          <th>Nombre</th>
-          <th>Precio</th>
-          <th>Costo</th>
-          <th>Inventario</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: 'variants_list' %>
-      </tbody>
-    </table>
+  <div class="col-md-9 col-lg-9">
+    <div class="row actions-bar">
+      <div class="col-md-6">
+
+      </div>
+      <div class="col-md-6">
+        <%= render partial: "button_bar" %>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+        <table class="table table-striped table-hover products-table">
+          <thead>
+            <tr> 
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Costo</th>
+              <th>Inventario</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: 'variants_list' %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-lg-3 sidebar-container">
+    <%= render "sidebar" %>
   </div>
 </div>

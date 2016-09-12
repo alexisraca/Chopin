@@ -32,6 +32,7 @@ gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'cocoon'
+gem "paranoia", github: "rubysherpas/paranoia", branch: "rails4"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
