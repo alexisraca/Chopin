@@ -1,5 +1,10 @@
 <% if @variant.errors.full_messages.empty? %>
-  $("tr[data-variant-id='<%= @variant.id %>']").fadeOut("slow", function(e){
-    $(e.currentTarget).remove()
+  $("tr[data-variant-id='<%= @variant.id %>']").fadeOut("slow", function(){
+    $(this).remove();
+    var products = $("tr[data-variant-id]");
+    if(!products.length) {
+      $("tbody").html("<%= j render 'admin/products/variants_list' %>")
+    }
   })
+  
 <% end %>
