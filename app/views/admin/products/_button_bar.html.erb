@@ -1,4 +1,16 @@
 <ul class="list-inline pull-right">
+<li>
+  <%=link_to "Activos", admin_products_path(q:{deleted_at_null: 1}), remote: true %>
+</li>
+<li>
+  <%=link_to "Inactivos", admin_products_path(q:{deleted_at_not_null: 1}), remote: true %>
+</li>
+<li>
+  <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true %>
+</li>
+<li>
+  <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true %> 
+</li>
   <li>
     <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
       <div class="form-group">
