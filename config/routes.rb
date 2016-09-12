@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :reports
     resources :users
     resources :retired_users, only: [:index]
+    resources :categories
   end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
