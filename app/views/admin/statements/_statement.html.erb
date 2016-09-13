@@ -1,7 +1,8 @@
-<div class="col-md-6">
+<div class="col-md-6" data-statement-id=<%= statement.id %>>
   <div class="panel panel-default">
     <div class="panel-heading">
     <%= simple_form_for [:admin, statement, statement.line_items.build], remote: true, html: { class: "form-inline" } do |f| %>
+        <%= f.input :statement_id, as: :hidden %>
         <%= f.input :variant_id, collection: Variant.all, label_method: :description, label: false, input_html: { class: "variant-select" } %>
         <%= f.input :quantity, label: false, placeholder: "Cantidad" %>
         <%= f.submit "Agregar", class: "btn btn-primary" %>
