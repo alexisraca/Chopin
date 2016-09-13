@@ -1,35 +1,30 @@
+<div class="btn-group list-inline pull-left">
+  <%=link_to "Activos", admin_products_path(q:{deleted_at_null: 1}), remote: true , class: "btn btn-default" %>
+  <%=link_to "Inactivos", admin_products_path(q:{deleted_at_not_null: 1}), remote: true , class: "btn btn-default" %>
+  <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default" %>
+  <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default" %> 
+</div>
+
 <ul class="list-inline pull-right">
 <li>
-  <%=link_to "Activos", admin_products_path(q:{deleted_at_null: 1}), remote: true %>
-</li>
-<li>
-  <%=link_to "Inactivos", admin_products_path(q:{deleted_at_not_null: 1}), remote: true %>
-</li>
-<li>
-  <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true %>
-</li>
-<li>
-  <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true %> 
-</li>
-  <li>
-    <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
-      <div class="form-group">
-        <div class="input-group">
-          <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
-          <span class="input-group-btn">
-            <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
-              <%= fa_icon("search", text: " ") %>
-            </button>
-          </span>
-        </div>
+  <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+    <div class="form-group">
+      <div class="input-group">
+        <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
+        <span class="input-group-btn">
+          <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+            <%= fa_icon("search", text: " ") %>
+          </button>
+        </span>
       </div>
-    <% end %>
-  </li>
-  <li>
-    <%= link_to new_admin_product_path, class: "btn btn-primary" do %>
-      Nuevo Producto
-      <%= fa_icon "plus" %>
-    <% end %>
-  </li>
+    </div>
+  <% end %>
+</li>
+<li>
+  <%= link_to new_admin_product_path, class: "btn btn-primary" do %>
+    Nuevo Producto
+    <%= fa_icon "plus" %>
+  <% end %>
+</li>
 </ul>
 <div class="clearfix"></div>
