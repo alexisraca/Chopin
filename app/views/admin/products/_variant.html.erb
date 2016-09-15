@@ -7,10 +7,13 @@
         <span class="label label-info">variante</span>
       <% end %>
   </td>
-  <td class="vertical-td"><%= variant.price %></td>
-  <td class="vertical-td"><%= variant.cost %></td>
-  <td class="vertical-td"><%= variant.inventories.sum(:quantity) %></td>
-  <td class="vertical-td">
+  <td>
+    <%= link_to "Variantes (#{variant.siblings_count})", admin_products_path(q: { product_id_eq: variant.product.id })%>
+  </td>
+  <td class="vertical-td text-center"><%= variant.price %></td>
+  <td class="vertical-td text-center"><%= variant.cost %></td>
+  <td class="vertical-td text-center"><%= variant.inventories.sum(:quantity) %></td>
+  <td class="vertical-td text-center">
     <%= render partial: "actions", locals: { variant: variant } %>
   </td>
 </tr>

@@ -7,6 +7,13 @@ class Variant < ActiveRecord::Base
   validates_associated :inventories
 
   scope :common_variants, -> { where(main_variant: false) }
+  scope :for_product, ->(product) { where(product_id: product) }
+
+  def siblings_count
+    self.class.unscoped.for_product(product_id).except(self).count
+  end
+    
+
 
   acts_as_paranoid
 end
