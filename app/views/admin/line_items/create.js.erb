@@ -1,0 +1,2 @@
+var statement_body = $("[data-statement-id='<%= @line_item.statement_id %>']").find(".panel-body");
+statement_body.append("<%= @line_item.id %>")
