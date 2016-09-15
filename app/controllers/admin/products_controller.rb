@@ -1,8 +1,8 @@
 class Admin::ProductsController < ApplicationController
 
   def index
-   @q = Variant.unscoped.ransack(params[:q])
-   @variants = @q.result(distinct: true).order(:created_at)
+    @q = Variant.unscoped.count_variants.ransack(params[:q])
+    @variants = @q.result(distinct: true).order(:created_at)
   end
 
   def create

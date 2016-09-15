@@ -6,14 +6,20 @@ class Variant < ActiveRecord::Base
   accepts_nested_attributes_for :inventories
   validates_associated :inventories
 
+  attr_accessor :variants_count
+
   scope :common_variants, -> { where(main_variant: false) }
   scope :for_product, ->(product) { where(product_id: product) }
-
-  def siblings_count
-    self.class.unscoped.for_product(product_id).except(self).count
-  end
-    
-
+  scope :count_variants, -> {
+    select("variants.*, variants_count.count siblings_count").
+    joins(
+      "INNER JOIN ("\
+      "SELECT variants.product_id, count(variants.product_id) "\
+      "FROM variants "\
+      "group by variants.product_id) AS variants_count "\
+      "on variants.product_id = variants_count.product_id"
+    )
+  }
 
   acts_as_paranoid
 end

@@ -7,8 +7,10 @@
         <span class="label label-info">variante</span>
       <% end %>
   </td>
-  <td>
-    <%= link_to "Variantes (#{variant.siblings_count})", admin_products_path(q: { product_id_eq: variant.product.id })%>
+  <td class="text-center">
+    <%= link_to admin_products_path(q: { product_id_eq: variant.product.id }) do %>
+      <span class="badge"><%= variant.siblings_count - 1 %></span>
+    <% end %>
   </td>
   <td class="vertical-td text-center"><%= variant.price %></td>
   <td class="vertical-td text-center"><%= variant.cost %></td>
