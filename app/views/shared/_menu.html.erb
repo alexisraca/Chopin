@@ -1,21 +1,6 @@
-<div class="menu navbar navbar-default">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Ordenes", admin_orders_path %></li>
-        <li><%= link_to "Reportes", admin_reports_path %></li>
-        <li><%= link_to "Usuarios", admin_users_path %></li>
-        <li><%= link_to "Inventario", admin_products_path %></li>
-         <li><%= link_to "Sucursales", admin_branches_path %></li>
 
-      </ul> <!-- menu principal -->
+    <%= render partial: "shared/desktop/menu" %>
 
 
 
-
-      <div class="nav navbar-nav navbar-right">
-        <%= render "/shared/session_button" %>
-      </div> <!-- Boton de sesion-->
-    </div><!-- contenedor de botones que da padding al rededor-->
-  </div>
-</div>
+    <%= render partial: "shared/responsive/menu" %>
