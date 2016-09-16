@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+
+
+      <div class="panel-heading">
+        <div class="row">
+          <% if params[:action] != "index" %>
+            <h5 class="col-md-6">
+              <%= @product.main_variant.new_record? ? "Nuevo Producto" : @product.main_variant.name %>
+            </h5>
+          <% else %>
+            <div class="panel-heading">
+              <h3 class="panel-title"> Listado de productos</h3>
+            </div>
+          <% end %>
+
+          <% if params[:action] != "index" %>
+            <div class="col-md-6">
+              <%= link_to "Regresar", admin_products_path, class: "btn btn-info pull-right"%>
+            </div>
+          <% end %>
+        </div>
+        <div class="clearfix"></div>
+      </div> <!-- Header de Navegacion -->
+      
+      <u class="list-group">
+        <li class="list-group-item">
+          <span class="badge">14</span>
+          Promociones
+        </li>
+        <li class="list-group-item">
+          <span class="badge">4</span>
+          <%= link_to "Categorías", admin_categories_path, remote: true %>
+        </li>
+        <li class="list-group-item">
+          <span class="badge">3</span>
+          Sucursales
+        </li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+    </div>
+  </div>
+</div>
