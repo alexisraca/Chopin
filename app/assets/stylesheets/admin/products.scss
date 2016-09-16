@@ -1,6 +1,10 @@
 // Place all the styles related to the admin/products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$screen-xs-min: 0px;
+$screen-sm-min: 750px;
+$screen-md-min: 970px;
+$screen-lg-min: 1170px;
 
 .add-variant-btn {
   display:block;
@@ -26,4 +30,20 @@
   td {
     vertical-align: middle !important;
   }
+}
+
+@media screen and (min-width: $screen-xs-min) {
+  
+}
+
+@media screen and (min-width: $screen-sm-min) {
+  
+}
+
+@media screen and (min-width: $screen-md-min) {
+ 
+}
+
+@media screen and (min-width: $screen-lg-min) {
+  
 }
