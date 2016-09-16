@@ -16,4 +16,5 @@
 //= require select2
 //= require bootstrap-datepicker
 //= require cocoon
+//= require bootstrap-notify.min
 //= require_tree .

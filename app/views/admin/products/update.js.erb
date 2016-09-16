@@ -1,2 +1,3 @@
 $(".form-container").html("<%= j render 'form' %>");
 window.bindDatePicker($(".datepicker"));
+$.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });

@@ -2,11 +2,11 @@ class Admin::VariantsController < ApplicationController
   before_action :set_product
 
   def destroy
-    @variant = Variant.find(params[:id])
+    @variant = Variant.unscoped.find(params[:id])
     if destroy_variant
       flash[:notice] = "Variante Borrada"
     else
-      flash[:warning] = @destroyer.error
+      flash[:alert] = @destroyer.error
     end
   end
 

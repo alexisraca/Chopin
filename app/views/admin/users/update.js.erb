@@ -1,6 +1,7 @@
 <% if @user.errors.full_messages.empty? %>
   $("tr[data-user='<%= @user.id %>']").replaceWith("<%= j render partial: 'user', locals: { user: @user } %>");
   $("#global-modal").modal("hide")
+  $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
 <% else %>
   if($("#global-modal").hasClass('in')) {
     $("#global-modal .modal-body").html("<%= j render partial: 'form' %>")

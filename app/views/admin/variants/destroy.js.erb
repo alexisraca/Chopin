@@ -6,5 +6,10 @@
       $("tbody").html("<%= j render 'admin/products/variants_list' %>")
     }
   })
+  <% if flash[:notice] %>
+    $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
+  <% else %>
+    $.notify({ message: "<%= flash[:alert] %>" },{ type: 'alert', placement: { align: "center" } });
+  <% end %>
   
 <% end %>

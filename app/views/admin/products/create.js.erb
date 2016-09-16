@@ -5,3 +5,4 @@ $(".form-container").html("<%= j render 'form' %>");
 $(".sidebar-container").html("<%= j render 'sidebar' %>");
 console.log("fdsfdsd");
 window.bindDatePicker($(".datepicker"))
+$.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });

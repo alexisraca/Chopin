@@ -1,6 +1,7 @@
 <% if @branch.persisted? %>
   $("tbody").prepend("<%= j render partial: 'branch', locals: { branch: @branch } %>")
   $("#global-modal").modal("hide")
+  $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
 <% else %>
   if($("#global-modal").hasClass('in')) {
     $("#global-modal .modal-body").html("<%= j render partial: 'form'%>")
