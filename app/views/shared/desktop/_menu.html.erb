@@ -1,0 +1,19 @@
+
+<div class="menu navbar navbar-default hidden-xs hidden-sm">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Ordenes", admin_orders_path %></li>
+        <li><%= link_to "Reportes", admin_reports_path %></li>
+        <li><%= link_to "Usuarios", admin_users_path %></li>
+        <li><%= link_to "Inventario", admin_products_path %></li>
+         <li><%= link_to "Sucursales", admin_branches_path %></li>
+
+      </ul> <!-- menu principal -->
+    </div><!-- contenedor de botones que da padding al rededor-->
+    <div class="pull-right">
+      <%= render "/shared/session_button" %> <!-- Boton de sesion-->
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
