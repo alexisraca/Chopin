@@ -1,2 +1,3 @@
 this.resetSearchButtons()
 $("tbody").html("<%= j render partial: 'variants_list' %>")
+window.history.pushState("", "", '<%= admin_products_path(q: params[:q]) %>');
