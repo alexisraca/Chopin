@@ -37,7 +37,9 @@ $screen-lg-min: 1170px;
 }
 
 @media screen and (min-width: $screen-sm-min) {
-  
+  #search-form input, #search-form .input-group, #search-form .form-group {
+    width: 100% !important;
+  }
 }
 
 @media screen and (min-width: $screen-md-min) {
