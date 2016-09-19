@@ -17,3 +17,7 @@ $ ->
   bindCocoonDatePicker()
 
   $('[data-toggle="tooltip"]').tooltip()
+  
+  $('#nav-icon').click ->
+    $(this).toggleClass('open-burger');
+    $(".navigation").toggleClass('open-navigation');
