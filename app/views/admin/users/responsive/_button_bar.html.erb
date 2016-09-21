@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <div class="btn-group btn-group-justified">
+      <%=link_to "Activos", admin_products_path(q:{deleted_at_null: 1}), remote: true , class: "btn btn-default" %>
+      <%=link_to "Inactivos", admin_products_path(q:{deleted_at_not_null: 1}), remote: true , class: "btn btn-default" %>
+      <%=link_to "Administrativo", admin_products_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default" %>
+      <%=link_to "Ventas", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default" %>
+      <%=link_to "Almacen", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-9 col-sm-9 pull-left">
+    <%= search_form_for @q, url: admin_users_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+      <div class="form-group">
+        <div class="input-group">
+          <%= s.text_field :username_or_email_cont, class: "form-control keyup-autosearch" %>
+          <span class="input-group-btn">
+            <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+              <%= fa_icon("search", text: " ") %>
+            </button>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-xs-3 col-sm-3">
+    <%= link_to new_admin_user_path, class: "btn btn-primary pull-right", remote: true do %>
+      Nuevo Usuario
+      <%= fa_icon "plus" %>
+    <% end %>
+    <div class="clearfix"></div>
+  </div>
+</div>

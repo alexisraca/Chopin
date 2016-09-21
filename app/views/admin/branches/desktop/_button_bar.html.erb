@@ -1,0 +1,28 @@
+<div class="btn-group list-inline pull-left">
+  <%=link_to "Activos", admin_products_path(q:{deleted_at_null: 1}), remote: true , class: "btn btn-default" %>
+  <%=link_to "Inactivos", admin_products_path(q:{deleted_at_not_null: 1}), remote: true , class: "btn btn-default" %>
+</div>
+
+<ul class="list-inline pull-right">
+  <li>
+    <%= search_form_for @q, url: admin_branches_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+      <div class="form-group">
+        <div class="input-group">
+          <%= s.text_field :name_or_description_or_manager_username_cont, class: "form-control keyup-autosearch" %>
+          <span class="input-group-btn">
+            <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+              <%= fa_icon("search", text: " ") %>
+            </button>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to new_admin_branch_path, class: "btn btn-primary", remote: true do %>
+      Nueva Sucursal
+      <%= fa_icon "plus" %>
+    <% end %>
+  </li>
+</ul>
+<div class="clearfix"></div>
