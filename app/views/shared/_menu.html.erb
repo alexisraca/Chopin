@@ -9,45 +9,45 @@
     </div>
   </li>
   <li class="navigation-element">
-    <a href="#">
+    <%= link_to root_path do %>
       <div class="navigation-icon text-center"><span><%= fa_icon "home" %></span></div>
       <div class="navigation-text text-left"><span>Inicio</span></div>
-    </a>
+    <% end %>
   </li>
 
   <li class="navigation-element">
-    <a href="#">
+    <%= link_to admin_products_path do %>
       <div class="navigation-icon text-center"><span><%= fa_icon "tags" %></span></div>
       <div class="navigation-text text-left"><span>Inventario</span></div>
-    </a>
+    <% end %>
   </li>
 
   <li class="navigation-element">
-    <a href="#">
+    <%= link_to admin_orders_path do %>
       <div class="navigation-icon text-center"><span><%= fa_icon "shopping-cart" %></span></div>
       <div class="navigation-text text-left"><span>Órdenes</span></div>
-    </a>
+    <% end %>
   </li>
 
   <li class="navigation-element">
-    <a href="#">
+    <%= link_to admin_branches_path do %>
      <div class="navigation-icon text-center"><span><%= fa_icon "truck" %></span></div>
      <div class="navigation-text text-left"><span>Sucursales</span></div>
-    </a>
+    <% end %>
   </li>
 
   <li class="navigation-element">
-    <a href="#">
+    <%= link_to admin_reports_path do %>
       <div class="navigation-icon text-center"><span><%= fa_icon "line-chart" %></span></div>
       <div class="navigation-text text-left"><span>Reportes</span></div>
-    </a>
+    <% end %>
   </li>
 
   <li class="navigation-element">
-    <a href="#">
+    <%= link_to admin_users_path do %>
       <div class="navigation-icon text-center"><span><%= fa_icon "users" %></span></div>
       <div class="navigation-text text-left"><span>Usuarios</span></div>
-    </a>
+    <% end %>
   </li>
   <div class="clearfix"></div>
 </div>
