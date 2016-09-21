@@ -12,4 +12,19 @@ class Order < ActiveRecord::Base
 
   belongs_to :user
   has_many :statements
+
+  def localized_state
+    case state
+      when CANCELED
+        "cancelado"
+      when CUSTOMER
+        "cliente"
+      when SUMMARY
+        "pendiente"
+      when COMPLETE
+        "completado"
+      when PAYMENT
+        "pago"
+    end
+  end
 end
