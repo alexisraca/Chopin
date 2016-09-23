@@ -5,6 +5,7 @@ h3 {
   color: #FFF;
 }
 
+
 .no-margin-top {
   margin-top: 0px;
 }
@@ -97,8 +98,8 @@ h3 {
   transition: .25s ease-in-out;
 }
 #nav-icon span:nth-child(1) { top: 0px; }
-#nav-icon span:nth-child(2) { top: 10px; }
-#nav-icon span:nth-child(3) { top: 20px; }
+#nav-icon span:nth-child(2) { top: 13px; }
+#nav-icon span:nth-child(3) { top: 26px; }
 
 #nav-icon.open-burger span:nth-child(1) {
   top: 10px;
@@ -168,11 +169,25 @@ h3 {
     &:nth-child(1) { background-color: #233140; }
   }
   .navigation-icon { width: 70px; padding: 10px; font-size: 20px; }
-  .navigation-text { width: 150px; padding: 10px 0; font-size: 16px; }
+  .navigation-text {
+    width: 150px;
+    padding: 10px 0;
+    font-size: 16px;
+    &.width-right{
+      width: 140px;
+    }
+  }
   .navigation-icon, .navigation-text {
     height: 60px;
     float: left;
     line-height: 40px;
+  }
+  .sale {
+    line-height: 28px;
+    font-size: 18px;
+    font-weight: bold;
+    hover { background-color: #023e05; }
+    focus { background-color: #023e05; }
   }
 }
 

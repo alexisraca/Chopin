@@ -7,7 +7,13 @@
         <span></span>
       </div>
     </div>
+    <div class="navigation-text text-left width-right">
+      <%= link_to root_path, class: "btn btn-success sale" do %>
+        <%= fa_icon "money" %> Vender
+      <% end %>
+    </div>
   </li>
+
   <li class="navigation-element">
     <%= link_to root_path do %>
       <div class="navigation-icon text-center"><span><%= fa_icon "home" %></span></div>
@@ -24,15 +30,22 @@
 
   <li class="navigation-element">
     <%= link_to admin_orders_path do %>
-      <div class="navigation-icon text-center"><span><%= fa_icon "shopping-cart" %></span></div>
+      <div class="navigation-icon text-center"><span><%= fa_icon "list-alt" %></span></div>
       <div class="navigation-text text-left"><span>Órdenes</span></div>
     <% end %>
   </li>
 
   <li class="navigation-element">
     <%= link_to admin_branches_path do %>
-     <div class="navigation-icon text-center"><span><%= fa_icon "truck" %></span></div>
+     <div class="navigation-icon text-center"><span><%= fa_icon "industry" %></span></div>
      <div class="navigation-text text-left"><span>Sucursales</span></div>
+    <% end %>
+  </li>
+
+  <li class="navigation-element">
+    <%= link_to admin_branches_path do %>
+     <div class="navigation-icon text-center"><span><%= fa_icon "truck" %></span></div>
+     <div class="navigation-text text-left"><span>Proveedores</span></div>
     <% end %>
   </li>
 
