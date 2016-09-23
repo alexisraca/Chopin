@@ -1,4 +1,4 @@
-<tr <%= variant_id_data_attr(variant) %>>
+<tr <%= variant_id_data_attr(variant) %> class="<%= variant.deleted_at.blank? ? '' : 'danger' %>">
   <td class="vertical-td">
       <%=  variant.name %>
       <% if variant.main_variant?%>
@@ -9,7 +9,7 @@
   </td>
   <td class="text-center">
     <%= link_to admin_products_path(q: { product_id_eq: variant.product.id }) do %>
-      <span class="badge"><%= variant.siblings_count - 1 %></span>
+      <span class="badge"><%= variant.siblings_count %></span>
     <% end %>
   </td>
   <td class="vertical-td text-center"><%= variant.price %></td>

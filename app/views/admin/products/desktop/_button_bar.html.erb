@@ -1,5 +1,5 @@
 <div class="btn-group list-inline pull-left">
-  <%=link_to "Activos", admin_products_path(q:{deleted_at_null: 1}), remote: true , class: "btn btn-default" %>
+  <%=link_to "Activos", admin_products_path, remote: true , class: "btn btn-default" %>
   <%=link_to "Inactivos", admin_products_path(q:{deleted_at_not_null: 1}), remote: true , class: "btn btn-default" %>
   <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default" %>
   <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default" %> 

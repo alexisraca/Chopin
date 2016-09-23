@@ -16,8 +16,6 @@ class Order < ActiveRecord::Base
     case state
       when CANCELED
         "cancelado"
-      when CUSTOMER
-        "cliente"
       when SUMMARY
         "pendiente"
       when COMPLETE

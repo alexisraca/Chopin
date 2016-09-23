@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
 
   def index
-    @q = Variant.unscoped.count_variants.ransack(params[:q])
+    @q = base_variants_scope.count_variants.ransack(params[:q])
     @variants = @q.result(distinct: true).order(:created_at)
   end
 
@@ -39,7 +39,17 @@ class Admin::ProductsController < ApplicationController
       flash[:notice] = "Producto Borrado"
     end
   end
-  
+
+  private
+
+  def base_variants_scope
+    if params[:q].blank?
+      Variant
+    else
+      Variant.unscoped
+    end
+  end
+
   def product_params
     params.require(:product).
       permit(

@@ -15,9 +15,10 @@ class Variant < ActiveRecord::Base
     joins(
       "INNER JOIN ("\
       "SELECT variants.product_id, count(variants.product_id) "\
+      "FILTER (WHERE variants.main_variant = 'false') "\
       "FROM variants "\
-      "group by variants.product_id) AS variants_count "\
-      "on variants.product_id = variants_count.product_id"
+      "GROUP BY variants.product_id) AS variants_count "\
+      "ON variants.product_id = variants_count.product_id "
     )
   }
 
