@@ -6,6 +6,7 @@
       <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default" %>
       <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default" %> 
     </div>
+    <%= link_to "Alta Rapida", new_admin_fast_product_path, class: "btn btn-primary pull-right" %>
   </div>
 </div>
 
