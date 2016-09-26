@@ -4,29 +4,30 @@
   <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default" %>
   <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default" %> 
 </div>
-
-<%= link_to "Alta Rapida", new_admin_fast_product_path, class: "btn btn-primary pull-right" %>
-
-<ul class="list-inline pull-right">
-<li>
-  <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
-    <div class="form-group">
-      <div class="input-group">
-        <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
-        <span class="input-group-btn">
-          <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
-            <%= fa_icon("search", text: " ") %>
-          </button>
-        </span>
-      </div>
-    </div>
-  <% end %>
-</li>
-<li>
-  <%= link_to new_admin_product_path, class: "btn btn-primary" do %>
-    Nuevo
-    <%= fa_icon "plus" %>
-  <% end %>
-</li>
-</ul>
-<div class="clearfix"></div>
+  <ul class="list-inline pull-right">
+    <li>
+      <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+        <div class="form-group">
+          <div class="input-group">
+            <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
+            <span class="input-group-btn">
+              <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+                <%= fa_icon("search", text: " ") %>
+              </button>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to new_admin_product_path, class: "btn btn-primary" do %>
+        Nuevo
+        <%= fa_icon "plus" %>
+      <% end %>
+    </li>
+    <li>
+       <%= link_to "Alta Rápida", new_admin_fast_product_path, class: "btn btn-primary" %>
+    </li>
+  </ul>
+  <div class="clearfix"></div>
+</div>

@@ -7,14 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- Boton de sesión -->
-  <div class="navigation">
-    <%= render "/shared/menu" %>
-  </div>
-  <!-- /Boton de sesión -->
+  
+  <% if user_signed_in? %>
+    <!-- menú lateral -->
+    <div class="navigation">
+      <%= render "/shared/menu" %>
+    </div>
+    <!-- /menú lateral -->
+  <% end %>
 
-  <div class="site-wrap">
+  <div class="<%= 'site-wrap' if user_signed_in? %>">
     <div class="container-fluid">
+      <%= render "shared/top_menu" %>
       <%= yield %>
     </div>
   </div>

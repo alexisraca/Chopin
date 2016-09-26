@@ -6,14 +6,13 @@
       <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default" %>
       <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default" %> 
     </div>
-    <%= link_to "Alta Rapida", new_admin_fast_product_path, class: "btn btn-primary pull-right" %>
   </div>
 </div>
 
 <hr>
 
 <div class="row">
-  <div class="col-xs-9 col-sm-9">
+  <div class="col-xs-6 col-sm-6">
     <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
       <div class="form-group">
         <div class="input-group">
@@ -27,11 +26,13 @@
       </div>
     <% end %>
   </div>
-  <div class="col-xs-3 col-sm-3">
+  <div class="col-xs-6 col-sm-6">
+    <div class="row">
     <%= link_to new_admin_product_path, class: "btn btn-primary pull-right" do %>
       Nuevo Producto
       <%= fa_icon "plus" %>
     <% end %>
+    <%= link_to "Alta Rápida", new_admin_fast_product_path, class: "btn btn-primary pull-right" %>
     <div class="clearfix"></div>
   </div>
 </div>

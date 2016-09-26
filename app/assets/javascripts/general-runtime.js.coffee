@@ -18,6 +18,8 @@ $ ->
 
   $('[data-toggle="tooltip"]').tooltip()
   
-  $('#nav-icon').click ->
-    $(this).toggleClass('open-burger');
+  $(document).click (e) ->
+    $(".navigation").removeClass('open-navigation');
+  $('.navigation-icon').click (e) ->
+    e.stopPropagation();
     $(".navigation").toggleClass('open-navigation');
