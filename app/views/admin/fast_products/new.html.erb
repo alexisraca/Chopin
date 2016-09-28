@@ -1,1 +1,14 @@
-VISTA NEW PAPUS
+<%= simple_form_for @fast_product_builder, url: admin_fast_products_path do |f| %>
+	<%= f.simple_fields_for :product do |p| %>
+		<%= p.simple_fields_for :main_variant do |v| %>
+			<%= v.input :sku %>
+			<%= v.input :name %>
+			<%= v.input :price %>
+		<% end %>
+	<% end %>
+	<%=  link_to_add_association f,:products , partial: "shared/fast_product" do %>
+		<%= "agregar producto" %>
+	<% end %>
+	<%= f.submit %>
+<% end %>
+

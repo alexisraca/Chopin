@@ -1,2 +1,0 @@
-class FastProductsBuilder
-end
