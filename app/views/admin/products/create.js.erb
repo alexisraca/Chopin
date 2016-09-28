@@ -2,7 +2,7 @@
   window.history.pushState("", "", '<%= edit_admin_product_path(@product) %>');
 <% end %>
 $(".form-container").html("<%= j render 'form' %>");
-$(".sidebar-container").html("<%= j render 'sidebar' %>");
-console.log("fdsfdsd");
 window.bindDatePicker($(".datepicker"))
-$.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
+<% unless flash[:notice].blank? %>
+  $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
+<% end %>
