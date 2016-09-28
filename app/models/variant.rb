@@ -10,17 +10,28 @@ class Variant < ActiveRecord::Base
 
   scope :common_variants, -> { where(main_variant: false) }
   scope :for_product, ->(product) { where(product_id: product) }
+  
   scope :count_variants, -> {
     select("variants.*, variants_count.count siblings_count").
     joins(
       "INNER JOIN ("\
       "SELECT variants.product_id, count(variants.product_id) "\
-      "FILTER (WHERE variants.main_variant = 'false') "\
       "FROM variants "\
-      "GROUP BY variants.product_id) AS variants_count "\
-      "ON variants.product_id = variants_count.product_id "
+      "group by variants.product_id) AS variants_count "\
+      "on variants.product_id = variants_count.product_id"
     )
   }
+#  scope :count_variants, -> {
+#    select("variants.*, variants_count.count siblings_count").
+#    joins(
+#      "INNER JOIN ("\
+#      "SELECT variants.product_id, count(variants.product_id) "\
+#      "FILTER (WHERE variants.main_variant = 'false') "\
+#      "FROM variants "\
+#      "GROUP BY variants.product_id) AS variants_count "\
+#      "ON variants.product_id = variants_count.product_id "
+#    )
+#  }
 
   acts_as_paranoid
 end
