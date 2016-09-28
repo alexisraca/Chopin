@@ -1,5 +1,5 @@
 <%= simple_form_for @fast_product_builder, url: admin_fast_products_path do |f| %>
-	<%= f.simple_fields_for :product do |p| %>
+	<%= f.simple_fields_for :products do |p| %>
 		<%= p.simple_fields_for :main_variant do |v| %>
 			<%= v.input :sku %>
 			<%= v.input :name %>
