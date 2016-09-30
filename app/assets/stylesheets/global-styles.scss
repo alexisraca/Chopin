@@ -1,13 +1,17 @@
-$sidebar-background: #2c3e50;
-$sidebar-hover: #233140;
-$sidebar-corner-top: #233140;
-$sidebar-text-color: #ecf0f1;
+$sidebar-bg: rgb(255, 255, 255);
+$sidebar-hover: #DADCE6;
+$sidebar-corner-top: #3A4AAB;
+$sidebar-text-color: #373839;
+
+$top-bar-bg: #4D60C1;
+$top-bar-text-color: #F4F5FA;
+
 $button-grey: #758996;
 $button-light-grey: #8899A9;
 
 
 body {
-  background-color: #e8edf3;
+  background-color: rgb(244, 246, 249);
 }
 h3 {
   color: #FFF;
@@ -51,6 +55,12 @@ h3 {
   }
 }
 
+.button-block {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  .list-inline.pull-right li:last-child { padding-right: 0; }
+}
+
 .round-bottom-corners {
   -webkit-border-bottom-right-radius: 4px;
   -webkit-border-bottom-left-radius: 4px;
@@ -65,6 +75,12 @@ h3 {
 .btn-primary {
   background-color: #2980b9;
   border-color: #2980b9;
+}
+
+table {
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29) !important;
+  -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29) !important;
+  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29) !important;
 }
 
 // MENU
@@ -136,12 +152,14 @@ h3 {
 
 .site-wrap {
   padding-left: 70px;
-  .row:nth-child(2) { margin-top: 10px; }
 }
 .navigation {
+  -webkit-box-shadow: 3px 0px 4px -2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 3px 0px 4px -2px rgba(0,0,0,0.2);
+  box-shadow: 3px 0px 4px -2px rgba(0,0,0,0.2);
   &.open-navigation, &:hover { width: 220px; }
   position: fixed;
-  background-color: $sidebar-background;
+  background-color: $sidebar-bg;
   top: 0;
   left: 0;
   height: 100%;
@@ -155,10 +173,6 @@ h3 {
     padding: 0;
     height: 100%;
     width: 220px;
-    box-shadow: inset -50px 0px 66px -41px #233140;
-    -webkit-box-shadow: inset -50px 0px 66px -41px #233140;
-    -moz-box-shadow: inset -50px 0px 66px -41px #233140;
-    -o-box-shadow: inset -50px 0px 66px -41px #233140;
   }
   .navigation-element {
     width: 100%;
@@ -170,17 +184,17 @@ h3 {
       transition: 0.3s;
       height: 100%;
       width: 100%;
-      color: #ecf0f1;
+      color: $sidebar-text-color;
       &:hover { background-color: $sidebar-hover; }
       &:focus { background-color: $sidebar-hover; }
     }
-    &:nth-child(1) { background-color: $sidebar-corner-top; color: $sidebar-text-color; }
+    &:nth-child(1) { background-color: $sidebar-corner-top; color: $sidebar-bg; }
   }
   .navigation-icon { width: 70px; padding: 10px; font-size: 20px; }
   .navigation-text {
     width: 150px;
     padding: 10px 0;
-    font-size: 16px;
+    font-size: 13px;
     &.width-right{
       width: 140px;
     }
@@ -207,7 +221,7 @@ h3 {
 
 .top-menu-wrapper {
   height: 60px;
-  background-color: white;
+  background-color: $top-bar-bg;
   ul.top-menu-block{
     margin:0;
     height: 60px;
@@ -215,20 +229,26 @@ h3 {
     li.top-menu-block-element { width: 60px; line-height: 60px; }
   }
   a.top-menu-link {
-    color: $sidebar-corner-top;
+    color: $top-bar-text-color;
     transition: 0.3s;
     &:hover, &:focus {
-      background-color: $sidebar-corner-top; color: $sidebar-text-color;
+      background-color: $sidebar-corner-top; color: $top-bar-text-color;
     }
   }
   .messages-link {
-    color:$sidebar-background;
+    color:$sidebar-bg;
   }
   .fa { position: relative; }
   .messages-count { position: absolute; bottom: -10px; right: -10px; }
-  .dropdown-menu { li { a { height:40px; line-height:34px; font-size: 18px; } } }
+  .dropdown-menu {
+    li a {
+      height: 40px; line-height:34px; font-size: 18px;
+      color: $sidebar-text-color;
+      background-color: $sidebar-corner-top;
+      color: $top-bar-text-color;
+    }
+  }
   .dropdown-menu, .dropdown-menu a {
-    background-color: $sidebar-corner-top; color: $sidebar-text-color;
-    &:hover { background-color: $sidebar-hover; color: $sidebar-text-color; }
+    background-color: $sidebar-corner-top; color: $top-bar-text-color;
   }
 }

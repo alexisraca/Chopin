@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row button-block">
   <div class="col-xs-12 col-sm-12">
     <div class="btn-group btn-group-justified">
       <%=link_to "Activos", admin_products_path, remote: true , class: "btn btn-default" %>
@@ -9,9 +9,7 @@
   </div>
 </div>
 
-<hr>
-
-<div class="row">
+<div class="row button-block">
   <div class="col-xs-6 col-sm-6">
     <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
       <div class="form-group">
@@ -27,7 +25,6 @@
     <% end %>
   </div>
   <div class="col-xs-6 col-sm-6">
-    <div class="row">
     <%= link_to new_admin_product_path, class: "btn btn-primary pull-right" do %>
       Nuevo Producto
       <%= fa_icon "plus" %>
