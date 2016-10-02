@@ -1,25 +1,4 @@
-$dark-purple: #3A4AAB;
-$light-purple: #4D60C1;
-
-$dark-green: #386F38;
-$light-green: #52A352;
-
-$dark-orange: #F0793B;
-$light-orange: #FF9158;
-
-$system-white: #F4F5FA;
-
-$sidebar-bg: rgb(255, 255, 255);
-$sidebar-hover: #DADCE6;
-$sidebar-corner-top: $dark-purple;
-$sidebar-text-color: #373839;
-
-$top-bar-bg: $light-purple;
-$top-bar-text-color: $system-white;
-
-$button-grey: #758996;
-$button-light-grey: #8899A9;
-
+@import "colors";
 
 body {
   background-color: rgb(244, 246, 249);
@@ -61,6 +40,10 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
   .list-inline.pull-right li:last-child { padding-right: 0; }
+}
+.construction-block {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 @mixin box-shadowed {

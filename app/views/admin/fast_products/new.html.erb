@@ -1,14 +1,36 @@
+
 <%= simple_form_for @fast_product_builder, url: admin_fast_products_path do |f| %>
-	<%= f.simple_fields_for :products do |p| %>
-		<%= p.simple_fields_for :main_variant do |v| %>
-			<%= v.input :sku %>
-			<%= v.input :name %>
-			<%= v.input :price %>
-		<% end %>
-	<% end %>
-	<%=  link_to_add_association f,:products , partial: "shared/fast_product" do %>
-		<%= "agregar producto" %>
-	<% end %>
-	<%= f.submit %>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <%= f.simple_fields_for :products do |p| %>
+        <div class="box-shadowed rounded-corners panel fast-product-panel">
+          <div class="panel-body">
+            <%= p.simple_fields_for :main_variant do |v| %>
+              <div class="row fast-product-input-list">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                  <%= v.input :sku %>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                  <%= v.input :name %>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                  <%= v.input :price %>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                  <%=  link_to_add_association f,:products, partial: "shared/fast_product", data: { 'association-insertion-node' => ".fast-product-panel", 'association-insertion-traversal' => "closest", 'association-insertion-method' => 'after' } do %>
+                    <%= "agregar producto" %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= f.submit "Guardar", class: "btn btn-primary pull-right" %>
 <% end %>
+
 
