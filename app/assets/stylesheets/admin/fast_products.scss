@@ -6,4 +6,21 @@
 .fast-product-panel {
   margin-top: 10px;
   background-color: $system-white;
+  .remove-fast-product-thumbnail, .col-md-6:last-child, .col-lg-6:last-child, .col-sm-6:last-child, .col-xs-6:last-child {
+    line-height: 74px;
+    .btn { height: 64px; width:100%; line-height: 50px; font-size: 32px;}
+  }
 }
+.fast-products-button-block {
+  height: 47px;
+  .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    
+  }
+  h3, .fast-products-button-container {
+    line-height: 47px;
+    height: 47px;
+    margin: 0;
+    display: inline-block;
+  }
+}
+
