@@ -6,9 +6,15 @@ class Admin::FastProductsController < ApplicationController
   end
 
   def create
-    @fast_product_builder = FastProductBuilder.create(fast_product_builder_params)
-    @fast_product_builder.save
-    redirect_to admin_products_path
+    begin
+      FastProductBuilder.transaction do
+        @fast_product_builder = FastProductBuilder.create(fast_product_builder_params)
+        @fast_product_builder.save!
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:warning] = "Error guardando los productos, por favor revise la información"
+      render :new
+    end
   end
 
   def fast_product_builder_params
