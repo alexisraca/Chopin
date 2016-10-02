@@ -1,10 +1,10 @@
 <div class="row button-block">
   <div class="col-xs-12 col-sm-12">
-    <div class="btn-group btn-group-justified">
-      <%=link_to "Activos", admin_products_path, remote: true , class: "btn btn-default" %>
-      <%=link_to "Inactivos", admin_products_path(q:{deleted_at_not_null: 1}), remote: true , class: "btn btn-default" %>
-      <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default" %>
-      <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default" %> 
+    <div class="btn-group btn-group-justified rounded-corners box-shadowed">
+      <%=link_to "Activos", admin_products_path, remote: true , class: "btn btn-default btn-filter" %>
+      <%=link_to "Inactivos", admin_products_path(q:{deleted_at_not_null: 1}), remote: true , class: "btn btn-default btn-filter" %>
+      <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default btn-filter" %>
+      <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default btn-filter" %> 
     </div>
   </div>
 </div>
@@ -25,11 +25,17 @@
     <% end %>
   </div>
   <div class="col-xs-6 col-sm-6">
-    <%= link_to new_admin_product_path, class: "btn btn-primary pull-right" do %>
-      Nuevo Producto
-      <%= fa_icon "plus" %>
-    <% end %>
-    <%= link_to "Alta Rápida", new_admin_fast_product_path, class: "btn btn-primary pull-right" %>
+    <div class="list-inline pull-right">
+      <li>
+        <%= link_to new_admin_product_path, class: "btn btn-primary" do %>
+          Nuevo
+          <%= fa_icon "plus" %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "Alta Rápida", new_admin_fast_product_path, class: "btn btn-primary" %>
+      </li>
+    </div>
     <div class="clearfix"></div>
   </div>
 </div>

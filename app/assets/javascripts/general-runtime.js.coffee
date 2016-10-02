@@ -11,6 +11,11 @@ bindCocoonDatePicker = ->
     orientation: 'auto top', 
     format: 'yyyy-mm-dd'
 
+btnFilterActivation = ->
+  $(".btn-filter").click (e) ->
+    $(".btn-filter").removeClass("btn-filter-active")
+    $(e.currentTarget).addClass("btn-filter-active")
+
 $ ->
   window.bindDatePicker($(".datepicker"))
 
@@ -23,3 +28,5 @@ $ ->
   $('.navigation-icon').click (e) ->
     e.stopPropagation();
     $(".navigation").toggleClass('open-navigation');
+  
+  btnFilterActivation()

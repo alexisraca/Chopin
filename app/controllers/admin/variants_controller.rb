@@ -26,18 +26,10 @@ class Admin::VariantsController < ApplicationController
   def variant_params
     params.require(:variant).
       permit(
-        :name,
-        :description,
-        :cost,
-        :price,
-        :sku,
-        :id,
-        :product_id,
+        :name, :description, :cost, :price,
+        :sku, :id, :product_id,
         inventories_attributes: [
-          :branch_id,
-          :quantity,
-          :expiration_date,
-          :id
+          :branch_id, :quantity, :expiration_date, :id
         ]
       )
   end

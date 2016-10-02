@@ -11,9 +11,8 @@ class VariantDestroyer
       Variant.transaction do
         if @variant.main_variant?
           remove_full_tree
-          @variant.destroy
+          @variant.reload
         else
-          @variant.inventories.destroy_all
           @variant.destroy
         end
       end
@@ -25,14 +24,6 @@ class VariantDestroyer
   private
 
   def remove_full_tree
-    delete_inventories_collection(@product.variants)
     @product.variants.update_all(deleted_at: Time.now)
   end
-
-  def delete_inventories_collection(variants)
-    inventories = Inventory.where(variant_id: variants.pluck(:id))
-    return if inventories.empty?
-    inventories.destroy_all
-  end
-
 end
