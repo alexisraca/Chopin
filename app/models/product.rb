@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
 
   accepts_nested_attributes_for :main_variant, :variants, :common_variants
 
-  delegate :name, :description, :price, :cost, to: :main_variant
+  delegate :name, :description, :sku, :price, :cost, to: :main_variant
 
   validates_associated :main_variant, :variants, :common_variants
 end

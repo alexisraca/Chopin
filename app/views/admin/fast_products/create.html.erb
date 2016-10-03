@@ -1,0 +1,17 @@
+<div class="row button-block fast-products-button-block">
+   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+     <h3>Lista de productos guardados</h3>
+     <div class="fast-products-button-container pull-right">
+       <%= link_to "Regresar al inventario", admin_products_path, class: "btn btn-primary" %>
+     </div>
+     <div class="clearfix"></div>
+   </div>
+</div>
+
+<div class="row fast-products-pool" >
+  <% @fast_product_builder.products.each do |product| %>
+  
+    <%= render partial: "product", locals: { product: product } %>
+
+  <% end %>
+</div>

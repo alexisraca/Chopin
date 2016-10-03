@@ -1,0 +1,43 @@
+<div class="row">
+  <%= simple_form_for [:admin, @product], url: admin_fast_product_path(@product), remote: :true, method: :put do |f| %>
+    <%= f.simple_fields_for :main_variant do |v| %>
+      <div class="col-md-6">
+          <%= v.input :name, label: false, placeholder: 'Nombre', input_html: { class: "form-control" } %>
+          <%= v.input :sku, label: false, as: :decimal, placeholder: 'Sku', input_html: { class: "form-control" } %>
+          <%= v.input :description, label: false, as: :text, placeholder: 'Descripción', input_html: { rows: "5", class: "max-width form-control" } %>
+      </div>
+      <div class="col-md-6">
+          <%= v.input :cost, label: false, as: :decimal, placeholder: 'Costo' %>
+          <%= v.input :price, label: false, as: :decimal, placeholder: 'Precio' %>
+          
+          <% v.object.inventories.build if v.object.inventories.empty? %>
+          <%= v.simple_fields_for :inventories do |i| %>
+            <%= i.input :quantity, label: false, as: :numeric %>
+          <% end %>
+      </div>
+
+      <hr>
+
+      <p class="lead col-md-12">Variantes<p>
+
+      <div class="col-md-12" id="variants-list">
+        <%= f.simple_fields_for :common_variants do |i| %>
+          <%= render "variant_form", i: i %>
+        <% end %>
+
+        <div class="panel nested-fields">
+          <%= link_to_add_association f, :common_variants, partial: "shared/variant_fields", data: { 'association-insertion-node' => ".nested-fields", 'association-insertion-traversal' => "closest", 'association-insertion-method' => 'before' }, class: "btn btn-primary" do %>
+            Agregar Variante <%= fa_icon "plus" %>
+          
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="col-md-12">
+        <hr>
+        <%= f.button :submit, "Guardar", class: "btn btn-primary pull-right" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

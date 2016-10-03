@@ -1,0 +1,11 @@
+@mixin box-shadowed {
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.6) !important;
+  -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.6) !important;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.6) !important;
+}
+
+@mixin rounded-corners {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}

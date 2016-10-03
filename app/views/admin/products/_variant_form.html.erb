@@ -14,17 +14,15 @@
         <%= i.simple_fields_for :inventories do |s| %>
           <%= s.input :quantity, label: false, placeholder: "Cantidad" %>
         <% end %>
+        <% if i.object.persisted? %>
+          <%= link_to admin_variant_path(i.object), method: :delete, class: "btn btn-danger pull-right", data: { confirm: "¿Esta seguro que desea borrar la variante de este producto?" }, remote: true do %>
+            <%= fa_icon "trash-o" %>
+          <% end %>
+        <% else %>
+          <%= link_to_remove_association (fa_icon "trash-o"), i, class: 'btn btn-danger pull-right' %>
+        <% end %>
       </div>
     </div>
   </div>
-  <div class="panel-footer panel-custom-footer">
-    <% if i.object.persisted? %>
-      <%= link_to admin_variant_path(i.object), method: :delete, class: "btn btn-danger pull-right", data: { confirm: "¿Esta seguro que desea borrar la variante de este producto?" }, remote: true do %>
-        <%= fa_icon "trash-o" %>
-      <% end %>
-    <% else %>
-      <%= link_to_remove_association (fa_icon "trash-o"), i, class: 'btn btn-danger pull-right' %>
-    <% end %>
-    <div class="clearfix"></div>
-  </div>
+
 </div>
