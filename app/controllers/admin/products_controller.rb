@@ -2,7 +2,9 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @q = base_variants_scope.count_variants.ransack(params[:q])
-    @variants = @q.result(distinct: true).order(:created_at)
+    @variants = @q.result(distinct: true).
+                  paginate(page: params[:page], per_page: 30).
+                  order(:created_at)
   end
 
   def create
@@ -43,10 +45,10 @@ class Admin::ProductsController < ApplicationController
   private
 
   def base_variants_scope
-    if params[:q].blank?
-      Variant
-    else
+    if params[:q] && params[:q][:deleted_at_not_null]
       Variant.unscoped
+    else
+      Variant
     end
   end
 

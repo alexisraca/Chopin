@@ -1,3 +1,4 @@
 this.resetSearchButtons()
-$("tbody").html("<%= j render partial: 'variants_list' %>")
+$(".desktop-table").html("<%= j render partial: 'admin/products/desktop/table' %>")
+$(".responsive-table").html("<%= j render partial: 'admin/products/responsive/table' %>")
 window.history.pushState("", "", '<%= admin_products_path(q: params[:q]) %>');

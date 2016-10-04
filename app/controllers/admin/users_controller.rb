@@ -5,7 +5,9 @@ class Admin::UsersController < ApplicationController
 
   def index
    @q = User.ransack(params[:q])
-   @users = @q.result(distinct: true).order(:created_at)
+   @users = @q.result(distinct: true).
+              paginate(page: params[:page], per_page: 30).
+              order(:created_at)
   end
 
   def edit
