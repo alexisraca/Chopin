@@ -1,11 +1,11 @@
 class Order < ActiveRecord::Base
 
+  PAID = "paid"
+  DEBT = "debt"
   CANCELED = "canceled"
-  SUMMARY  = "summary"
-  COMPLETE = "complete"
-  PAYMENT  = "payment"
+  SUMARY  = "sumary"
 
-  STATES = [CANCELED, COMPLETE, SUMMARY, PAYMENT]
+  STATES = [PAID, DEBT, CANCELED, SUMARY]
 
   validates :user_id, :state, presence: { message: "No puede estar en blanco" }
 
@@ -14,14 +14,14 @@ class Order < ActiveRecord::Base
 
   def localized_state
     case state
+      when PAID
+        "Pagado"
+      when DEBT
+        "Deuda"
       when CANCELED
-        "cancelado"
-      when SUMMARY
-        "pendiente"
-      when COMPLETE
-        "completado"
-      when PAYMENT
-        "pago"
+        "Cancelado"
+      when SUMARY
+        "Resumen"
     end
   end
 end
