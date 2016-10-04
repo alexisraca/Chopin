@@ -1,0 +1,41 @@
+<div class="row button-block">
+  <div class="col-md-12 col-lg-12">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12">
+        <div class="btn-group btn-group-justified rounded-corners box-shadowed">
+          <%=link_to "Pagado", admin_orders_path(q:{deleted_at_null: 1}), remote: true , class: "btn btn-default" %>
+          <%=link_to "Deuda", admin_orders_path(q:{deleted_at_not_null: 1}), remote: true , class: "btn btn-default" %>
+          <%=link_to "Cancelado", admin_orders_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default" %>
+          <%=link_to "Resumen", admin_orders_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default" %>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-xs-9 col-sm-9 pull-left">
+        <%= search_form_for @q, url: admin_orders_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+          <div class="form-group rounded-corners box-shadowed">
+            <div class="input-group">
+              <%= s.text_field :id_cont, class: "form-control keyup-autosearch" %>
+              <span class="input-group-btn">
+                <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+                  <%= fa_icon("search", text: " ") %>
+                </button>
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-xs-3 col-sm-3">
+        <%= link_to new_admin_order_path, class: "btn btn-primary" do %>
+          Nueva Orden
+          <%= fa_icon "plus" %>
+        <% end %>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>

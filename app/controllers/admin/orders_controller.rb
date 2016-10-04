@@ -1,6 +1,7 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @orders = Order.all.order(:created_at)
+    @q = Order.ransack(params[:q])
+    @orders = @q.result(distinct: true).order(:created_at)
   end
 
   def new
