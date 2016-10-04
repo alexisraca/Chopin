@@ -11,7 +11,7 @@ class Admin::BranchesController < ApplicationController
   def create
     @branch = Branch.new(branch_params)
     if @branch.save
-      flash[:notice] = "Sucursal Guardada"
+      flash[:notice] = "Sucursal guardada"
     end
   end
 
@@ -22,7 +22,7 @@ class Admin::BranchesController < ApplicationController
   def update
     @branch = Branch.find(params[:id])
     if @branch.update(branch_params)
-      flash[:notice] = "Sucursal Actualizada"
+      flash[:notice] = "Sucursal actualizada"
     end
   end
 

@@ -2,8 +2,12 @@
   <%= fa_icon "pencil-square-o" %>
 <% end %>
 
-<% if variant.deleted? %>
+<% unless variant.deleted? %>
   <%= link_to admin_product_variant_path(variant.product, variant), method: :delete, class: "btn btn-danger", data: { toggle: "tooltip", confirm: delete_variant_warning_text(variant) }, title: "Borrar", remote: :true do %>
     <%= fa_icon "trash-o" %>
+  <% end %>
+<% else %>
+  <%= link_to admin_variant_restore_path(variant), method: :post, class: "btn btn-danger", data: { toggle: "tooltip", confirm: delete_variant_warning_text(variant) }, title: "Restaurar", remote: :true do %>
+    <%= fa_icon "undo" %>
   <% end %>
 <% end %>

@@ -4,9 +4,18 @@ class Admin::VariantsController < ApplicationController
   def destroy
     @variant = Variant.unscoped.find(params[:id])
     if destroy_variant
-      flash[:notice] = "Variante Borrada"
+      flash[:notice] = "Producto borrado"
     else
       flash[:alert] = @destroyer.error
+    end
+  end
+
+  def restore
+    @variant = Variant.unscoped.find(params[:variant_id])
+    if @variant.restore
+      flash[:notice] = "Producto restaurado"
+    else
+      flash[:alert] = "Hubo un error restaurando el producto"
     end
   end
 

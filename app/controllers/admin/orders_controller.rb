@@ -17,7 +17,7 @@ class Admin::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      flash[:notice] = "Orden Guardada"
+      flash[:notice] = "Orden guardada"
     end
   end
 

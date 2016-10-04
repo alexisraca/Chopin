@@ -10,7 +10,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:notice] = "Producto Guardado"
+      flash[:notice] = "Producto guardado"
     end
   end
 
@@ -31,14 +31,14 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      flash[:notice] = "Producto Guardado"
+      flash[:notice] = "Producto guardado"
     end
   end
 
   def destroy
     @product = Product.find(params[:id])
     if @product.destroy
-      flash[:notice] = "Producto Borrado"
+      flash[:notice] = "Producto borrado"
     end
   end
 

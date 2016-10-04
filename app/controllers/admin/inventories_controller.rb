@@ -10,14 +10,14 @@ class Admin::InventoriesController < ApplicationController
   def destroy
     @inventory = Inventory.find(params[:id])
     if @inventory.destroy
-      flash[:notice] = "Inventario Borrado"
+      flash[:notice] = "Inventario borrado"
     end
   end
 
   def create
     @inventory = Inventory.new(inventory_params)
     if @inventory.save
-      flash[:notice] = "Inventario Guardado"
+      flash[:notice] = "Inventario guardado"
     end
   end
 
@@ -28,7 +28,7 @@ class Admin::InventoriesController < ApplicationController
   def update
     @inventory = Inventory.find(params[:id])
     if @inventory.update(inventory_params)
-      flash[:notice] = "Inventario Actualizado"
+      flash[:notice] = "Inventario actualizado"
     else
       render :edit
     end

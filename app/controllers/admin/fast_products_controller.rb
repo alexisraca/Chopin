@@ -24,7 +24,7 @@ class Admin::FastProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      flash[:notice] = "¡Producto Guardado!"
+      flash[:notice] = "¡Producto guardado!"
     end
   end
 

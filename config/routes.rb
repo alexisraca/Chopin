@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     end
 
     resources :variants do
+      post "/restore", to: "variants#restore", as: :restore
       resources :promotions
       resources :inventories
     end
