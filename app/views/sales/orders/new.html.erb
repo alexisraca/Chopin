@@ -15,47 +15,50 @@
     <div class="panel rounded-corners box-shadowed">
       <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-          <div class="panel">
-            <div class="row">
-              <div class="col-md-12">
-                <ul class="list-inline">
-                  <li>
-                    <%= search_form_for @q, url: sales_variants_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
-                      <div class="form-group box-shadowed rounded-corners">
-                        <div class="input-group">
-                          <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
-                          <span class="input-group-btn">
-                            <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
-                              <%= fa_icon("search", text: " ") %>
-                            </button>
-                          </span>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="row button-block">
+                <div class="col-md-12">
+                  <ul class="list-inline padding-sides">
+                    <li>
+                      <%= search_form_for @q, url: sales_variants_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+                        <div class="form-group box-shadowed rounded-corners">
+                          <div class="input-group">
+                            <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
+                            <span class="input-group-btn">
+                              <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+                                <%= fa_icon("search", text: " ") %>
+                              </button>
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to "#", class: "btn btn-primary" do %>
-                      <%= fa_icon "th-list" %>
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to "#", class: "btn btn-primary" do %>
-                      <%= fa_icon "th-large" %>
-                    <% end %>
-                  </li>
-                </ul>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to "#", class: "btn btn-primary" do %>
+                        <%= fa_icon "th-list" %>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to "#", class: "btn btn-primary" do %>
+                        <%= fa_icon "th-large" %>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+            <div class="panel-body">
+              tabla
+            </div>
+          </div> <!-- Cuerre de panel default -->
         </div>
         
         
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <div class="panel">
-            <div class="row">
-              <div class="col-md-12">
-                Vista previa del tiket
-              </div>
+          <div class="row">
+            <div class="col-md-12">
+              Vista previa del tiket
             </div>
           </div>
         </div>
