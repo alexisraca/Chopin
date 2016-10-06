@@ -20,9 +20,10 @@
               <div class="col-md-12">
                 <ul class="list-inline">
                   <li>
-                      <div class="form-group box-shadowed rounded-corners no-margin">
+                    <%= search_form_for @q, url: sales_variants_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+                      <div class="form-group box-shadowed rounded-corners">
                         <div class="input-group">
-                          <input class= "form-control">
+                          <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
                           <span class="input-group-btn">
                             <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
                               <%= fa_icon("search", text: " ") %>
@@ -30,6 +31,7 @@
                           </span>
                         </div>
                       </div>
+                    <% end %>
                   </li>
                   <li>
                     <%= link_to "#", class: "btn btn-primary" do %>
