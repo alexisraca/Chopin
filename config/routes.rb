@@ -33,7 +33,14 @@ Rails.application.routes.draw do
     resources :retired_users, only: [:index]
     resources :categories
   end
-  resources :sales
+  namespace :sales
+  resources :orders
+  resources :statements do
+    resources :line_items
+    resources :payments
+  end
+  resources :variants
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
