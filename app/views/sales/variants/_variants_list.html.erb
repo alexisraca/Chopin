@@ -1,0 +1,23 @@
+<table class="table table-striped no-margin">
+  <thead>
+    <tr> 
+      <th width="55%">Articulo</th>
+      <th width="15%">Precio</th>
+      <th width="15%">Inventario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @variants.each do |variant| %>
+      <tr> 
+        <td width="55%"> <%= variant.name %> </td>
+        <td width="15%"> <%= variant.price %> </td>
+        <td width="15%"> <%= variant.inventories.sum(:quantity) %> </td>
+        <td>
+          <%= link_to "#", class: "btn btn-success" do %>
+            <%= fa_icon "plus" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
