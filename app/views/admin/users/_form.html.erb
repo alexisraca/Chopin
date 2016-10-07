@@ -12,6 +12,9 @@
          <%= f.input :password_confirmation, as: :password, input_html: { class: "form-control" } %>
          <%= f.input :phone, input_html: { class: "form-control" } %>
          <%= f.input :address, input_html: { class: "form-control" } %>
+         <% if current_user != @user %>
+           <%= f.input :role_id, collection: Role.assignable_roles, input_html: { class: "form-control" } %>
+         <% end %>
     </div>
 
     <div class="col-md-12">

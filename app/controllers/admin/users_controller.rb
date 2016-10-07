@@ -30,6 +30,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(password_or_not_params)
+    flash[:notice] = "Usuario actualizado"
   end
   
 
@@ -45,12 +46,12 @@ class Admin::UsersController < ApplicationController
 
   def user_no_password_params
     params.require(:user).
-      permit(:username, :email, :first_name, :last_name)
+      permit(:username, :email, :first_name, :last_name, :role_id)
   end
 
   def user_params
     params.require(:user).
-      permit(:username, :password, :password_confirmation, :email, :first_name, :last_name)
+      permit(:username, :password, :password_confirmation, :email, :first_name, :last_name, :role_id)
   end
 end
 
