@@ -1,0 +1,5 @@
+<% if flash[:notice].blank? %>
+  $.notify({ message: "<%= flash[:danger] %>" },{ type: 'danger', placement: { align: "center" } });
+<% else %>
+  $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
+<% end %>

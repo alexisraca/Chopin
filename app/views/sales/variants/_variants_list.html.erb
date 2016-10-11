@@ -13,7 +13,7 @@
         <td class="text-right" width="15%"> <%= variant.price %> </td>
         <td class="text-right" width="15%"> <%= variant.inventories.sum(:quantity) %> </td>
         <td class="pull-right">
-          <%= link_to sales_statement_line_items_path(@statement), metod: :post, class: "btn btn-success", remote: true do %>
+          <%= link_to sales_statement_line_items_path(@statement, variant_id: variant.id), method: :post, class: "btn btn-success", remote: true do %>
             <%= fa_icon "shopping-basket" %>
           <% end %>
         </td>
