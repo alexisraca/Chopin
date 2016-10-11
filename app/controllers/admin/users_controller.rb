@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-   @q = User.ransack(params[:q])
+   @q = User.non_master.ransack(params[:q])
    @users = @q.result(distinct: true).
               paginate(page: params[:page], per_page: 30).
               order(:created_at)
@@ -30,6 +30,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(password_or_not_params)
+    flash[:notice] = "Usuario actualizado"
   end
   
 
@@ -45,12 +46,12 @@ class Admin::UsersController < ApplicationController
 
   def user_no_password_params
     params.require(:user).
-      permit(:username, :email, :first_name, :last_name)
+      permit(:username, :email, :first_name, :last_name, :role_id)
   end
 
   def user_params
     params.require(:user).
-      permit(:username, :password, :password_confirmation, :email, :first_name, :last_name)
+      permit(:username, :password, :password_confirmation, :email, :first_name, :last_name, :role_id)
   end
 end
 
