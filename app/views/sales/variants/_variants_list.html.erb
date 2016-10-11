@@ -1,23 +1,24 @@
 <table class="table table-striped no-margin">
   <thead>
     <tr> 
-      <th width="55%">Articulo</th>
-      <th width="15%">Precio</th>
-      <th width="15%">Inventario</th>
+      <th width="60%">Articulo</th>
+      <th class="text-right" width="15%">Precio</th>
+      <th class="text-right" width="15%">Inventario</th>
     </tr>
   </thead>
   <tbody>
     <% @variants.each do |variant| %>
       <tr> 
-        <td width="55%"> <%= variant.name %> </td>
-        <td width="15%"> <%= variant.price %> </td>
-        <td width="15%"> <%= variant.inventories.sum(:quantity) %> </td>
-        <td>
-          <%= link_to "#", class: "btn btn-success" do %>
-            <%= fa_icon "plus" %>
+        <td width="60%"> <%= variant.name %> </td>
+        <td class="text-right" width="15%"> <%= variant.price %> </td>
+        <td class="text-right" width="15%"> <%= variant.inventories.sum(:quantity) %> </td>
+        <td class="pull-right">
+          <%= link_to new_sales_statement_line_item_path(@order.statements.last), metod: :create class: "btn btn-success" remote: true do %>
+            <%= fa_icon "shopping-basket" %>
           <% end %>
         </td>
       </tr>
     <% end %>
+    <div class="clearfix"></div>
   </tbody>
 </table>
