@@ -1,0 +1,24 @@
+<table class="table table-striped no-margin">
+  <thead>
+    <tr> 
+      <th width="60%">Articulo</th>
+      <th class="text-right" width="15%">Precio</th>
+      <th class="text-right" width="15%">Inventario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @variants.each do |variant| %>
+      <tr> 
+        <td width="60%"> <%= variant.name %> </td>
+        <td class="text-right" width="15%"> <%= variant.price %> </td>
+        <td class="text-right" width="15%"> <%= variant.inventories.sum(:quantity) %> </td>
+        <td class="pull-right">
+          <%= link_to sales_statement_line_items_path(@statement), metod: :post, class: "btn btn-success", remote: true do %>
+            <%= fa_icon "shopping-basket" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <div class="clearfix"></div>
+  </tbody>
+</table>
