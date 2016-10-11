@@ -1,14 +1,12 @@
 class Sales::OrdersController < ApplicationController
   def new
-    @q = Variant.ransack(params[:q])
-    @variants = @q.result(distinct: true).
-                   paginate(page: params[:page], per_page: 10).
-                   order(:created_at)
     @order = find_or_create_order
+    redirect_to edit_sales_statement_path(@order.statements.last)
   end
   def find_or_create_order
     order = Order.includes(statements: :line_items).
                   where(line_items: { statement_id: nil  }).
+                  where("orders.user_id = ?", current_user.id).
                   order("orders.created_at DESC").first
     if !order 
       order = Order.create(user: current_user, state: Order::SUMARY)
