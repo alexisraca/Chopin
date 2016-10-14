@@ -1,2 +1,3 @@
 this.resetSearchButtons()
-$("#variants-list-table").html("<%= j render partial:'sales/variants/variants_list' %>")
+$("#variants-list-pool").replaceWith("<%= j render partial:'sales/variants/variants_list' %>")
+$("#variants-list-footer").html("<%= j remote_paginate(@variants) %>")

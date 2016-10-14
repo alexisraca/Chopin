@@ -1,0 +1,46 @@
+<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="row button-block">
+        <div class="col-md-12">
+          <ul class="list-inline">
+            <li>
+              <%= search_form_for @q, url: sales_variants_path(statement_id: @statement.id), method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+                <div class="form-group box-shadowed rounded-corners">
+                  <div class="input-group">
+                    <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch borderless" %>
+                    <span class="input-group-btn">
+                      <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+                        <%= fa_icon("search", text: " ") %>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#", class: "btn btn-primary" do %>
+                <%= fa_icon "th-list" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#", class: "btn btn-primary" do %>
+                <%= fa_icon "th-large" %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div> <!-- Cuerre de panel-header -->
+
+    <!-- <div class="panel-body" id="variants-list-table"> -->
+    <%= render partial: "sales/variants/variants_#{@variants_view}" %>
+    <!-- </div> --> <!-- Cuerre de panel-body -->
+
+    <div class="panel-footer" id="variants-list-footer">
+      <%= remote_paginate(@variants) %>
+    </div> <!-- Cuerre de panel-footer -->
+
+  </div> <!-- Cuerre de panel de productos -->
+</div>

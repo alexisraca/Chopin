@@ -69,7 +69,9 @@ body {
   margin-bottom: 10px;
 }
 
-
+.borderless {
+  border-width:0;
+}
 
 .box-shadowed { @include box-shadowed; }
 .rounded-corners { @include rounded-corners; }
