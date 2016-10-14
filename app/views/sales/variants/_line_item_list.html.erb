@@ -1,0 +1,27 @@
+<table class="table table-striped no-margin">
+  <thead>
+    <tr> 
+      <td width="55%">Articulo</td>
+      <td width="15%">Precio</td>
+      <td width="15%">Cantidad</td>
+      <td width="15%">Total</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tbody>
+    <% @statement.line_items.each do |li| %>
+      <tr> 
+        <td width="55%"> <%= li.variant.name %> </td>
+        <td width="15%"> <%= li.variant.price %> </td>
+        <td width="15%"> <%= li.quantity %> </td>
+        <td width="15%"> <%= li.total %> </td>
+        <th>
+          <%= link_to "#", class: "btn btn-danger" do %>
+            <%= fa_icon "trash-o" %>
+          <% end %>
+        </th>
+      </tr>
+    <% end %>
+  </tbody>
+  </tbody>
+</table>
