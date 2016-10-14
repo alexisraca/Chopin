@@ -1,15 +1,9 @@
-<div class="row button-block fast-products-button-block">
-   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-     <h3>Ventas</h3>
-     <div class="fast-products-button-container pull-right">
-       <%= link_to "Regresar al tablero", root_path, class: "btn btn-primary" %>
-     </div>
-     <div class="clearfix"></div>
-   </div>
-</div>
+<% content_for :buttons_bar do %>
+  <%= render partial: "sales/statements/button_bar" %>
+<% end %>
 
 
-<div class="row">
+<% content_for :page_content do %>
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="row">
       <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
@@ -119,4 +113,4 @@
     </div>
 
   </div>
-</div>
+<% end %>
