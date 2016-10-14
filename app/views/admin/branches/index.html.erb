@@ -1,6 +1,4 @@
-<div class="row actions-bar">
-  <div class="col-md-12">
-    <div class="row actions-bar">
+<% content_for :buttons_bar do %>
       <div class="col-md-12 col-lg-12 hidden-xs hidden-sm">
         <%= render partial: "admin/branches/desktop/button_bar" %>
       </div>
@@ -8,11 +6,9 @@
       <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
         <%= render partial: "admin/branches/responsive/button_bar" %>
       </div>
-    </div>
-  </div>
-</div>
+<%end%>
 
-<div class="row">
+<% content_for :page_content do %>
   <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
     <table class="table table-bordered">
       <thead>
@@ -28,4 +24,4 @@
       </tbody>
     </table>
   </div>
-</div>
+<%end%>
