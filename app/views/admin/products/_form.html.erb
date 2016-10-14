@@ -10,6 +10,8 @@
       <div class="col-md-4 col-sd-4">
         <%= v.input :cost, as: :decimal, placeholder: 'Costo' %>
         <%= v.input :price, as: :decimal, placeholder: 'Precio' %>
+
+        <% v.object.inventories.build if v.object.inventories.empty? %>
         <%= v.simple_fields_for :inventories do |i| %>
           <%= i.input :quantity, as: :numeric %>
         <% end %>
