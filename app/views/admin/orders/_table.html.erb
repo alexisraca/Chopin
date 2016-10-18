@@ -1,0 +1,41 @@
+<div class="row button-block">
+  <div class="col-md-12 col-lg-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr> 
+          <th>user_id</th>
+          <th>comment</th>
+          <th>completed_at</th>
+          <th>total</th>
+          <th>state</th>
+          <th>accciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td>
+          <%= order.user_id %>
+        </td>
+        <td>
+          <%= order.comment %>
+        </td>
+        <td>
+          <%= order.completed_at %>
+        </td>
+        <td>
+          <%= order.total %>
+        </td>
+        <td>
+          <%= order.state %>
+        </td>
+        <td>
+          <%= link_to "Editar", edit_admin_order_path(order), class: "btn btn-primary" %>
+          <%= link_to "Borrar", admin_order_path(order), method: :delete, class: "btn btn-danger"%>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

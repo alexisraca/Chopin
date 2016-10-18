@@ -1,52 +1,15 @@
-<div class="row">
-  <div class="col-md-12 col-lg-12">
-    <div class="row actions-bar">
-      <div class="col-md-12 col-lg-12 hidden-xs hidden-sm">
-        <%= render partial: "admin/orders/desktop/button_bar" %>
-      </div>
-
-      <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
-        <%= render partial: "admin/orders/responsive/button_bar" %>
-      </div>
-    </div>
+<% content_for :buttons_bar do %>
+  <div class="col-md-12 col-lg-12 hidden-xs hidden-sm">
+    <%= render partial: "admin/orders/desktop/button_bar" %>
   </div>
-</div>
 
-<table class="table table-bordered">
-  <thead>
-    <tr> 
-      <th>user_id</th>
-      <th>comment</th>
-      <th>completed_at</th>
-      <th>total</th>
-      <th>state</th>
-      <th>accciones</th>
-    </tr>
-  </thead>
-    <tbody>
-    <% @orders.each do |order| %>
-    <tr>
-      <td>
-        <%= order.user_id %>
-      </td>
-      <td>
-        <%= order.comment %>
-      </td>
-      <td>
-        <%= order.completed_at %>
-      </td>
-      <td>
-        <%= order.total %>
-      </td>
-      <td>
-        <%= order.state %>
-      </td>
-      <td>
-        <%= link_to "Editar", edit_admin_order_path(order), class: "btn btn-primary" %>
-        <%= link_to "Borrar", admin_order_path(order), method: :delete, class: "btn btn-danger"%>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
+  <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
+    <%= render partial: "admin/orders/responsive/button_bar" %>
+  </div>
+<% end %>
 
-</table>
+<% content_for :page_content do %>
+  <div class="col-md-12 col-lg-12 hidden-xs hidden-sm desktop-table">
+    <%= render partial: "admin/orders/table" %>
+  </div>
+<% end %>
