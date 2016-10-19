@@ -7,7 +7,7 @@ class Sales::OrdersController < ApplicationController
     order = Order.includes(statements: :line_items).
                   where(line_items: { statement_id: nil  }).
                   where("orders.user_id = ?", current_user.id).
-                  order("orders.created_at DESC").first
+                  order("orders.created_at ASC").first
 
     if !order
       order = Order.create(user: current_user, state: Order::SUMARY)
