@@ -1,5 +1,7 @@
 class Sales::LineItemsController < ApplicationController
 
+  before_action :set_statement
+
   def create
     add_line_item_to_statement
     if !@line_item.new_record?
@@ -9,11 +11,23 @@ class Sales::LineItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @line_item = LineItem.find(params[:id])
+    if @line_item.destroy
+      flash[:notice] = "Producto borrado"
+    else
+      flash[:danger] = "Ocurrio un error al eliminar el producto"
+    end
+  end
+
   private
+
+  def set_statement
+    @statement = Statement.find(params[:statement_id])
+  end
 
   def add_line_item_to_statement
     @variant = Variant.find(params[:variant_id])
-    @statement = Statement.find(params[:statement_id])
     @line_item = @statement.add_line_item(@variant)
   end
 
