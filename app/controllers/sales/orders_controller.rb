@@ -9,10 +9,11 @@ class Sales::OrdersController < ApplicationController
                   where("orders.user_id = ?", current_user.id).
                   order("orders.created_at DESC").first
 
-    order.statements.create(total: 0.0) if order.statements.empty?
-    if !order 
+    if !order
       order = Order.create(user: current_user, state: Order::SUMARY)
       order.statements.create(total: 0.0) 
+    elsif order.statements.empty?
+      order.statements.create(total: 0.0)
     end
     order
   end
