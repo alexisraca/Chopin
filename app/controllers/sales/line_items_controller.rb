@@ -20,6 +20,15 @@ class Sales::LineItemsController < ApplicationController
     end
   end
 
+  def update
+    @line_item = LineItem.find(params[:id])
+    if @line_item.update(update_line_item_quantity_params)
+      flash[:notice] = "Producto actualizado"
+    else
+      flash[:danger] = "Ocurrio un error al actualizar el producto"
+    end
+  end
+
   private
 
   def set_statement
@@ -35,4 +44,7 @@ class Sales::LineItemsController < ApplicationController
     params.permit(:variant_id, :statement_id)
   end
 
+  def update_line_item_quantity_params 
+    params.require(:line_item).permit(:quantity)
+  end
 end

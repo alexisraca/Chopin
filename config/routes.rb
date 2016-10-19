@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root "admin/orders#index"
 
+  resources :rolandos, except: [:index, :destroy]
+
   namespace :admin do
     resources :fast_products
     resources :orders do
