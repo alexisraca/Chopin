@@ -5,6 +5,7 @@
       <th class="text-center" width="15%">Precio</th>
       <th class="text-center" width="15%">Inventario</th>
       <th/>
+      <th/>
     </tr>
   </thead>
   <tbody>
@@ -13,9 +14,13 @@
         <td class="hyphenate"> <%= variant.name %> </td>
         <td class="text-center"> <%= variant.price %> </td>
         <td class="text-center"> <%= variant.inventories.sum(:quantity) %> </td>
-        <td class="">
-          <%= link_to sales_statement_line_items_path(@statement, variant_id: variant.id), method: :post, class: "btn btn-success", remote: true do %>
-            <%= fa_icon "shopping-basket" %>
+        <td class="" colpan="2">
+          <%= simple_form_for LineItem.new(statement_id: @statement.id), url: sales_statement_line_items_path(@statement, variant_id: variant.id), remote: true do |f| %>
+            <%= f.input :quantity, value: 1 %>
+            <input class="btn btn-default" type="submit">
+              <%= fa_icon "shopping-basket" %>
+            </input>
+            
           <% end %>
         </td>
       </tr>

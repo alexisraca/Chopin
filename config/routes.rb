@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  root "admin/orders#index"
-
-  resources :rolandos, except: [:index, :destroy]
+  root "dashboard#index"
 
   namespace :admin do
     resources :fast_products
@@ -44,6 +42,8 @@ Rails.application.routes.draw do
     end
     resources :variants
   end
+
+  resources :dashboard
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

@@ -1,52 +1,56 @@
-<%= simple_form_for @fast_product_builder, url: admin_fast_products_path do |f| %>
-<div class="row button-block fast-products-button-block">
-   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-     <h3>Alta Rápida</h3>
-     <div class="fast-products-button-container pull-right">
-       <%= f.submit "Guardar", class: "btn btn-primary box-shadowed" %>
-     </div>
-     <div class="clearfix"></div>
-   </div>
-</div>
+<% content_for :page_content do %>
+  <div class="col-md-12 col-lg-12 hidden-xs hidden-sm">
+    <%= simple_form_for @fast_product_builder, url: admin_fast_products_path do |f| %>
+    <div class="row button-block fast-products-button-block">
+       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+         <h3>Alta Rápida</h3>
+         <div class="fast-products-button-container pull-right">
+           <%= f.submit "Guardar", class: "btn btn-primary box-shadowed" %>
+         </div>
+         <div class="clearfix"></div>
+       </div>
+    </div>
 
-<div class="row fast-products-pool">
-  
-  <%= f.simple_fields_for :products do |p| %>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-      <div class="box-shadowed rounded-corners panel fast-product-panel">
-        <div class="panel-body row">
-          <%= p.simple_fields_for :main_variant do |v| %>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <%= v.input :sku %>
+    <div class="row fast-products-pool">
+      
+      <%= f.simple_fields_for :products do |p| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <div class="box-shadowed rounded-corners panel fast-product-panel">
+            <div class="panel-body row">
+              <%= p.simple_fields_for :main_variant do |v| %>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <%= v.input :sku %>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <%= v.input :name %>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <%= v.input :price %>
+                </div>
+              <% end %>
             </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 add-fast-product-panel-wrapper">
+        <div class="box-shadowed rounded-corners panel fast-product-panel">
+          <div class="panel-body row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <%= v.input :name %>
+              
+                <%=  link_to_add_association f, :products, partial: "shared/fast_product", data: { 'association-insertion-node' => ".add-fast-product-panel-wrapper", 'association-insertion-traversal' => "closest", 'association-insertion-method' => 'before' }, class: "rounded-corners" do %>
+                  <h1 class="text-center"><%= "Agregar Producto" %></h1><br>
+                  <h1 class="text-center"><%= fa_icon "plus" %></h1>
+                <% end %>
+              
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <%= v.input :price %>
-            </div>
-          <% end %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
 
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 add-fast-product-panel-wrapper">
-    <div class="box-shadowed rounded-corners panel fast-product-panel">
-      <div class="panel-body row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          
-            <%=  link_to_add_association f, :products, partial: "shared/fast_product", data: { 'association-insertion-node' => ".add-fast-product-panel-wrapper", 'association-insertion-traversal' => "closest", 'association-insertion-method' => 'before' }, class: "rounded-corners" do %>
-              <h1 class="text-center"><%= "Agregar Producto" %></h1><br>
-              <h1 class="text-center"><%= fa_icon "plus" %></h1>
-            <% end %>
-          
-        </div>
-      </div>
-    </div>
+    </div><!-- Final de columnas -->
+    <% end %>
   </div>
-
-</div><!-- Final de columnas -->
 <% end %>
 
 

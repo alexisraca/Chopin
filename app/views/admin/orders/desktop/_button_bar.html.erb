@@ -1,6 +1,6 @@
 <div class="row button-block">
   <div class="col-md-12 col-lg-12">
-    <div class="btn-group list-inline pull-left rounded-corners box-shadowed">
+    <div class="btn-group pull-left rounded-corners box-shadowed">
       <%=link_to "Pagado", admin_orders_path(q:{state: Order::PAID}), remote: true , class: "btn btn-default" %>
       <%=link_to "Deuda", admin_orders_path(q:{state: Order::DEBT}), remote: true , class: "btn btn-default" %>
       <%=link_to "Cancelado", admin_orders_path(q:{state: Order::CANCELED}), remote: true , class: "btn btn-default" %>
