@@ -27,7 +27,9 @@
         Lista de Usuarios
       </div>
       <div class="panel-body">
-
+        <% @users.each do |user| %>
+          <%= user.username %>
+        <% end %>
       </div>
     </div>
   </div>
