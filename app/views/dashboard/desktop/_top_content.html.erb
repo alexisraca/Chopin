@@ -1,17 +1,33 @@
 <div class="row button-block">
-  <div class="col-md-8 media">
-    <div class="navigation-icon media-left media-middle">
+  <div class="col-md-1">
+    <div class="navigation-icon text-center">
       <%= image_tag "73.jpg", class: "img-circle profile-picture" %>
     </div>
   </div>
-  <div class="col-md-4">
-    <lu>
-      <li>
-        Acumulado del Mes
-      </li>
-      <li>
-        $ 1,000.00
-      </li>
-    </lu>
+  <div class="col-md-8">
+    <div class="navigation-text text-left">
+      <address class="no-margin">
+        <h3 class="margin-vertical padding-sides">
+          <strong>¡Bienvenido!</strong>
+        </h3>
+        <h2 class="margin-vertical padding-sides">
+          <%= current_user.first_name + " " + current_user.last_name  %> 
+        </h2>
+      </address>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="btn-group-vertical" role="group">
+      <div class="btn btn-primary text-center font-size">
+        <strong>Acumulado del Mes</strong>
+      </div>
+      <div class="btn-group-vertical" role="group">
+        <div class="input-group font-size">
+          <span class="input-group-addon">$</span>
+          <input type="text" class="form-control text-right" id="mes-total" placeholder="1,000">
+          <span class="input-group-addon">.00</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -4,11 +4,21 @@
 body {
   background-color: rgb(244, 246, 249);
 }
+
+.font-size {
+  font-size: 18px;
+}
+
 .no-margin-top {
   margin-top: 0px;
 }
 .no-margin {
   margin: 0px;
+}
+
+.margin-vertical {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .form-inline {
