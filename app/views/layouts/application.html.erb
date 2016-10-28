@@ -21,17 +21,13 @@
       <%= render "shared/top_menu" %>
       
       
+      <div class="row button-bar">
+        <%= yield :buttons_bar %>
+      </div>
+          
       <div class="row">
-        <div class="col-md-12 col-lg-12">
-          <div class="row actions-bar">
-            <%= yield :buttons_bar %>
-          </div>
-
-          <div class="row">
-            <%= yield :page_content %>
-            <%= yield %>
-          </div>
-        </div>
+        <%= yield :page_content %>
+        <%= yield %>
       </div>
 
     </div>

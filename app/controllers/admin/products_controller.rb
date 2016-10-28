@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
 
   def index
-    @q = base_variants_scope.count_variants.ransack(params[:q])
+    @q = base_variants_scope.includes(:product).ransack(params[:q])
     @variants = @q.result(distinct: true).
                   paginate(page: params[:page], per_page: 30).
                   order(:created_at)
@@ -10,6 +10,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      @new_variant = Variant.count_variants.where(id: @product.main_variant.id).first
       flash[:notice] = "Producto guardado"
     end
   end

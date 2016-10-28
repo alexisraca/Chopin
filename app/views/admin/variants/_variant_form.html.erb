@@ -2,20 +2,20 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-4">
-        <%= i.input :name, label: false, placeholder: 'Nombre' %>
-        <%= i.input :price, label: false, placeholder: 'Precio', input_html: { size: "8"} %>
+        <%= i.input :name %>
+        <%= i.input :price, input_html: { size: "8"} %>
       </div>
       <div class="col-md-4">
-        <%= i.input :sku, label: false, placeholder: 'Sku', input_html: { size: "15"} %>
-        <%= i.input :cost, label: false, placeholder: 'Costo', input_html: { size: "8"} %>
+        <%= i.input :sku, input_html: { size: "15"} %>
+        <%= i.input :cost, input_html: { size: "8"} %>
       </div>
       <div class="col-md-4">
         <% i.object.inventories.build if i.object.inventories.empty? %>
         <%= i.simple_fields_for :inventories do |s| %>
-          <%= s.input :quantity, label: false, placeholder: "Cantidad" %>
+          <%= s.input :quantity %>
         <% end %>
         <% if i.object.persisted? %>
-          <%= link_to admin_variant_path(i.object), method: :delete, class: "btn btn-danger pull-right", data: { confirm: "¿Esta seguro que desea borrar la variante de este producto?" }, remote: true do %>
+          <%= link_to admin_product_variant_path(@product, i.object), method: :delete, class: "btn btn-danger pull-right", data: { confirm: "¿Esta seguro que desea borrar la variante de este producto?" }, remote: true do %>
             <%= fa_icon "trash-o" %>
           <% end %>
         <% else %>

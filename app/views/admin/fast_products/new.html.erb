@@ -1,21 +1,27 @@
-<% content_for :page_content do %>
-  <div class="col-md-12 col-lg-12 hidden-xs hidden-sm">
-    <%= simple_form_for @fast_product_builder, url: admin_fast_products_path do |f| %>
-    <div class="row button-block fast-products-button-block">
-       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-         <h3>Alta Rápida</h3>
-         <div class="fast-products-button-container pull-right">
-           <%= f.submit "Guardar", class: "btn btn-primary box-shadowed" %>
-         </div>
-         <div class="clearfix"></div>
-       </div>
+<% content_for :buttons_bar do %>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <h3 class="no-margin">Alta Rápida</h3>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="fast-products-button-container pull-right">
+      <%= link_to "Guardar", "#", class: "btn btn-primary submit-fast-products-form", "data-saving-text": "Guardando"  %>
     </div>
+    <div class="clearfix"></div>
+  </div>
+
+<% end %>
+
+<% content_for :page_content do %>
+  <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+    <%= simple_form_for @fast_product_builder, url: admin_fast_products_path do |f| %>
 
     <div class="row fast-products-pool">
-      
+
       <%= f.simple_fields_for :products do |p| %>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="box-shadowed rounded-corners panel fast-product-panel">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 nested-fields">
+          <div class="panel system-panel">
             <div class="panel-body row">
               <%= p.simple_fields_for :main_variant do |v| %>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -26,6 +32,12 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <%= v.input :price %>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <%= link_to_remove_association f, class: "btn btn-danger pull-right", data: { confirm: "¿Está seguro de que desea borrar este producto?" } do %>
+                    <%= fa_icon "trash-o" %>
+                  <% end %>
+                  <div class="clearfix"></div>
                 </div>
               <% end %>
             </div>

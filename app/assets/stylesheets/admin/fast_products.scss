@@ -4,51 +4,12 @@
 @import "colors";
 @import "mixins";
 
-.fast-product-panel {
-  margin-top: 10px;
-  background-color: $system-white;
-  .remove-fast-product-thumbnail, .col-md-6:last-child, .col-lg-6:last-child, .col-sm-6:last-child, .col-xs-6:last-child {
-    line-height: 74px;
-    .btn { height: 64px; width:100%; line-height: 50px; font-size: 32px;}
-  }
-}
-.fast-products-button-block {
-  height: 47px;
-  .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-    
-  }
-  h3, .fast-products-button-container {
-    line-height: 47px;
-    height: 47px;
-    margin: 0;
-    display: inline-block;
-  }
-}
-.add-fast-product-panel-wrapper {
-  h1:last-child { margin-top: 0; margin-bottom: 20px; }
-  .panel { background-color: $dark-purple; }
-  a {
-    background-color: $light-purple;
-    display: block;
-    border: 1px solid $system-white;
-    color: $system-white;
-    &:hover, &:focus {
-      @include box-shadowed;
-      transition: 0.3s;
-      color: $text-black;
-      text-decoration: none;
-      background-color: $system-white;
-    }
-  }
+.fast-products-remove-association-link {
+  width: 100%;
 }
 
-.finished-fast-product-panel {
-  a {
-    line-height: 46px;
-    display: block;
-    height: 60px;
-    font-size: 25px;
-  }
-  span { max-height: 36px;}
+.remove-fast-product-thumbnail {
+  ul { margin: 0; }
+  li:first-child { margin-bottom: 5px; }
+  a { width: 40px; }
 }
-

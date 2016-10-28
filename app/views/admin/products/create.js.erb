@@ -1,8 +1,17 @@
-<% if !@product.new_record? %>
-  window.history.pushState("", "", '<%= edit_admin_product_path(@product) %>');
+<% if @product.persisted? %>
+  <% unless flash[:notice].blank? %>
+    $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
+  <% end %>
+  $("#global-modal").modal("hide");
+  $(".desktop-table tbody").prepend("<%= j render(partial: 'variant', locals: { variant: @new_variant }) %>");
+  $(".responsive-table tbody").prepend("<%= j render(partial: 'variant', locals: { variant: @new_variant }) %>");
+<% else %>
+  if($("#global-modal").hasClass('in')) {
+    $("#global-modal .modal-body").html("<%= j render partial: 'form'%>");
+  } else {
+    $("#global-modal").modal("show")
+    $("#global-modal .modal-body").html("<%= j render partial: 'form'%>");
+  }
 <% end %>
-$(".form-container").html("<%= j render 'form' %>");
-window.bindDatePicker($(".datepicker"))
-<% unless flash[:notice].blank? %>
-  $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
-<% end %>
+window.resetButton();
+

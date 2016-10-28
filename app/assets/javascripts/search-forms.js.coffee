@@ -1,5 +1,12 @@
 @resetSearchButtons = ->
-  $(".submit-search").button("reset")
+  @resetDisableableButtons(".submit-search")
+
+@resetDisableableButtons = (selector) ->
+  if selector
+    $(selector).button("reset")
+  else
+    $(".disableable").removeAttr("disabled")
+    $(".disableable").button("reset")
 
 @bindSearchForms = ->
   timer = null
@@ -12,9 +19,28 @@
         form.submit()
       , 600)
 
+@bindDisableableForms = ->
+  $(document).on "click", ".disableable", (e) ->
+    if $(this).is("[disabled]")
+      e.preventDefault()
+    else
+      form = $(this).closest "form"
+      $(this).button("saving")
+      $(this).attr("disabled", "disabled")
+      form.submit()
+
 $ ->
   window.bindSearchForms()
+  window.bindDisableableForms()
   $(".submit-search").on "click", (e) ->
     $(this).button("loading")
     $(this).closest("#search-form").submit()
+
+  $(".submit-fast-products-form").click (e)->
+    if $(this).is("[disabled]")
+      return
+    else
+      $(this).button("saving")
+      $(this).attr("disabled", "disabled")
+      $("#new_fast_product_builder").submit()
 

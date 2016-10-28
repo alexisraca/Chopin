@@ -11,4 +11,8 @@ module Admin::VariantsHelper
       "¿Esta seguro de que desea borrar este producto?, Se borraran los respectivos inventarios, como es una variante, se respetara el producto de linea base"
     end
   end
+
+  def variant_count(variant)
+    variant.product.variants.common_variants.count
+  end
 end

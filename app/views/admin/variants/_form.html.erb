@@ -1,5 +1,5 @@
 <div class="row">
-  <%= simple_form_for [:admin, @product], remote: :true do |f| %>
+  <%= simple_form_for [@product], url: admin_product_variant_path(@product, @variant), method: :put, remote: :true do |f| %>
     <%= f.simple_fields_for :main_variant do |v| %>
       <div class="col-md-6">
           <%= v.input :name, input_html: { class: "form-control" } %>

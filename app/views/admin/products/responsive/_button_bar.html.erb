@@ -1,41 +1,44 @@
-<div class="row button-block">
-  <div class="col-xs-12 col-sm-12">
-    <div class="btn-group btn-group-justified rounded-corners box-shadowed">
+<div class="row">
+  <div class="col-xs-12 col-sm-12 responsive-row">
+    <div class="btn-group btn-group-justified system-panel">
       <%=link_to "Activos", admin_products_path, remote: true , class: "btn btn-default btn-filter" %>
       <%=link_to "Inactivos", admin_products_path(q:{deleted_at_not_null: 1}), remote: true , class: "btn btn-default btn-filter" %>
       <%=link_to "Producto de linea", admin_products_path(q:{main_variant_true: 1}), remote: true , class: "btn btn-default btn-filter" %>
       <%=link_to "Variantes", admin_products_path(q:{main_variant_false: 1}), remote: true , class: "btn btn-default btn-filter" %> 
     </div>
   </div>
-</div>
 
-<div class="row button-block">
-  <div class="col-xs-6 col-sm-6">
-    <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
-      <div class="form-group">
-        <div class="input-group">
-          <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
-          <span class="input-group-btn">
-            <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
-              <%= fa_icon("search", text: " ") %>
-            </button>
-          </span>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-xs-6 col-sm-6">
-    <div class="list-inline pull-right">
-      <li>
-        <%= link_to new_admin_product_path, class: "btn btn-primary" do %>
-          Nuevo
-          <%= fa_icon "plus" %>
+  <div class="col-xs-12 col-sm-12 responsive-row">
+    <div class="row">
+      <div class="col-xs-6 col-sm-6">
+        <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+          <div class="form-group">
+            <div class="input-group system-panel">
+              <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
+              <span class="input-group-btn">
+                <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+                  <%= fa_icon("search", text: " ") %>
+                </button>
+              </span>
+            </div>
+          </div>
         <% end %>
-      </li>
-      <li>
-        <%= link_to "Alta Rápida", new_admin_fast_product_path, class: "btn btn-primary" %>
-      </li>
+      </div>
+
+      <div class="col-xs-6 col-sm-6">
+        <div class="list-inline pull-right">
+          <li>
+            <%= link_to new_admin_product_path, class: "btn btn-primary system-panel" do %>
+              Nuevo
+              <%= fa_icon "plus" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "Alta Rápida", new_admin_fast_product_path, class: "btn btn-primary system-panel" %>
+          </li>
+        </div>
+        <div class="clearfix"></div>
+      </div>
     </div>
-    <div class="clearfix"></div>
   </div>
 </div>

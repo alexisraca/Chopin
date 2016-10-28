@@ -34,6 +34,10 @@ class Variant < ActiveRecord::Base
 #  }
 
   acts_as_paranoid
+
+  def restore
+    Variant.unscoped.where(product_id: product_id).update_all(deleted_at: nil)
+  end
 end
 #
 # Variants

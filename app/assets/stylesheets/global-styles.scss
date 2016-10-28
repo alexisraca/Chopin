@@ -2,7 +2,7 @@
 @import "mixins";
 
 body {
-  background-color: rgb(244, 246, 249);
+  background-color: $pos-background;
 }
 
 .font-size {
@@ -55,10 +55,11 @@ body {
   overflow: hidden;
  }
 
-.button-block {
+.button-bar {
   margin-top: 10px;
   margin-bottom: 10px;
   .list-inline.pull-right li:last-child { padding-right: 0; }
+  .responsive-row { padding-top: 5px; padding-bottom: 5px; }
 }
 
 .padding-sides {
@@ -94,7 +95,16 @@ body {
 .box-shadowed { @include box-shadowed; }
 .rounded-corners { @include rounded-corners; }
 
-#search-form input { z-index: 0;}
+.system-panel {
+  @include box-shadowed;
+  @include rounded-corners;
+  background-color: $panel-white;
+}
+
+#search-form {
+  input { z-index: 0;}
+  .form-group { margin-bottom: 0 !important }
+}
 
 .btn-primary {
   background-color: $light-green;

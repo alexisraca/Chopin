@@ -1,51 +1,47 @@
-<div class="row button-block">
-  <div class="col-md-12 col-lg-12">
-    <div class="btn-group pull-left rounded-corners box-shadowed">
-      <%= link_to "Activos", admin_products_path, remote: true , class: "btn btn-default btn-filter #{ params[:q].blank? ? 'btn-filter-active' : '' }" %>
-      <%=
-          link_to "Inactivos",
-          admin_products_path(q:{deleted_at_not_null: 1}),
-          remote: true,
-          class: "btn btn-default btn-filter  #{ params[:q] && params[:q][:deleted_at_not_null] == "1" ? 'btn-filter-active' : '' }"
-       %>
-      <%=
-          link_to "Producto de linea",
-          admin_products_path(q:{main_variant_true: 1}),
-          remote: true , class: "btn btn-default btn-filter #{ params[:q] && params[:q][:main_variant_true] == "1" ? 'btn-filter-active' : '' }"
-      %>
-      <%=
-          link_to "Variantes",
-          admin_products_path(q:{main_variant_false: 1}),
-          remote: true,
-          class: "btn btn-default btn-filter #{ params[:q] && params[:q][:main_variant_false] == "1" ? 'btn-filter-active' : '' }"
-      %>
-    </div>
-
-    <ul class="list-inline pull-right">
-      <li>
-        <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
-          <div class="form-group box-shadowed rounded-corners">
-            <div class="input-group">
-              <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
-              <span class="input-group-btn">
-                <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
-                  <%= fa_icon("search", text: " ") %>
-                </button>
-              </span>
-            </div>
-          </div>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_admin_product_path, class: "btn btn-primary box-shadowed" do %>
-          Nuevo
-          <%= fa_icon "plus" %>
-        <% end %>
-      </li>
-      <li>
-         <%= link_to "Alta Rápida", new_admin_fast_product_path, class: "btn btn-primary box-shadowed" %>
-      </li>
-    </ul>
-    <div class="clearfix"></div>
-  </div>
+<div class="btn-group pull-left rounded-corners box-shadowed">
+  <%= link_to "Activos", admin_products_path, remote: true , class: "btn btn-default btn-filter #{ params[:q].blank? ? 'btn-filter-active' : '' }" %>
+  <%=
+      link_to "Inactivos",
+      admin_products_path(q:{deleted_at_not_null: 1}),
+      remote: true,
+      class: "btn btn-default btn-filter  #{ params[:q] && params[:q][:deleted_at_not_null] == "1" ? 'btn-filter-active' : '' }"
+   %>
+  <%=
+      link_to "Producto de linea",
+      admin_products_path(q:{main_variant_true: 1}),
+      remote: true , class: "btn btn-default btn-filter #{ params[:q] && params[:q][:main_variant_true] == "1" ? 'btn-filter-active' : '' }"
+  %>
+  <%=
+      link_to "Variantes",
+      admin_products_path(q:{main_variant_false: 1}),
+      remote: true,
+      class: "btn btn-default btn-filter #{ params[:q] && params[:q][:main_variant_false] == "1" ? 'btn-filter-active' : '' }"
+  %>
 </div>
+
+<ul class="list-inline pull-right">
+  <li>
+    <%= search_form_for @q, url: admin_products_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+      <div class="form-group system-panel">
+        <div class="input-group">
+          <%= s.text_field :name_or_description_cont, class: "form-control keyup-autosearch" %>
+          <span class="input-group-btn">
+            <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+              <%= fa_icon("search", text: " ") %>
+            </button>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to new_admin_product_path, class: "btn btn-primary system-panel", remote: :true do %>
+      Nuevo
+      <%= fa_icon "plus" %>
+    <% end %>
+  </li>
+  <li>
+     <%= link_to "Alta Rápida", new_admin_fast_product_path, class: "btn btn-primary system-panel" %>
+  </li>
+</ul>
+<div class="clearfix"></div>

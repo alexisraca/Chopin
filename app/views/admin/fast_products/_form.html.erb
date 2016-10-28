@@ -12,7 +12,7 @@
           
           <% v.object.inventories.build if v.object.inventories.empty? %>
           <%= v.simple_fields_for :inventories do |i| %>
-            <%= i.input :quantity, label: false, as: :numeric %>
+            <%= i.input :quantity, label: false, as: :numeric, placeholder: "Cantidad" %>
           <% end %>
       </div>
 
@@ -36,7 +36,7 @@
 
       <div class="col-md-12">
         <hr>
-        <%= f.button :submit, "Guardar", class: "btn btn-primary pull-right" %>
+        <%= f.button :submit, "Guardar", class: "btn btn-primary pull-right disableable", "data-saving-text": "Guardando" %>
       </div>
     <% end %>
   <% end %>

@@ -1,11 +1,14 @@
 <% if @variant.errors.full_messages.empty? %>
-  $("tr[data-variant-id='<%= @variant.id %>']").fadeOut("slow", function(){
-    $(this).remove();
-    var products = $("tr[data-variant-id]");
-    if(!products.length) {
-      $("tbody").html("<%= j render 'admin/products/variants_list' %>")
-    }
-  })
+  var variants = <%= @product.reload.variants.pluck(:id) %>
+  for(var i=0; variants[i]; i++) {
+    $("tr[data-variant-id='" + variants[i] + "']").fadeOut("slow", function(){
+      $(this).remove();
+      var products = $("tr[data-variant-id]");
+      if(!products.length) {
+        $("tbody").html("<%= j render 'admin/products/variants_list' %>")
+      }
+    })
+  }
   <% if flash[:notice] %>
     $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
   <% else %>

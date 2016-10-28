@@ -4,6 +4,7 @@ class Admin::VariantsController < ApplicationController
   def destroy
     @variant = Variant.unscoped.find(params[:id])
     if destroy_variant
+      @variants = Variant.unscoped.where(product_id: @product.id) if @variant.main_variant?
       flash[:notice] = "Producto borrado"
     else
       flash[:alert] = @destroyer.error
@@ -11,11 +12,22 @@ class Admin::VariantsController < ApplicationController
   end
 
   def restore
-    @variant = Variant.unscoped.find(params[:variant_id])
+    @variant = Variant.unscoped.find(params[:id])
     if @variant.restore
       flash[:notice] = "Producto restaurado"
     else
       flash[:alert] = "Hubo un error restaurando el producto"
+    end
+  end
+
+  def edit
+    @variant = Variant.unscoped.find(params[:id])
+  end
+
+  def update
+    if @product.update(product_params)
+      @variant = Variant.unscoped.where(id: params[:id]).first
+      flash[:notice] = "Producto actualizado"
     end
   end
 
@@ -41,5 +53,34 @@ class Admin::VariantsController < ApplicationController
           :branch_id, :quantity, :expiration_date, :id
         ]
       )
+  end
+
+  def product_params
+    params.require(:product).
+      permit(
+        main_variant_attributes: variant_attrs,
+        common_variants_attributes: variant_attrs
+      )
+  end
+
+  def variant_attrs
+    [
+      :name,
+      :description,
+      :cost,
+      :price,
+      :sku,
+      :id,
+      inventories_attributes: inventory_attrs
+    ]
+  end
+
+  def inventory_attrs
+    [
+      :quantity,
+      :expiration_date,
+      :branch_id,
+      :id
+    ]
   end
 end
