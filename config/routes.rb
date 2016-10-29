@@ -29,7 +29,9 @@ Rails.application.routes.draw do
 
     resources :branches
     resources :reports
-    resources :users
+    resources :users do
+      post "/restore", to: "users#restore", as: :restore
+    end
     resources :retired_users, only: [:index]
     resources :categories
   end

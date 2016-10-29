@@ -1,7 +1,7 @@
-<tr data-user="<%= user.id %>">
+<tr data-user-id="<%= user.id %>" class="<%= 'bg-danger' if user.deleted? %>">
   <td><%= user.username %></td>
-  <td><%= user.created_at.strftime("%d-%m-%Y") %></td>
-  <td>
+  <td class="text-center"><%= user.created_at.strftime("%d-%m-%Y") %></td>
+  <td class="text-center">
     <%= render partial: "actions", locals: { user: user } %>
   </td>
 </tr>

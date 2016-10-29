@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-   @q = User.non_master.ransack(params[:q])
+   @q = default_user_scope.non_master.ransack(params[:q])
    @users = @q.result(distinct: true).
               paginate(page: params[:page], per_page: 30).
               order(:created_at)
@@ -16,8 +16,12 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy unless @user == current_user
-    redirect_to admin_users_path
+    if @user == current_user
+      flash[:warning] = "No puede desactivar su propio usuario"
+    else
+      @user.destroy
+      flash[:notice] = "Usuario desactivado"
+    end
   end
 
   def create
@@ -32,9 +36,22 @@ class Admin::UsersController < ApplicationController
     @user.update(password_or_not_params)
     flash[:notice] = "Usuario actualizado"
   end
-  
+
+  def restore
+    @user = User.find(params[:user_id])
+    @user.restore
+    flash[:notice] = "Usuario restaurado"
+  end
 
   private
+
+  def default_user_scope
+    if params[:q].blank?
+      User.where(deleted_at: nil)
+    else
+      User
+    end
+  end
 
   def password_or_not_params
     if params[:user][:password].blank?
@@ -51,7 +68,7 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).
-      permit(:username, :password, :password_confirmation, :email, :first_name, :last_name, :role_id)
+      permit(:username, :password, :password_confirmation, :email, :first_name, :last_name, :role_id, :phone, :address)
   end
 end
 

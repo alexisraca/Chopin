@@ -1,9 +1,5 @@
 <% if @users.empty? %>
-  <td  colspan="3" >
-    <h1 class="text-center">
-      No se encontraron usuarios
-    </h1>
-  </td>
+  <%= render "no_users" %>
 <% else %>
   <%= render @users %>
 <% end %>

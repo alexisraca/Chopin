@@ -22,7 +22,7 @@
             <div class="clearfix"></div>
           </li>
           <li>
-            <%= link_to admin_product_path(product), remote: true, class: "btn btn-danger text-center pull-right disableable", method: :delete, data: { confirm: "¿Esta seguro de que desea borrar este producto? Se perderan el producto y sus variantes" } do %>
+            <%= link_to admin_product_path(product), remote: true, class: "btn btn-danger text-center pull-right disableable", method: :delete, data: { confirm: "¿Esta seguro? El producto" } do %>
               <%= fa_icon "trash-o" %>
             <% end %>
             <div class="clearfix"></div>

@@ -1,4 +1,5 @@
 <% if @user.persisted? %>
+  $("#no-users-row").remove()
   $("tbody").prepend("<%= j render partial: 'user', locals: { user: @user } %>");
   $("#global-modal").modal("hide");
   $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });

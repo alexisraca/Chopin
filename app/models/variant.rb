@@ -36,7 +36,11 @@ class Variant < ActiveRecord::Base
   acts_as_paranoid without_default_scope: true
 
   def restore
-    Variant.unscoped.where(product_id: product_id).update_all(deleted_at: nil)
+    if main_variant?
+      Variant.unscoped.where(product_id: product_id).update_all(deleted_at: nil)
+    else
+      update_attributes(deleted_at: nil)
+    end
   end
 end
 #
