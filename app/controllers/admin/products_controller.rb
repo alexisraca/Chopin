@@ -38,12 +38,36 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    if @product.destroy
+    if fully_destroy_product
       flash[:notice] = "Producto borrado"
+    else
+      flash[:warning] = "Hubo un error borrando el producto"
     end
   end
 
   private
+
+  def fully_destroy_product
+    value = true
+    begin
+      Product.transaction do
+        @product.variants.each do |v|
+          v.inventories.each { |i| i.destroy! }
+          v.really_destroy!
+        end
+        @product.reload
+        if @product.variants.empty?
+          @product.destroy!
+        else
+          raise Exception, "error al borrar el producto"
+        end
+        return true
+      end
+    rescue Exception, ActiveRecord::RecordNotDestroyed
+      value = false
+    end
+    value
+  end
 
   def base_variants_scope
     if params[:q] && params[:q][:deleted_at_not_null] || params[:unscoped] == "true"
