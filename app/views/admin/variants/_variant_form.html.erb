@@ -1,6 +1,13 @@
-<div class="panel panel-default variant-row nested-fields" <%= variant_id_data_attr(i.object) %>>
-  <div class="panel-body">
+<div class="panel panel-default nested-fields" <%= variant_id_data_attr(i.object) %>>
+  <div class="panel-body <%= 'bg-danger' if i.object.deleted? %>">
     <div class="row">
+
+      <% if i.object.deleted? %>
+        <div class="col-md-12">
+          <p class="text-danger"><strong>Variante inactiva</strong></p>
+        </div>
+      <% end %>
+
       <div class="col-md-4">
         <%= i.input :name %>
         <%= i.input :price, input_html: { size: "8"} %>
@@ -14,12 +21,19 @@
         <%= i.simple_fields_for :inventories do |s| %>
           <%= s.input :quantity %>
         <% end %>
-        <% if i.object.persisted? %>
-          <%= link_to admin_product_variant_path(@product, i.object), method: :delete, class: "btn btn-danger pull-right", data: { confirm: "¿Esta seguro que desea borrar la variante de este producto?" }, remote: true do %>
-            <%= fa_icon "trash-o" %>
+
+        <% if i.object.persisted? && !i.object.deleted? %>
+          <%= link_to admin_product_variant_path(@product, i.object), method: :delete, class: "btn btn-danger pull-right deactivate-variant", data: { confirm: "¿Esta seguro que desea desactivar la variante de este producto?" }, remote: true do %>
+            <%= fa_icon "power-off" %>
           <% end %>
+       
+        <% elsif i.object.persisted? && i.object.deleted? %>
+          <%= link_to admin_product_restore_path(@product, i.object, render: true), method: :post, class: "btn btn-danger pull-right reactivate-variant", data: { toggle: "tooltip", confirm: restore_variant_text(i.object) }, title: "Restaurar", remote: :true do %>
+            <%= fa_icon "undo" %>
+          <% end %>
+
         <% else %>
-          <%= link_to_remove_association (fa_icon "trash-o"), i, class: 'btn btn-danger pull-right' %>
+          <%= link_to_remove_association (fa_icon "power-off"), i, class: 'btn btn-danger pull-right deactivate-variant' %>
         <% end %>
       </div>
     </div>

@@ -3,11 +3,13 @@
 <% end %>
 
 <% unless variant.deleted? %>
-  <%= link_to admin_product_variant_path(variant.product, variant), method: :delete, class: "btn btn-danger", data: { toggle: "tooltip", confirm: delete_variant_warning_text(variant) }, title: "Borrar", remote: :true do %>
-    <%= fa_icon "trash-o" %>
+
+  <%= link_to admin_product_variant_path(variant.product, variant), method: :delete, class: "btn btn-danger disableable", data: { toggle: "tooltip", confirm: delete_variant_warning_text(variant), "saving-text": "Desactivando..." }, title: "Desactivar", remote: :true do %>
+    <%= fa_icon "power-off" %>
   <% end %>
 <% else %>
-  <%= link_to admin_product_restore_path(@product, variant), method: :post, class: "btn btn-danger", data: { toggle: "tooltip", confirm: delete_variant_warning_text(variant) }, title: "Restaurar", remote: :true do %>
+
+  <%= link_to admin_product_restore_path(@product, variant), method: :post, class: "btn btn-danger disableable", data: { toggle: "tooltip", confirm: restore_variant_text(variant), "saving-text": "Restaurando..." }, title: "Restaurar", remote: :true do %>
     <%= fa_icon "undo" %>
   <% end %>
 <% end %>

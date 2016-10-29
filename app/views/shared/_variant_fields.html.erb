@@ -15,7 +15,8 @@
         <%= f.simple_fields_for :inventories do |i| %>
           <%= i.input :quantity %>
         <% end %>
-        <%= link_to_remove_association (fa_icon "trash-o"), f, class: 'btn btn-danger' %>
+        
+        <%= link_to_remove_association (fa_icon "power-off"), f, class: 'btn btn-danger pull-right deactivate-variant' %>
       </div>
     </div>
   </div>

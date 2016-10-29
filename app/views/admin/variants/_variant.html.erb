@@ -1,6 +1,7 @@
+<% binding.pry %>
 <tr <%= variant_id_data_attr(variant) %> class="<%= variant.deleted_at.blank? ? '' : 'danger' %>">
   <td class="vertical-td">
-      <%=  variant.name %>
+      <%= variant.name %>
       <% if variant.main_variant?%>
         <span class="label label-success">producto de linea</span>
       <% else %>
@@ -8,7 +9,7 @@
       <% end %>
   </td>
   <td class="text-center">
-    <%= link_to admin_products_path(q: { product_id_eq: variant.product.id }) do %>
+    <%= link_to admin_products_path(q: { product_id_eq: variant.product.id, unscoped: true }) do %>
       <span class="badge"><%= variant_count(variant) %></span>
     <% end %>
   </td>

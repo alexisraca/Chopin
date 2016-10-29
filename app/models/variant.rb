@@ -33,7 +33,7 @@ class Variant < ActiveRecord::Base
 #    )
 #  }
 
-  acts_as_paranoid
+  acts_as_paranoid without_default_scope: true
 
   def restore
     Variant.unscoped.where(product_id: product_id).update_all(deleted_at: nil)

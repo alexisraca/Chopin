@@ -1,0 +1,13 @@
+<% if @product.errors.full_messages.empty? %>
+  $("div[data-product-id='<%= @product.id %>']").replaceWith("<%= j render partial: '/admin/fast_products/product', locals: { product: @product } %>");
+  $("#global-modal").modal("hide")
+
+  $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
+<% else %>
+  if($("#global-modal").hasClass('in')) {
+    $("#global-modal .modal-body").html("<%= j render partial: 'form' %>")
+  } else {
+    $("#global-modal").modal("show")
+    $("#global-modal .modal-body").html("<%= j render partial: 'form' %>")
+  }
+<% end %>

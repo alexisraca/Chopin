@@ -16,11 +16,11 @@ Rails.application.routes.draw do
     end
 
     resources :products do
+      post "/restore/:id", to: "variants#restore", as: :restore
       resources :variants
     end
 
     resources :variants do
-      post "/restore", to: "variants#restore", as: :restore
       resources :promotions
       resources :inventories
     end

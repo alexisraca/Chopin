@@ -4,7 +4,6 @@ class Admin::VariantsController < ApplicationController
   def destroy
     @variant = Variant.unscoped.find(params[:id])
     if destroy_variant
-      @variants = Variant.unscoped.where(product_id: @product.id) if @variant.main_variant?
       flash[:notice] = "Producto borrado"
     else
       flash[:alert] = @destroyer.error

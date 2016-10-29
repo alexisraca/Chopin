@@ -1,1 +1,9 @@
+console.log($("div[data-product-id='<%= @product.id %>']"))
+$("div[data-product-id='<%= @product.id %>']").fadeOut("slow", function(){
+  $(this).remove();
+  var products = $("tr[data-product-id]");
+  if(!products.length) {
+    $(".fast-products-pool").html("<%= j render '/admin/fast_products/no_products' %>")
+  }
+})
 $.notify({ message: "<%= flash[:alert] %>" },{ type: 'alert', placement: { align: "center" } });

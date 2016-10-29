@@ -10,7 +10,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      @new_variant = Variant.count_variants.where(id: @product.main_variant.id).first
+      @new_variant = Variant.main_variant
       flash[:notice] = "Producto guardado"
     end
   end
@@ -46,10 +46,10 @@ class Admin::ProductsController < ApplicationController
   private
 
   def base_variants_scope
-    if params[:q] && params[:q][:deleted_at_not_null]
-      Variant.unscoped
-    else
+    if params[:q] && params[:q][:deleted_at_not_null] || params[:unscoped] == "true"
       Variant
+    else
+      Variant.without_deleted
     end
   end
 

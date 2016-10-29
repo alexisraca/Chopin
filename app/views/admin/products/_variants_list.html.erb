@@ -1,4 +1,4 @@
-<% if @variants.blank? %>
+<% if @variants.empty? %>
   <tr>
     <td  colspan="5" >
       <h1 class="text-center">
@@ -7,5 +7,5 @@
     </td>
   </tr>
 <% else %>
-  <%= render partial: "variant", collection: @variants %>
+  <%= render partial: "admin/variants/variant", collection: @variants %>
 <% end %>

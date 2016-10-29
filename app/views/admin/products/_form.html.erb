@@ -22,7 +22,7 @@
 
       <div class="col-md-12" id="variants-list">
         <%= f.simple_fields_for :common_variants do |i| %>
-          <%= render "variant_form", i: i %>
+          <%= render "/admin/variants/variant_form", i: i %>
         <% end %>
 
         <div class="panel nested-fields">

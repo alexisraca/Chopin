@@ -6,13 +6,21 @@ module Admin::VariantsHelper
 
   def delete_variant_warning_text(variant)
     if variant.main_variant?
-      "¿Esta seguro de que desea borrar este producto?, Se borraran todas sus variantes ya que se trata un producto de linea y los respectivos inventarios."
+      "¿Esta seguro de que desea dar de baja este producto?, Se daran de baja todas las variantes ya que se trata un producto de linea."
     else
-      "¿Esta seguro de que desea borrar este producto?, Se borraran los respectivos inventarios, como es una variante, se respetara el producto de linea base"
+      "¿Esta seguro de que desea dar de baja este producto? se respetara el producto de linea base"
     end
   end
 
   def variant_count(variant)
     variant.product.variants.common_variants.count
+  end
+
+  def restore_variant_text(variant)
+    if variant.main_variant?
+      "Se restauraran el producto de linea y las variantes ¿Desea continuar?"
+    else
+      "Se restaurara la variante ¿Desea continuar?"
+    end
   end
 end
