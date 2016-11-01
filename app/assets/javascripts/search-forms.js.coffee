@@ -22,9 +22,10 @@
 @bindDisableableForms = ->
   $(document).on "click", ".disableable", (e) ->
     form = undefined
+    e.preventDefault()
     if $(this).is("[disabled]")
-      e.preventDefault()
-    else if $(this).attr("data-target").length
+      return
+    else if $(this).attr("data-target")
       form = $("##{$(this).attr("data-target")}")
     else
       form = $(this).closest "form"
