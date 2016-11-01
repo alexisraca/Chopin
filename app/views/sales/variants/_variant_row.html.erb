@@ -1,5 +1,6 @@
-<%= simple_form_for LineItem.new(statement_id: @statement.id), url: sales_statement_line_items_path(@statement, variant_id: variant_row.id), remote: true do |f| %>
-  <tr> 
+
+<tr>
+  <%= simple_form_for LineItem.new(statement_id: @statement.id), url: sales_statement_line_items_path(@statement, variant_id: variant_row.id), remote: true, html: { id: "new-line-item-#{variant_row.id}" } do |f| %>
     <td class="hyphenate"> <%= variant_row.name %> </td>
     <td class="text-center"> <%= variant_row.price %> </td>
     <td class="text-center"> <%= variant_row.inventories.sum(:quantity) %> </td>
@@ -7,9 +8,9 @@
       <%= f.input :quantity, label: false, input_html: { value: 1, min: 0 } %>
     </td>
     <td class="text-center">
-      <button class="btn btn-primary" type="submit">
+      <button class="btn btn-primary disableable" type="submit" data-saving-text="Agregando..." data-target="new-line-item-<%= variant_row.id %>">
         <%= fa_icon "shopping-basket" %>
       </button>
     </td>
-  </tr>
-<% end %>
+  <% end %>
+</tr>

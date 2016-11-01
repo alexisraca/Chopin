@@ -21,13 +21,16 @@
 
 @bindDisableableForms = ->
   $(document).on "click", ".disableable", (e) ->
+    form = undefined
     if $(this).is("[disabled]")
       e.preventDefault()
+    else if $(this).attr("data-target").length
+      form = $("##{$(this).attr("data-target")}")
     else
       form = $(this).closest "form"
-      $(this).button("saving")
-      $(this).attr("disabled", "disabled")
-      form.submit()
+    $(this).button("saving")
+    $(this).attr("disabled", "disabled")
+    form.submit()
 
 $ ->
   window.bindSearchForms()

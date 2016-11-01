@@ -5,3 +5,5 @@ $("#line-items-list-table").replaceWith("<%= j render partial:'sales/statements/
 <% unless flash[:notice].blank?  %>
   $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
 <% end %>
+
+window.resetDisableableButtons();
