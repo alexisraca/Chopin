@@ -3,17 +3,17 @@
     <div class="row">
       <div class="col-md-4">
         <%= f.input :name, required: true %>
-        <%= f.input :price, required: true, input_html: { size: "8"} %>
+        <%= f.input :price, required: true, input_html: { size: "8"}, input_html: { min: 0 } %>
       </div>
       <div class="col-md-4">
         <%= f.input :sku, required: true, input_html: { size: "15"} %>
-        <%= f.input :cost, input_html: { size: "8"} %>
+        <%= f.input :cost, input_html: { size: "8"}, input_html: { min: 0 } %>
       </div>
       <div class="col-md-4">
         <% f.object.inventories.build if f.object.inventories.empty? %>
 
         <%= f.simple_fields_for :inventories do |i| %>
-          <%= i.input :quantity %>
+          <%= i.input :quantity, input_html: { min: 0 } %>
         <% end %>
         
         <%= link_to_remove_association (fa_icon "power-off"), f, class: 'btn btn-danger pull-right deactivate-variant' %>

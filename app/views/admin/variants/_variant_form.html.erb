@@ -10,16 +10,16 @@
 
       <div class="col-md-4">
         <%= i.input :name %>
-        <%= i.input :price, input_html: { size: "8"} %>
+        <%= i.input :price, input_html: { size: "8"}, input_html: { min: 0 } %>
       </div>
       <div class="col-md-4">
         <%= i.input :sku, input_html: { size: "15"} %>
-        <%= i.input :cost, input_html: { size: "8"} %>
+        <%= i.input :cost, input_html: { size: "8"}, input_html: { min: 0 } %>
       </div>
       <div class="col-md-4">
         <% i.object.inventories.build if i.object.inventories.empty? %>
         <%= i.simple_fields_for :inventories do |s| %>
-          <%= s.input :quantity %>
+          <%= s.input :quantity, input_html: { min: 0 } %>
         <% end %>
 
         <% if i.object.persisted? && !i.object.deleted? %>

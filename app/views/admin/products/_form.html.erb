@@ -7,12 +7,12 @@
           <%= v.input :description,  as: :text, input_html: { rows: "5", class: "max-width form-control" } %>
       </div>
       <div class="col-md-6">
-          <%= v.input :cost, as: :decimal, required: true %>
-          <%= v.input :price, as: :decimal %>
+          <%= v.input :cost, as: :decimal, required: true, input_html: { min: 0 } %>
+          <%= v.input :price, as: :decimal, input_html: { min: 0 } %>
           
           <% v.object.inventories.build if v.object.inventories.empty? %>
           <%= v.simple_fields_for :inventories do |i| %>
-            <%= i.input :quantity, as: :numeric %>
+            <%= i.input :quantity, as: :numeric, input_html: { min: 0 } %>
           <% end %>
       </div>
 
