@@ -1,4 +1,4 @@
-<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
   <div class="panel panel-default">
 
     <div class="panel-heading">
@@ -16,9 +16,12 @@
       </div>
     </div> <!-- Cierre de panel heading -->
 
+    <%= render partial:'line_item_list' %>
+    
+    
     <div class="panel-body" id="line-items-list-table">
-      <%= render partial:'sales/variants/line_item_list' %>
-    </div> <!-- Cierre de panel body -->
+     
+    </div> <!-- Cierre de panel body, NOTA: las tablas de los paneles de bootstrap van a fuera del panel body para ocupar el ancho entero del panel y no tengan esa sangria a los lados vacia -->
 
     <div class="panel-footer">
       <div class="row">

@@ -1,0 +1,63 @@
+<table class="table table-striped no-margin" id="line-items-list-table">
+  <thead>
+    <tr> 
+      <th width="45%">Articulo</th>
+      <th width="15%" class="text-center">Precio</th>
+      <th width="15%" class="text-center">Cantidad</th>
+      <th width="15%" class="text-center">Total</th>
+      <th width="10%"/>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @statement.line_items.order(:created_at).each do |li| %>
+      <tr>
+        <td>
+          <%= link_to "#line_item#{li.id}", 
+                      data: { toggle: "collapse" }, 
+                      aria: {
+                        expanded: "false", 
+                        controls: "line_item#{li.id}" 
+                      } do %>
+            <%= li.variant.name %>
+            <%= fa_icon "caret-down" %>
+          <% end %>
+        </td>
+        <td>
+          <%= li.variant.price %>
+        </td>
+        <td>
+          <%= li.quantity %>
+        </td>
+        <td>
+          <%= li.total %>
+        </td>
+        <td>
+          <%= link_to sales_statement_line_item_path(@statement, li), method: :delete, class: "btn btn-danger", remote: true do %>
+            <%= fa_icon "trash-o" %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" class="collapsable-row">
+          <div class="collapse row padding-top padding-bottom" id="line_item<%= li.id %>">
+              <%= simple_form_for li, url: sales_statement_line_item_path(@statement, li), method: :put, remote: true do |f| %>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                  Actualizar cantidad
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                  <%= f.input :quantity, label: false %>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                  <%= f.submit "Actualizar", class: "btn btn-primary pull-right" %>
+                  <div class="clearfix"> </div>
+                </div>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+

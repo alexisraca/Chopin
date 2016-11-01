@@ -1,0 +1,15 @@
+<%= simple_form_for LineItem.new(statement_id: @statement.id), url: sales_statement_line_items_path(@statement, variant_id: variant_row.id), remote: true do |f| %>
+  <tr> 
+    <td class="hyphenate"> <%= variant_row.name %> </td>
+    <td class="text-center"> <%= variant_row.price %> </td>
+    <td class="text-center"> <%= variant_row.inventories.sum(:quantity) %> </td>
+    <td class="text-center">
+      <%= f.input :quantity, label: false, input_html: { value: 1, min: 0 } %>
+    </td>
+    <td class="text-center">
+      <button class="btn btn-primary" type="submit">
+        <%= fa_icon "shopping-basket" %>
+      </button>
+    </td>
+  </tr>
+<% end %>

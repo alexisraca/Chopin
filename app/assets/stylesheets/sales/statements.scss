@@ -1,3 +1,18 @@
 // Place all the styles related to the sales/statements controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Junto con las funciones de bootstrap, permite que el row de la tabla
+// de ventas sea completamente invisible hasta que se haga click en "expandir"
+.collapsable-row { margin:0; padding: 0 6px 0 6px !important; }
+
+.view-change-buttons {
+  &.xs.sm { margin-top: 10px; }
+  li:first-child { padding-left: 0; }
+  li:last-child { padding-right: 0; }
+}
+
+#variants-list-pool, #line-items-list-table {
+  td { vertical-align: middle; }
+  .form-group { margin-bottom: 0; }
+}

@@ -1,6 +1,8 @@
-<% if flash[:notice].blank? %>
+console.log("<%= j render partial:'sales/statements/line_item_list' %>")
+$("#line-items-list-table").replaceWith("<%= j render partial:'sales/statements/line_item_list' %>")
+<% unless flash[:danger].blank? %>
   $.notify({ message: "<%= flash[:danger] %>" },{ type: 'danger', placement: { align: "center" } });
-<% else %>
-  $("#line-items-list-table").html("<%= j render partial:'sales/variants/line_item_list' %>")
+<% end %>
+<% unless flash[:notice].blank?  %>
   $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
 <% end %>

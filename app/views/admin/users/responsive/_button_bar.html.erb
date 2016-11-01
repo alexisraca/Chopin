@@ -1,58 +1,55 @@
-<div class="row button-block">
-  <div class="col-md-12 col-lg-12">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12">
-        <div class="btn-group btn-group-justified rounded-corners box-shadowed">
-          <%=link_to "Activos",
-                     admin_users_path(q: { deleted_at_null: 1 }),
-                     remote: true,
-                     class: "btn btn-default btn-filter #{ params[:q].blank? || params[:q][:deleted_at_null] ? 'btn-filter-active' : '' }"
-          %>
 
-          <%=link_to "Inactivos",
-                     admin_users_path(q: { deleted_at_not_null: 1 }),
-                     remote: true,
-                     class: "btn btn-default btn-filter #{ params[:q] && params[:q][:deleted_at_not_null] == '1' ? 'btn-filter-active' : '' }"
-          %>
+<div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <div class="btn-group btn-group-justified rounded-corners box-shadowed">
+      <%=link_to "Activos",
+                 admin_users_path(q: { deleted_at_null: 1 }),
+                 remote: true,
+                 class: "btn btn-default btn-filter #{ params[:q].blank? || params[:q][:deleted_at_null] ? 'btn-filter-active' : '' }"
+      %>
 
-          <%=link_to "Administrativo",
-                     admin_users_path(q: { main_variant_true: 1 }),
-                     remote: true , class: "btn btn-default btn-filter #{ params[:q] && params[:q][:main_variant_true] == '1' ? 'btn-filter-active' : '' }"
-           %>
+      <%=link_to "Inactivos",
+                 admin_users_path(q: { deleted_at_not_null: 1 }),
+                 remote: true,
+                 class: "btn btn-default btn-filter #{ params[:q] && params[:q][:deleted_at_not_null] == '1' ? 'btn-filter-active' : '' }"
+      %>
 
-          <%=link_to "Ventas",
-                     admin_users_path(q: { main_variant_false: 1 }),
-                     remote: true , class: "btn btn-default btn-filter #{ params[:q] && params[:q][:main_variant_false] == '1' ? 'btn-filter-active' : '' }"
-           %>
+      <%=link_to "Administrativo",
+                 admin_users_path(q: { main_variant_true: 1 }),
+                 remote: true , class: "btn btn-default btn-filter #{ params[:q] && params[:q][:main_variant_true] == '1' ? 'btn-filter-active' : '' }"
+       %>
+
+      <%=link_to "Ventas",
+                 admin_users_path(q: { main_variant_false: 1 }),
+                 remote: true , class: "btn btn-default btn-filter #{ params[:q] && params[:q][:main_variant_false] == '1' ? 'btn-filter-active' : '' }"
+       %>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-9 col-sm-9 pull-left">
+    <%= search_form_for @q, url: admin_users_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
+      <div class="form-group rounded-corners box-shadowed">
+        <div class="input-group">
+          <%= s.text_field :username_or_email_cont, class: "form-control keyup-autosearch" %>
+          <span class="input-group-btn">
+            <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
+              <%= fa_icon("search", text: " ") %>
+            </button>
+          </span>
         </div>
       </div>
-    </div>
+    <% end %>
+  </div>
 
-    <hr>
-
-    <div class="row">
-      <div class="col-xs-9 col-sm-9 pull-left">
-        <%= search_form_for @q, url: admin_users_path, method: :get, html: { class: "form-inline", id: "search-form" }, remote: :true do |s| %>
-          <div class="form-group rounded-corners box-shadowed">
-            <div class="input-group">
-              <%= s.text_field :username_or_email_cont, class: "form-control keyup-autosearch" %>
-              <span class="input-group-btn">
-                <button class="btn btn-default submit-search" type="button" data-loading-text="Buscando...">
-                  <%= fa_icon("search", text: " ") %>
-                </button>
-              </span>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="col-xs-3 col-sm-3">
-        <%= link_to new_admin_user_path, class: "btn btn-primary pull-right box-shadowed", remote: true do %>
-          Nuevo Usuario
-          <%= fa_icon "plus" %>
-        <% end %>
-        <div class="clearfix"></div>
-      </div>
-    </div>
+  <div class="col-xs-3 col-sm-3">
+    <%= link_to new_admin_user_path, class: "btn btn-primary pull-right box-shadowed", remote: true do %>
+      Nuevo Usuario
+      <%= fa_icon "plus" %>
+    <% end %>
+    <div class="clearfix"></div>
   </div>
 </div>

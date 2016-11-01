@@ -1,29 +1,14 @@
 <table class="table table-striped no-margin" id="variants-list-pool">
   <thead>
     <tr> 
-      <th width="60%">Articulo</th>
+      <th width="40%">Articulo</th>
       <th class="text-center" width="15%">Precio</th>
       <th class="text-center" width="15%">Inventario</th>
-      <th/>
-      <th/>
+      <th width="10%"/>
+      <th width="10%"/>
     </tr>
   </thead>
   <tbody>
-    <% @variants.each do |variant| %>
-      <tr> 
-        <td class="hyphenate"> <%= variant.name %> </td>
-        <td class="text-center"> <%= variant.price %> </td>
-        <td class="text-center"> <%= variant.inventories.sum(:quantity) %> </td>
-        <td class="" colpan="2">
-          <%= simple_form_for LineItem.new(statement_id: @statement.id), url: sales_statement_line_items_path(@statement, variant_id: variant.id), remote: true do |f| %>
-            <%= f.input :quantity, value: 1 %>
-            <input class="btn btn-default" type="submit">
-              <%= fa_icon "shopping-basket" %>
-            </input>
-            
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
+    <%= render partial: "/sales/variants/variant_row", collection: @variants %>
   </tbody>
 </table>

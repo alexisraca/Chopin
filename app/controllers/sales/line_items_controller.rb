@@ -37,14 +37,14 @@ class Sales::LineItemsController < ApplicationController
 
   def add_line_item_to_statement
     @variant = Variant.find(params[:variant_id])
-    @line_item = @statement.add_line_item(@variant)
+    @line_item = @statement.add_line_item(@variant, update_line_item_quantity_params[:quantity])
   end
 
   def create_line_item_params
     params.permit(:variant_id, :statement_id)
   end
 
-  def update_line_item_quantity_params 
+  def update_line_item_quantity_params
     params.require(:line_item).permit(:quantity)
   end
 end
