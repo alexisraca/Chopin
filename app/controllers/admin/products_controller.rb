@@ -10,7 +10,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      @new_variant = Variant.main_variant
+      @new_variant = @product.main_variant
       flash[:notice] = "Producto guardado"
     end
   end

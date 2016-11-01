@@ -3,8 +3,8 @@
     $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
   <% end %>
   $("#global-modal").modal("hide");
-  $(".desktop-table tbody").prepend("<%= j render(partial: 'variant', locals: { variant: @new_variant }) %>");
-  $(".responsive-table tbody").prepend("<%= j render(partial: 'variant', locals: { variant: @new_variant }) %>");
+  $(".desktop-table tbody").prepend("<%= j render(partial: '/admin/variants/variant', locals: { variant: @new_variant }) %>");
+  $(".responsive-table tbody").prepend("<%= j render(partial: '/admin/variants/variant', locals: { variant: @new_variant }) %>");
 <% else %>
   if($("#global-modal").hasClass('in')) {
     $("#global-modal .modal-body").html("<%= j render partial: 'form'%>");

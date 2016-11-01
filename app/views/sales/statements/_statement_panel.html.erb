@@ -1,54 +1,41 @@
-<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-  <div class="panel panel-default">
+<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 full-height system-panel" id="line-items-list-wrapper">
+  <div class="row">
+    <div class="col-md-6 margin-top-10 margin-bottom-10 padding-left-8 padding-right-8">
+      <strong>Ticket:</strong> <%= @statement.id %>
+    </div>
+    <div class="col-md-6 margin-top-10 margin-bottom-10 text-right">
+      <strong>Fecha:</strong> <%= l @statement.created_at, format: :tiket %>
+    </div>
+  </div>
 
-    <div class="panel-heading">
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="list-inline padding-sides">
-            <li>
-              Ticket: <%= @statement.id %>
-            </li>
-            <li class="pull-right">
-              Fecha: <%= l @statement.created_at, format: :tiket %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> <!-- Cierre de panel heading -->
-
+  <div class="row">
     <%= render partial:'line_item_list' %>
-    
-    
-    <div class="panel-body" id="line-items-list-table">
-     
-    </div> <!-- Cierre de panel body, NOTA: las tablas de los paneles de bootstrap van a fuera del panel body para ocupar el ancho entero del panel y no tengan esa sangria a los lados vacia -->
+  </div>
 
-    <div class="panel-footer">
-      <div class="row">
-        <div class="col-md-3">
-          Venta Total
-        </div>
-        <div class="col-md-6">
-          <form class="form-inline pull-right">
-            <div class="form-group">
-              <label class="sr-only" for="exampleInputAmount">Total (in dollars)</label>
-              <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-                <div class="input-group-addon">.00</div>
-              </div>
-            </div>
-          </form>
-          <div class="clearfix"></div>
-        </div>
-        <div class="col-md-3">
-          <form class="pull-right">
-            <%= link_to "Cobrar", "#", class: "btn btn-primary" %>
-          </form>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    </div><!-- Cierre de panel footer -->
 
-  </div><!-- Cierre de panel -->
+
+  <div class="row">
+    <div class="col-md-3">
+      Venta Total
+    </div>
+    <div class="col-md-6">
+      <form class="form-inline pull-right">
+        <div class="form-group">
+          <label class="sr-only" for="exampleInputAmount">Total (in dollars)</label>
+          <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+            <div class="input-group-addon">.00</div>
+          </div>
+        </div>
+      </form>
+      <div class="clearfix"></div>
+    </div>
+    <div class="col-md-3">
+      <form class="pull-right">
+        <%= link_to "Cobrar", "#", class: "btn btn-primary" %>
+      </form>
+    </div>
+    <div class="clearfix"></div>
+  </div>
 </div>

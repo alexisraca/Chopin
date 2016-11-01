@@ -17,18 +17,29 @@
   <% end %>
 
   <div class="<%= 'site-wrap' if user_signed_in? %>">
-    <div class="container-fluid">
+    <div class="container-fluid page-container-fluid">
       <%= render "shared/top_menu" %>
       
       
-      <div class="row button-bar">
-        <%= yield :buttons_bar %>
-      </div>
-          
-      <div class="row">
-        <%= yield :page_content %>
-        <%= yield %>
-      </div>
+      <% if content_for?(:buttons_bar) %>
+        <div class="row button-bar">
+          <%= yield :buttons_bar %>
+        </div>
+      <% end %>
+
+      <% if content_for?(:page_content) %>
+        <div class="row">
+          <%= yield :page_content %>
+        </div>
+      <% end %>
+      
+      <% if content_for?(:page_full_height) %>
+        <div class="row full-height">
+          <%= yield :page_full_height %>
+        </div>
+      <% end %>
+      
+      <%= yield %>
 
     </div>
   </div>

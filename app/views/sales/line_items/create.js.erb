@@ -1,4 +1,3 @@
-console.log("<%= j render partial:'sales/statements/line_item_list' %>")
 $("#line-items-list-table").replaceWith("<%= j render partial:'sales/statements/line_item_list' %>")
 <% unless flash[:danger].blank? %>
   $.notify({ message: "<%= flash[:danger] %>" },{ type: 'danger', placement: { align: "center" } });
