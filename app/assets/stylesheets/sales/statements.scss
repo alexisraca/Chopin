@@ -61,9 +61,7 @@ $variants-list-footer-height: 40px;
 }
 
 .sales-variant-thumbnail a { display: block; }
-.sales-variant-thumbnail-content {
-  height: 100px;
-}
+.sales-variant-thumbnail-content { height: 100px; }
 .variant-thumbnail-info, .variant-thumbnail-add {
   height: 100%;
   margin: 0;
@@ -76,7 +74,7 @@ $variants-list-footer-height: 40px;
 .variant-thumbnail-add {
   float:left;
   width:20%;
-  a { line-height: 100%; }
+  a { line-height: 100px; }
 }
 .variant-thumbnail-price {
   bottom: 5px;

@@ -7,7 +7,7 @@
         <% end %>
       </div>
       <div class="variant-thumbnail-add">
-        <%= link_to new_sales_statement_line_item_path(@statement, variant_id: variant_thumbnail.id), remote: true, class: "bg-success" do %>
+        <%= link_to sales_statement_line_items_path(@statement, variant_id: variant_thumbnail.id, line_item: { quantity: 1 }), method: :post, remote: true, class: "bg-success padding-left-12 disableable" do %>
           <%= fa_icon "shopping-basket" %>
         <% end %>
       </div>
