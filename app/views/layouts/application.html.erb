@@ -34,7 +34,7 @@
       <% end %>
       
       <% if content_for?(:page_full_height) %>
-        <div class="row full-height">
+        <div class="row page-content-full-height">
           <%= yield :page_full_height %>
         </div>
       <% end %>
@@ -44,5 +44,6 @@
     </div>
   </div>
   <%= render partial: "/shared/global_modal" %>
+  <%= render partial: "/shared/small_global_modal" %>
 </body>
 </html>

@@ -4,6 +4,12 @@
 
 // Junto con las funciones de bootstrap, permite que el row de la tabla
 // de ventas sea completamente invisible hasta que se haga click en "expandir"
+@import "colors";
+@import "mixins";
+
+$variants-list-header-height: 54px;
+$variants-list-footer-height: 40px;
+
 .collapsable-row { margin:0; padding: 0 6px 0 6px !important; }
 
 .view-change-buttons {
@@ -13,10 +19,65 @@
 }
 
 #variants-list-pool, #line-items-list-table {
+  td {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
   td { vertical-align: middle; }
   .form-group { margin-bottom: 0; }
 }
 
-#line-items-list-header { height: 10%; }
-#line-items-list-body { height: 80%; }
-#line-items-list-footer { height: 10%; }
+#line-items-list-header { height: $variants-list-header-height; }
+#line-items-list-body {
+  height: -webkit-calc(90% - #{$variants-list-header-height});
+  height:    -moz-calc(90% - #{$variants-list-header-height});
+  height:         calc(90% - #{$variants-list-header-height});
+  overflow-y: scroll;
+}
+#line-items-list-footer {
+  height: 10%;
+  
+}
+
+#variants-list-header { height: $variants-list-header-height; }
+#variants-list-body {
+  height: -webkit-calc(100% - #{$variants-list-header-height} - #{$variants-list-footer-height});
+  height:    -moz-calc(100% - #{$variants-list-header-height} - #{$variants-list-footer-height});
+  height:         calc(100% - #{$variants-list-header-height} - #{$variants-list-footer-height});
+  overflow-y: scroll;
+}
+#variants-list-footer {}
+
+.highlighted-line-item {
+  border: 2px solid rgba(0, 153, 0, 0.4);
+  #inventory-quantity {
+    color: green;
+    font-size: 1.7em;
+  }
+  td { background-color: #dff0d8; }
+}
+
+.sales-variant-thumbnail a { display: block; }
+.sales-variant-thumbnail-content {
+  height: 100px;
+}
+.variant-thumbnail-info, .variant-thumbnail-add {
+  height: 100%;
+  margin: 0;
+  a { height: 100%; text-decoration: none; color: $text-black; }
+}
+.variant-thumbnail-info {
+  float:left;
+  width:80%;
+}
+.variant-thumbnail-add {
+  float:left;
+  width:20%;
+  a { line-height: 100%; }
+}
+.variant-thumbnail-price {
+  bottom: 5px;
+}

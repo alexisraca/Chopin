@@ -9,7 +9,7 @@
   <% end %>
 <% else %>
 
-  <%= link_to admin_product_restore_path(@product, variant), method: :post, class: "btn btn-danger disableable", data: { toggle: "tooltip", confirm: restore_variant_text(variant), "saving-text": "Restaurando..." }, title: "Restaurar", remote: :true do %>
+  <%= link_to admin_product_restore_path(variant.product, variant), method: :post, class: "btn btn-danger disableable", data: { toggle: "tooltip", "saving-text": "Restaurando..." }, title: "Restaurar", remote: true do %>
     <%= fa_icon "undo" %>
   <% end %>
 <% end %>

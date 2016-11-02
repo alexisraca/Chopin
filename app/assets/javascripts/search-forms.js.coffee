@@ -3,6 +3,7 @@
 
 @resetDisableableButtons = (selector) ->
   if selector
+    $(selector).removeAttr("disabled")
     $(selector).button("reset")
   else
     $(".disableable").removeAttr("disabled")
@@ -20,18 +21,24 @@
       , 600)
 
 @bindDisableableForms = ->
-  $(document).on "click", ".disableable", (e) ->
+  $(document).on "ajax:beforeSend click", ".disableable", (e) ->
     form = undefined
-    e.preventDefault()
     if $(this).is("[disabled]")
       return
     else if $(this).attr("data-target")
       form = $("##{$(this).attr("data-target")}")
     else
       form = $(this).closest "form"
+
+    if form
+      form.submit()
+
     $(this).button("saving")
     $(this).attr("disabled", "disabled")
-    form.submit()
+    
+  
+  $(document).on "ajax:success", (e) ->
+    window.resetDisableableButtons()
 
 $ ->
   window.bindSearchForms()
@@ -47,4 +54,3 @@ $ ->
       $(this).button("saving")
       $(this).attr("disabled", "disabled")
       $("#new_fast_product_builder").submit()
-

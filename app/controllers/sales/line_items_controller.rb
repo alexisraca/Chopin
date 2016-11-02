@@ -29,6 +29,11 @@ class Sales::LineItemsController < ApplicationController
     end
   end
 
+  def new
+    @variant = Variant.find(params[:variant_id])
+    @line_item = LineItem.new(statement_id: @statement.id)
+  end
+
   private
 
   def set_statement

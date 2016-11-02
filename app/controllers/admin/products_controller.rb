@@ -39,7 +39,7 @@ class Admin::ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     if fully_destroy_product
-      flash[:notice] = "Producto borrado"
+      flash[:notice] = "Producto inhabilitado"
     else
       flash[:warning] = "Hubo un error borrando el producto"
     end

@@ -1,0 +1,22 @@
+var modal_controls = function(){
+  var current_value = parseInt($("#li-amount").val());
+ 
+  $("#plus-line-item").click(function(e){
+    if(current_value != undefined && current_value >= 0) {
+      current_value += 1;
+      $("#li-amount").val(current_value);
+    }
+  });
+
+  $("#minus-line-item").click(function(e){
+    if(current_value != undefined && current_value > 0) {
+      current_value -= 1;
+      $("#li-amount").val(current_value);
+    }
+  });
+}
+
+$("#small-global-modal .modal-title").text('<%= "Agregar #{@variant.name}" %>')
+$("#small-global-modal .modal-body").html("<%= j render partial: 'form' %>")
+$("#small-global-modal").modal("show")
+modal_controls()

@@ -16,6 +16,6 @@
   <td class="vertical-td text-center"><%= variant.cost %></td>
   <td class="vertical-td text-center"><%= variant.inventories.sum(:quantity) %></td>
   <td class="vertical-td text-center">
-    <%= render partial: "actions", locals: { variant: variant } %>
+    <%= render partial: "/admin/variants/actions", locals: { variant: variant } %>
   </td>
 </tr>

@@ -1,0 +1,17 @@
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 margin-top-10 sales-variant-thumbnail">
+  <div class="system-panel sales-variant-thumbnail-content">
+      <div class="variant-thumbnail-info">
+        <%= link_to new_sales_statement_line_item_path(@statement, variant_id: variant_thumbnail.id), remote: true, class: "padding-top padding-left" do %>
+          <h4 class="no-margin padding-left padding-right text-info"><%= variant_thumbnail.name %></h4>
+          <h3 class="no-margin padding-left padding-right position-absolute variant-thumbnail-price"><small>$</small><%= variant_thumbnail.price %></h3>
+        <% end %>
+      </div>
+      <div class="variant-thumbnail-add">
+        <%= link_to new_sales_statement_line_item_path(@statement, variant_id: variant_thumbnail.id), remote: true, class: "bg-success" do %>
+          <%= fa_icon "shopping-basket" %>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
