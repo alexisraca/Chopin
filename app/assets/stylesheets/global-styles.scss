@@ -3,7 +3,7 @@
 
 $top-bar-height: 60px;
 
-html, body, .site-wrap, .page-container-fluid, .full-height { height: 100%; }
+html, body, .site-wrap, .page-container-fluid, .full-height { height: 100%; min-height: 100%; }
 
 body { background-color: $pos-background; }
 
@@ -83,20 +83,29 @@ body { background-color: $pos-background; }
   padding-right: 10px;
 }
 
-.padding-top { padding-top: 5px; }
-.padding-bottom { padding-bottom: 5px; }
-.padding-right { padding-right: 5px; }
-.padding-left { padding-left: 5px; }
-
-.padding-left-8 { padding-left: 8px; }
-.padding-right-8 { padding-right: 8px; }
+.padding-top, .padding-top-5 { padding-top: 5px; }
+.padding-bottom, .padding-bottom-5 { padding-bottom: 5px; }
+.padding-right, .padding-right-5 { padding-right: 5px; }
+.padding-left, .padding-left-5 { padding-left: 5px; }
+.padding-top-10 { padding-top: 10px; }
+.padding-bottom-10 { padding-bottom: 10px; }
 .padding-left-10 { padding-left: 10px; }
 .padding-right-10 { padding-right: 10px; }
+
+.padding-top-8 { padding-top: 8px; }
+.padding-bottom-8 { padding-bottom: 8px; }
+.padding-left-8 { padding-left: 8px; }
+.padding-right-8 { padding-right: 8px; }
+
+.padding-top-12 { padding-top: 12px; }
+.padding-bottom-12 { padding-bottom: 12px; }
 .padding-left-12 { padding-left: 12px; }
 .padding-right-12 { padding-right: 12px; }
 
 .no-padding-right { padding-right: 0; }
 .no-padding-left { padding-left: 0; }
+.no-padding-top { padding-top: 0; }
+.no-padding-bottom { padding-bottom: 0; }
 
 .margin-top-5 { margin-top: 5px; }
 .margin-top-10 { margin-top: 10px; }
@@ -272,3 +281,5 @@ body { background-color: $pos-background; }
   color: $system-white;
   border-color: $dark-orange;
 }
+
+// LOADING ANIMATION

@@ -1,17 +1,17 @@
 @resetSearchButtons = ->
-  @resetDisableableButtons(".submit-search")
+  @resetDisableableButtons($(".submit-search"))
 
-@resetDisableableButtons = (selector) ->
-  if selector
-    $(selector).removeAttr("disabled")
-    $(selector).button("reset")
+@resetDisableableButtons = (tag) ->
+  if tag
+    tag.removeAttr("disabled")
+    tag.button("reset")
   else
     $(".disableable").removeAttr("disabled")
     $(".disableable").button("reset")
 
 @bindSearchForms = ->
   timer = null
-  $("input.keyup-autosearch").keyup ->
+  $(document).on "keyup", "input.keyup-autosearch", (e) ->
     form = $(this).closest "#search-form"
     if timer
       clearTimeout(timer);
@@ -23,6 +23,7 @@
 @bindDisableableForms = ->
   $(document).on "ajax:beforeSend click", ".disableable", (e) ->
     form = undefined
+    button = $(this)
     if $(this).is("[disabled]")
       return
     else if $(this).attr("data-target")
@@ -32,13 +33,17 @@
 
     if form
       form.submit()
-
+    
     $(this).button("saving")
     $(this).attr("disabled", "disabled")
+    text = button.html()
+    button.html('<i class="fa fa-circle-o-notch fa-spin">')
     
-  
-  $(document).on "ajax:success", (e) ->
-    window.resetDisableableButtons()
+
+    $(document).off "ajax:success"
+    $(document).on "ajax:success", (e) ->
+      window.resetDisableableButtons(button)
+      button.html(text)
 
 $ ->
   window.bindSearchForms()

@@ -1,0 +1,5 @@
+$("#small-global-modal .modal-title").text('Pagar ticket #<%= @statement.id %>')
+$("#small-global-modal .modal-body").html("<%= j render partial: 'form' %>")
+$("#small-global-modal").modal("show")
+
+window.paymentModalBinding()

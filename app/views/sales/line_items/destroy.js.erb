@@ -1,6 +1,14 @@
 <% if flash[:notice].blank? %>
   $.notify({ message: "<%= flash[:danger] %>" },{ type: 'danger', placement: { align: "center" } });
 <% else %>
-  $("#line-items-list-table").replaceWith("<%= j render partial:'/sales/statements/line_item_list' %>")
+  $("tr[data-line-item-id='<%= @line_item.id %>']").fadeOut("slow", function(){
+    $(this).remove();
+    $("tr[data-for-line-item-id='<%= @line_item.id %>']").remove()
+    var users = $("tr[data-line-item-id]");
+    if(!users.length) {
+      $("#line-items-list-body").html("<%= j render partial:'/sales/statements/line_item_list' %>")
+    }
+  })
+  $("#line-items-list-footer").html("<%= j render partial: '/sales/statements/statement_footer' %>")
   $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
 <% end %>

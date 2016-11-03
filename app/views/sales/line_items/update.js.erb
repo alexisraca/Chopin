@@ -1,6 +1,7 @@
 <% if flash[:notice].blank? %>
   $.notify({ message: "<%= flash[:danger] %>" },{ type: 'danger', placement: { align: "center" } });
 <% else %>
-  $("#line-items-list-table").html("<%= j render partial:'sales/statements/line_item_list' %>")
+  $("#line-items-list-wrapper").replaceWith("<%= j render partial:'sales/statements/statement_panel' %>");
   $.notify({ message: "<%= flash[:notice] %>" },{ type: 'success', placement: { align: "center" } });
+  window.highlightLineItem(parseInt("<%= @line_item.id %>"));
 <% end %>

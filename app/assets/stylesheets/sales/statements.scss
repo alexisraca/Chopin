@@ -37,12 +37,9 @@ $variants-list-footer-height: 40px;
   height:         calc(90% - #{$variants-list-header-height});
   overflow-y: scroll;
 }
-#line-items-list-footer {
-  height: 10%;
-  
-}
+#line-items-list-footer { height: 10%; }
 
-#variants-list-header { height: $variants-list-header-height; }
+#variants-list-header {  }
 #variants-list-body {
   height: -webkit-calc(100% - #{$variants-list-header-height} - #{$variants-list-footer-height});
   height:    -moz-calc(100% - #{$variants-list-header-height} - #{$variants-list-footer-height});

@@ -24,4 +24,9 @@ class Order < ActiveRecord::Base
         "Resumen"
     end
   end
+
+  def update_totals
+    self.total = statements.sum(:total)
+    save!
+  end
 end

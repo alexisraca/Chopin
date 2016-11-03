@@ -1,0 +1,68 @@
+<div class="row" id="statement-payment-type">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <%= link_to "#", class: "btn btn-lg btn-info full-width", id: "credit-card-payment" do %>
+      <%= fa_icon "credit-card" %>
+      Tarjeta
+    <% end %>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <%= link_to "#", class: "btn btn-lg btn-primary full-width", id: "cash-payment" do %>
+      <%= fa_icon "dollar" %>
+      Efectivo
+    <% end %>
+  </div>
+</div>
+
+<div class="row hidden" id="statement-ticket">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row">
+      <% @statement.line_items.each do |li| %>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="row">
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-left hyphenate">
+              <strong><%= li.variant.name %></strong>
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 text-right">
+              <%= number_to_currency(li.variant.price) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <hr/>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
+        <p class="lead">Total</p>
+        <h4 class="text-success"><%= number_to_currency(@statement.total) %></h4>
+      </div>
+    </div>
+
+    <hr/>
+
+    <div class="row" id="payment-modal-footer">
+      <%= simple_form_for [:sales, @statement, @payment], remote: true do |f| %>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 full-height">
+          <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left full-height">
+              <p class="no-margin lead">Importe:</p>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 text-right full-height">
+              <%= f.hidden_field_tag "payment[type]", "", id: "payment-type" %>
+              <%= f.text_field_tag "payment[amount]", nil, class: "form-control text-right", placeholder: "$ 0.00" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 full-height margin-top-10">
+              <button class="btn btn-primary full-width disableable" type="submit" data-saving-text="...">
+                Pagar
+              </button>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

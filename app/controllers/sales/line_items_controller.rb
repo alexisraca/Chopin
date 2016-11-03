@@ -13,7 +13,7 @@ class Sales::LineItemsController < ApplicationController
 
   def destroy
     @line_item = LineItem.find(params[:id])
-    if @line_item.destroy
+    if @line_item.destroy && @statement.update_tree_totals
       flash[:notice] = "Producto borrado"
     else
       flash[:danger] = "Ocurrio un error al eliminar el producto"
@@ -22,7 +22,7 @@ class Sales::LineItemsController < ApplicationController
 
   def update
     @line_item = LineItem.find(params[:id])
-    if @line_item.update(update_line_item_quantity_params)
+    if @line_item.update_quantity(update_line_item_quantity_params[:quantity])
       flash[:notice] = "Producto actualizado"
     else
       flash[:danger] = "Ocurrio un error al actualizar el producto"

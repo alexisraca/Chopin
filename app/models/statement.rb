@@ -15,13 +15,13 @@ class Statement < ActiveRecord::Base
           new_line_item = line_items.select { |li| li.variant == variant }.first
           new_line_item.quantity += kuantity
           new_line_item.save!
+          new_line_item.update_totals
         else
           new_line_item = line_items.build(
                                       variant: variant,
-                                      quantity: kuantity,
-                                      total: variant.price * kuantity
+                                      quantity: kuantity
                                     )
-          new_line_item.save!
+          new_line_item.update_totals
         end
         #raise ActiveRecord::RecordInvalid.new(new_line_item)
       end
@@ -29,5 +29,22 @@ class Statement < ActiveRecord::Base
       self.errors.add(:producto, message: "tuvo un error al agregarse")
     end
     return new_line_item
+  end
+
+  def update_totals
+    self.total = line_items.sum(:total)
+    save!
+  end
+
+  def update_tree_totals
+    value = true
+    begin
+      self.class.transaction do
+        update_totals && order.update_totals
+      end
+    rescue Exception, ActiveRecord::RecordInvalid
+      value = false
+    end
+    return value
   end
 end
