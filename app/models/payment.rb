@@ -7,6 +7,9 @@ class Payment < ActiveRecord::Base
   SUMMARY = "summary" # Por propositos de poder crear pagos sin ser settled_at ni saldo pagado
                       # { settled_at: nil, total: nil }
 
+  belongs_to :statement
+  has_one :order, through: :statement
+
   validates :state, :statement_id, presence: { message: "No puede estar en blanco" }
 
   def complete_payment
@@ -16,7 +19,7 @@ class Payment < ActiveRecord::Base
         self.state = COMPLETE if state.blank?
         save!
         statement.update_totals
-        statement.order.update_totals
+        order.update_totals
       end
     rescue Exception, ActiveRecord::RecordInvalid
       value = false

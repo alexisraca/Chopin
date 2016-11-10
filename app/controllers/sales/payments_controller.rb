@@ -6,6 +6,10 @@ class Sales::PaymentsController < ApplicationController
   end
 
   def create
+    if payment_params[:total].blank? && payment_params[:type] == "cash"
+      flash[:danger] = "Por favor agrega un importe para cobrar"
+      render :new
+    end
     @payment = @statement.payments.build(build_payment_params)
     if @payment.complete_payment
       flash[:success] = "Pago completo"
@@ -21,12 +25,12 @@ class Sales::PaymentsController < ApplicationController
   end
 
   def payment_params
-    params.require(:payment).permit(:amount)
+    params.require(:payment).permit(:total, :type)
   end
 
   def build_payment_params
     {
-      total: payment_params[:amount],
+      total: payment_params[:total],
       settled_at: DateTime.now,
       state: Payment::COMPLETE
     }

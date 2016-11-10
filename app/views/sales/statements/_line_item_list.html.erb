@@ -1,24 +1,26 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-  <table class="table table-striped no-margin" id="line-items-list-table">
-    <thead>
-      <tr> 
-        <th width="45%">Artículo</th>
-        <th width="15%" class="text-center">Precio</th>
-        <th width="15%" class="text-center">Cantidad</th>
-        <th width="15%" class="text-center">Total</th>
-        <th width="10%"/>
-      </tr>
-    </thead>
+  <div class="row">
+    <table class="table table-striped no-margin" id="line-items-list-table">
+      <thead>
+        <tr> 
+          <th width="45%">Artículo</th>
+          <th width="15%" class="text-center">Precio</th>
+          <th width="15%" class="text-center">Cantidad</th>
+          <th width="15%" class="text-center">Total</th>
+          <th width="10%"/>
+        </tr>
+      </thead>
 
 
-    <tbody>
-      <% if @statement.line_items.empty? %>
-        <td colspan="5" class="text-center">
-          <h3>No ha agregado productos al ticket</h3>
-        </td>
-      <% else %>
-        <%= render partial: "/sales/statements/line_item", collection: @statement.line_items.order(:created_at) %>
-      <% end %>
-    </tbody>
-  </table>
+      <tbody>
+        <% if @statement.line_items.empty? %>
+          <td colspan="5" class="text-center">
+            <h3>No ha agregado productos al ticket</h3>
+          </td>
+        <% else %>
+          <%= render partial: "/sales/statements/line_item", collection: @statement.line_items.order(:created_at) %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
