@@ -28,7 +28,7 @@
       return false
     else if $(this).attr("data-target")
       form = $("##{$(this).attr("data-target")}")
-    else
+    else if $(this).attr("type") == "submit"
       form = $(this).closest "form"
 
     if form
