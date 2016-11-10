@@ -25,7 +25,7 @@
     form = undefined
     button = $(this)
     if $(this).is("[disabled]")
-      return
+      return false
     else if $(this).attr("data-target")
       form = $("##{$(this).attr("data-target")}")
     else
@@ -33,12 +33,20 @@
 
     if form
       form.submit()
-    
+      $(this).button("saving")
+      $(this).attr("disabled", "disabled")
+      text = button.html()
+      button.html('<i class="fa fa-circle-o-notch fa-spin">')
+      $(document).off "ajax:success"
+      $(document).on "ajax:success", (e) ->
+        window.resetDisableableButtons(button)
+        button.html(text)
+      return false
+
     $(this).button("saving")
     $(this).attr("disabled", "disabled")
     text = button.html()
     button.html('<i class="fa fa-circle-o-notch fa-spin">')
-    
 
     $(document).off "ajax:success"
     $(document).on "ajax:success", (e) ->
