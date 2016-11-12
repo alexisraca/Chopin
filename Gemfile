@@ -35,7 +35,7 @@ gem 'cocoon'
 gem "paranoia", github: "rubysherpas/paranoia", branch: "rails4"
 gem 'material_icons'
 gem 'will_paginate'
-gem 'state_machine', :require => 'state_machine/core'
+gem 'state_machines-activerecord'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

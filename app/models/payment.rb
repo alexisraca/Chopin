@@ -18,6 +18,24 @@ class Payment < ActiveRecord::Base
 
   validates :state, :statement_id, presence: { message: "No puede estar en blanco" }
 
+  state_machine :initial => :summary do
+    event :pay_cash do
+      transition :summary => :incomplete, :if => -> { |payment| payment.type == CASH }
+    end
+
+    event :pay_credit do
+      transition :summary => :incomplete, :if => -> { |payment| payment.type == CREDIT }
+    end
+
+    event :pay_invoice do
+      transition :summary => :incomplete, :if => -> { |payment| payment.type == INVOICE }
+    end
+
+    event :pay_paypal do
+      transition :summary => :incomplete, :if => -> { |payment| payment.type == PAYPAL }
+    end
+  end
+
   def complete_payment
     value = true
     begin
