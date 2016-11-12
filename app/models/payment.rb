@@ -7,6 +7,12 @@ class Payment < ActiveRecord::Base
   SUMMARY = "summary" # Por propositos de poder crear pagos sin ser settled_at ni saldo pagado
                       # { settled_at: nil, total: nil }
 
+
+  PAYPAL = "paypal"
+  INVOICE = "invoice"
+  CASH = "cash"
+  CREDIT = "credit"
+
   belongs_to :statement
   has_one :order, through: :statement
 
