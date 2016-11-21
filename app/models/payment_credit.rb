@@ -1,0 +1,2 @@
+class PaymentCredit < Payment
+end
