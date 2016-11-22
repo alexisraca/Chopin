@@ -1,0 +1,4 @@
+$("#right-sidebar #right-sidebar-header h3").html("Detalles de la compra");
+$("#right-sidebar #right-sidebar-body")
+  .html('<%= j render partial: "/sales/payments/#{@payment.type.underscore}/#{@payment.state}" %>');
+window.rightSidebar.open();

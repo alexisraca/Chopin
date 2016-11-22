@@ -30,3 +30,5 @@ $ ->
     $(".navigation").toggleClass('open-navigation');
   
   btnFilterActivation()
+
+  window.rightSidebar = new window.RightSidebar()

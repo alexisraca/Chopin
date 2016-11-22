@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resources :statements do
       resources :line_items
       resources :payments
+      put "payment/:id/next", to: "payments#next", as: :payment_next
     end
     resources :variants
   end

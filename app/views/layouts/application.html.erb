@@ -45,5 +45,9 @@
   </div>
   <%= render partial: "/shared/global_modal" %>
   <%= render partial: "/shared/small_global_modal" %>
+
+  <% if user_signed_in? %>
+    <%= render partial: "/shared/right_sidebar" %>
+  <% end %>
 </body>
 </html>

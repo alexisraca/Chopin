@@ -1,14 +1,3 @@
-<% if flash[:danger].blank? %>
-$("#small-global-modal .modal-title").text('Pagar ticket #<%= @statement.id %>')
-$("#small-global-modal .modal-body").html("<%= j render partial: 'form' %>")
-$("#small-global-modal").modal("show")
-
-window.paymentModalBinding()
-
-<% else %>
-  if(!$("#small-global-modal").hasClass('in')) {
-    $("#small-global-modal").modal("show")
-  }
-  $("#small-global-modal .modal-errors").html('<%= j flash[:danger] %>');
-  $("#small-global-modal .modal-errors").removeClass("hidden")
-<% end %>
+$("#right-sidebar #right-sidebar-header h3").html("Elija un método de pago")
+$("#right-sidebar #right-sidebar-body").html("<%= j render partial: 'select_payment_type' %>");
+window.rightSidebar.open();

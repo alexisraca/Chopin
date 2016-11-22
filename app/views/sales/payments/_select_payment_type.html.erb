@@ -1,0 +1,14 @@
+<div class="row" id="statement-payment-type">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <%= link_to sales_statement_payments_path(@statement, type: PaymentCredit.to_s.underscore), remote: true, method: :post, class: "btn btn-lg btn-info full-width disableable", id: "credit-card-payment" do %>
+      <%= fa_icon "credit-card" %>
+      Tarjeta
+    <% end %>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <%= link_to sales_statement_payments_path(@statement, type: PaymentCash.to_s.underscore), remote: true, method: :post, class: "btn btn-lg btn-primary full-width disableable", id: "cash-payment" do %>
+      <%= fa_icon "dollar" %>
+      Efectivo
+    <% end %>
+  </div>
+</div>
