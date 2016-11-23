@@ -34,7 +34,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'cocoon'
 gem "paranoia", github: "rubysherpas/paranoia", branch: "rails4"
 gem 'material_icons'
-gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'state_machines-activerecord'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
