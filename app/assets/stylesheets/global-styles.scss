@@ -298,5 +298,20 @@ body { background-color: $pos-background; }
   transition: 0.3s;
   padding-right:15px;
   width: 0px;
-  &.open { width: 80%; }
+  &.open { width: 60%; }
+  & #right-sidebar-header {
+    height: 10%;
+    max-height: 10%;
+  }
+  & #right-sidebar-body {
+    font-size: 2em;
+    height: 80%;
+    max-height: 80%;
+    overflow-y: scroll;
+  }
+  & #right-sidebar-footer {
+    padding-top: 1em;
+    height: 10%;
+    max-height: 10%;
+  }
 }

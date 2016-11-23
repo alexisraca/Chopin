@@ -1,4 +1,6 @@
 $("#right-sidebar #right-sidebar-header h3").html("Detalles de la compra");
 $("#right-sidebar #right-sidebar-body")
-  .html('<%= j render partial: "/sales/payments/#{@payment.type.underscore}/#{@payment.state}" %>');
+  .html('<%= j render partial: "/sales/payments/#{@payment.type.underscore}/#{@payment.state}_body" %>');
+$("#right-sidebar #right-sidebar-footer")
+  .html('<%= j render partial: "/sales/payments/#{@payment.type.underscore}/#{@payment.state}_footer" %>');
 window.rightSidebar.open();

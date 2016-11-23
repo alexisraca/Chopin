@@ -11,4 +11,10 @@
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  .line-item-amount {
+    font-weight: lighter;
+  }
+  .total-text, .total-amount {
+    font-size: 1.5em;
+  }
 }
