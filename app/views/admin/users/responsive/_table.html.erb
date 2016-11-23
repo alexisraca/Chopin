@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12 col-xs-12">
-    <span class="pull-right"><%= will_paginate @users %></span>
+    <span class="pull-right"><%= will_paginate @users, renderer: BootstrapPagination::Rails %></span>
   </div>
   <div class="clearfix"></div>
 </div>
@@ -21,7 +21,7 @@
 
 <div class="row">
   <div class="col-sm-12 col-xs-12">
-    <span class="pull-right"><%= will_paginate @users %></span>
+    <span class="pull-right"><%= will_paginate @users, renderer: BootstrapPagination::Rails %></span>
     <div class="clearfix"></div>
   </div>
 </div>
