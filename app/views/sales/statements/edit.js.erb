@@ -2,5 +2,5 @@ this.resetSearchButtons()
 $("#variants-list-header").html('<%= j render partial: "sales/statements/variants_panel_header" %>')
 $("#variants-list-body").html('<%= j render  partial: "sales/variants/variants_#{@variants_view}" %>')
 $("#variants-list-footer").html(
-  '<%= j remote_paginate(@variants, class: "margin-top-10 margin-bottom-10 margin-left-10 margin-right-10 pull-right") %><div class="clearfix"></div>'
+  '<%= j remote_paginate(@variants, :previous_label => 'Anterior', :next_label => 'Siguiente', class: "margin-top-10 margin-bottom-10 margin-left-10 margin-right-10 pull-right") %><div class="clearfix"></div>'
 )
