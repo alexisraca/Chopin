@@ -1,18 +1,19 @@
 <div class="row" id="payment-modal-footer">
-  <%= simple_form_for [:sales, @statement, @payment], url: sales_statement_payment_next_path(@statement, @payment), remote: true, method: :put do |f| %>
+  <%= simple_form_for [:sales, @statement, @payment], url: sales_statement_payments_path(@statement, type: @payment.class.to_s.underscore), remote: true do |f| %>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 full-height">
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right full-height">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right full-height">
+        <%= f.text_field_tag "payment[total]", nil, class: "form-control text-right", placeholder: "$ 0.00", required: true %>
+      </div>
+
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right full-height">
         <p class="no-margin lead">Importe:</p>
       </div>
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right full-height">
-        <%= f.text_field_tag "payment[total]", nil, class: "form-control text-right", placeholder: "$ 0.00" %>
-      </div>
+
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 full-height">
-        <button class="btn btn-primary full-width disableable" type="submit" data-saving-text="...">
+        <button class="btn btn-primary full-width disableable pay-button" type="submit" data-saving-text="...">
           Pagar
         </button>
       </div>
-
       <div class="clearfix"></div>
     </div>
   <% end %>

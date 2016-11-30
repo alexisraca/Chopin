@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       resources :line_items
       resources :payments
       put "payment/:id/next", to: "payments#next", as: :payment_next
+      get "type", to: "payments#type", as: :payment_type
     end
     resources :variants
   end
