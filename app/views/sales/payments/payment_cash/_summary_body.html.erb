@@ -1,0 +1,33 @@
+<div class="row" id="statement-ticket">
+  <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2">
+    <div class="row">
+      <% @statement.line_items.each do |li| %>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left hyphenate">
+              <strong><%= li.quantity %></strong>
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-left hyphenate">
+              <strong><%= li.variant.name %></strong>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right line-item-amount">
+              <%= number_to_currency(li.variant.price) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <hr/>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-left">
+        <p class="lead total-text">Total</p>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
+        <h4 class="text-success total-amount"><%= number_to_currency(@statement.total) %></h4>
+      </div>
+    </div>
+
+  </div>
+</div>
