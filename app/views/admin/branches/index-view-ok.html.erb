@@ -1,0 +1,27 @@
+<% content_for :buttons_bar do %>
+      <div class="col-md-12 col-lg-12 hidden-xs hidden-sm">
+        <%= render partial: "admin/branches/desktop/button_bar" %>
+      </div>
+
+      <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
+        <%= render partial: "admin/branches/responsive/button_bar" %>
+      </div>
+<%end%>
+
+<% content_for :page_content do %>
+  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+    <table class="table table-hover products-table panel">
+      <thead>
+        <tr> 
+          <th>Sucursal</th>
+          <th>Encargado</th>
+          <th>Productos</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @branches %>
+      </tbody>
+    </table>
+  </div>
+<%end%>

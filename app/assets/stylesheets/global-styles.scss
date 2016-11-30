@@ -16,6 +16,11 @@ body { background-color: $pos-background; }
 .position-absolute { position: absolute; }
 .position-relative { position: relative; }
 
+.construct {
+  width: 100%;
+  height: 100%;
+}
+
 .full-width {
   width: 100%;
 }

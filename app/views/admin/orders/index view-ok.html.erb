@@ -1,0 +1,15 @@
+<% content_for :buttons_bar do %>
+  <div class="col-md-12 col-lg-12 hidden-xs hidden-sm">
+    <%= render partial: "admin/orders/desktop/button_bar" %>
+  </div>
+
+  <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
+    <%= render partial: "admin/orders/responsive/button_bar" %>
+  </div>
+<% end %>
+
+<% content_for :page_content do %>
+  <div class="col-md-12 col-lg-12 hidden-xs hidden-sm desktop-table">
+    <%= render partial: "admin/orders/table" %>
+  </div>
+<% end %>
