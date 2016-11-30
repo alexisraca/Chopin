@@ -10,7 +10,7 @@
   <!-- </div> --> <!-- Cuerre de panel-body -->
 
   <div class="row" id="variants-list-footer">
-    <%= remote_paginate(@variants, class: "margin-top-10 margin-bottom-10 margin-left-10 margin-right-10 pull-right", params: { variants_view: @variants_view }) %>
+    <%= remote_paginate(@variants, :previous_label => 'Anterior', :next_label => 'Siguiente', class: "margin-top-10 no-margin-bottom margin-left-10 margin-right-10 pull-right", params: { variants_view: @variants_view }) %>
     <div class="clearfix"></div>
   </div> <!-- Cuerre de panel-footer -->
 

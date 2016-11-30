@@ -5,7 +5,20 @@ class Sales::PaymentsController < ApplicationController
   end
 
   def create
-    @payment = @statement.payments.create(type: payment_params[:type].classify)
+    @payment = @statement.payments.new(type: payment_type, total: payment_params[:total])
+    if @payment.save
+      @payment.complete_payment
+    else
+      flash[:errors] = @payment.errors.full_messages
+      render "type"
+    end
+  end
+
+  def type
+    @payment = @statement.payments.new(type: payment_type)
+  end
+
+  def next
   end
 
   private
@@ -16,5 +29,9 @@ class Sales::PaymentsController < ApplicationController
 
   def payment_params
     params.permit(:total, :type)
+  end
+
+  def payment_type
+    payment_params[:type].classify
   end
 end

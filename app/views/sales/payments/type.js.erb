@@ -1,3 +1,8 @@
+<% unless flash[:errors].blank? %>
+  $("#right-sidebar #right-sidebar-errors").html("<%= j render partial: '/shared/right_sidebar_errors' %>");
+  $("#right-sidebar #right-sidebar-errors").removeClass("hidden")
+  setTimeout(function(){ $("#right-sidebar #right-sidebar-errors").addClass("hidden"); }, 2000);
+<% end %>
 $("#right-sidebar #right-sidebar-header h3").html("Detalles de la compra");
 $("#right-sidebar #right-sidebar-body")
   .html('<%= j render partial: "/sales/payments/#{@payment.type.underscore}/#{@payment.state}_body" %>');
